@@ -1,11 +1,11 @@
 import Header from '../components/header'
-import Hello from '../components/hello'
+import List from '../components/list'
 
 const install = function(Vue) {
   if (install.installed) return
 
   Vue.component(Header.name, Header)
-  Vue.component(Hello.name, Hello)
+  Vue.component(List.name, List)
 }
 
 // auto install
@@ -17,5 +17,5 @@ module.exports = {
   install,
   version: '0.0.1',
   Header,
-  Hello
+  List
 }

@@ -29,23 +29,22 @@ module.exports = {
 
 var getComponentNames = () => {
   var componentsPath = path.resolve(__dirname, '../../components')
-  let stats = fs.statSync(componentsPath);
+  var stats = fs.statSync(componentsPath);
+  var componentNames = [], extname;
 
   if (stats.isDirectory()) {
-    let dir = componentsPath.replace(/\/$/, '') + '/';
-    let componentNames = [];
-
     fs.readdirSync(componentsPath).forEach(filename => {
+      extname = path.extname( filename )
+      
       if (fs.statSync(`${componentsPath}/${filename}`).isDirectory()) {
         componentNames.push( filename )
-      }   
-      
-    });
-
-    return componentNames   
+      } else if (extname === '.vue') {
+        componentNames.push( filename.replace(extname, '') )
+      }
+    })
   }
 
-  return []
+  return componentNames
 }
 
 var componentNames = getComponentNames();

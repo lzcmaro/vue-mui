@@ -1,8 +1,8 @@
 <template>
   <section class="page-demo">
     <div v-for="group in navs">
-      <div class="page-title" v-text="group.title"></div>
-      <mt-cell
+      <h3 class="page-title" v-text="group.title"></h3>
+      <mui-list
         v-for="item in group.list"
         :to="item.path"
         is-link>
@@ -10,7 +10,7 @@
           <i :class="['indexicon', 'icon-' + item.icon]"></i>
           <span>{{ item.name }}</span>
         </div>
-      </mt-cell>
+      </mui-list>
     </div>
   </section>
 </template>
