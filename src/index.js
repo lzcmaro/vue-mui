@@ -1,5 +1,5 @@
-import Header from '../components/header'
-import List from '../components/list'
+import Header from './components/header'
+import List from './components/list'
 
 const install = function(Vue) {
   if (install.installed) return

@@ -4,7 +4,7 @@ var uppercamelcase = require('uppercamelcase');
 var path = require('path');
 
 var OUTPUT_PATH = path.join(__dirname, '../../src/index.js');
-var IMPORT_TEMPLATE = 'import {{name}} from \'../components/{{package}}\'';
+var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}\'';
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})';
 var MAIN_TEMPLATE = `{{include}}
 
@@ -28,7 +28,7 @@ module.exports = {
 
 
 var getComponentNames = () => {
-  var componentsPath = path.resolve(__dirname, '../../components')
+  var componentsPath = path.resolve(__dirname, '../../src/components')
   var stats = fs.statSync(componentsPath);
   var componentNames = [], extname;
 

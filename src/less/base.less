@@ -1,0 +1,128 @@
+//
+// Base styles
+// --------------------------------------------------
+
+// Use box sizing on all the things!
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/**
+ * 为方便计算，我们一般会设置1rem=10px。
+ * 因为浏览器的默认字体大小为16px，所以要使1rem=10px，那么只要在html选择器中声明font-size=62.5%（10/16*100%=62.5%）即可。
+ * 但是，并不是所有的浏览器的默认字体大小都是16px，所以直接声明font-size=62.5%是不严谨的。
+ * 这里取值20，而不是10，是因为chrome的最小字体为12，向上取整，所以。。。
+ */
+html {
+  font-size: 20px;
+}
+@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
+ html,body {
+     font-size:33.75px;
+ }
+}
+@media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
+ html,body {
+     font-size:30px;
+ }
+}
+@media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
+ html,body {
+     font-size:25px;
+ }
+}
+@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
+ html,body {
+     font-size:22.5px;
+ }
+}
+@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+ html,body {
+     font-size:20px;
+ }
+}
+@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+ html,body {
+     font-size:18.75px;
+ }
+}
+@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+ html,body {
+     font-size:16.875px;
+ }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+ html,body {
+     font-size:15px;
+ }
+}
+@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+ html,body {
+     font-size:12.9375px;
+ }
+}
+@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+ html,body {
+     font-size:12.5px;
+ }
+}
+@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+ html,body {
+     font-size:11.71875px;
+ }
+}
+@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+ html,body {
+     font-size:11.25px;
+ }
+}
+@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+ html,body {
+     font-size:10px;
+ }
+}
+@media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
+ html,body {
+     font-size:7.5px;
+ }
+}
+
+// We fix position the body and scroll `.content`.
+body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-family: @font-family-default;
+  font-size: @font-size-default;
+  line-height: @line-height-default;
+  color: @font-color-default;
+  background-color: #fff;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Universal link styling
+a {
+  color: @color-primary;
+  font-size: @font-size-default;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0); // Removes the dark touch outlines on links in webkit browsers.
+
+  &:active {
+    color: darken(@color-primary, 10%);
+  }
+}
+
+// Utility classes
+.clearfix {
+  .clearfix();
+}

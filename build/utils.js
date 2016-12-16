@@ -29,8 +29,8 @@ exports.cssLoaders = function (options) {
     // (which is the case during production build)
     if (options.extract) {
       // webpack 1.x
-      // return ExtractTextPlugin.extract('vue-style-loader', sourceLoader)
-      return ExtractTextPlugin.extract({fallbackLoader: 'vue-style-loader', loader: sourceLoader})
+      return ExtractTextPlugin.extract('vue-style-loader', sourceLoader)
+      // return ExtractTextPlugin.extract({fallbackLoader: 'vue-style-loader', loader: sourceLoader})
     } else {
       return ['vue-style-loader', sourceLoader].join('!')
     }
