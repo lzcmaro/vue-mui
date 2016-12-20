@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vui-navbar>List</vui-navbar>
+    <vui-navbar fixed>List</vui-navbar>
     <vui-list>
       <vui-list-item>Title</vui-list-item>
       <vui-list-item navigate>

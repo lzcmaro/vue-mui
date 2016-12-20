@@ -8,22 +8,28 @@
 </template>
 
 <style lang="less">
-  @import "../src/less/vue-mui.less";
+@import "../src/less/vue-mui.less";
 
-  .page-back {
-    position: absolute;
-    top: 12px;
-    left: 10px;
-    text-align: center;
+.page-back {
+  position: fixed;
+  top: 8/@rem-unit;
+  left: 20/@rem-unit;
+  text-align: center;
+  z-index: 99;
+
+  .icon {
+    color: #fff;
+    font-size: 48/@rem-unit;
   }
+}
 </style>
 
 <script type="text/babel">
-  export default {
-    computed: {
-      visible() {
-        return ['/', '/header', '/search'].indexOf(this.$route.path) < 0
-      }
+export default {
+  computed: {
+    visible() {
+      return ['/', '/navbar', '/search'].indexOf(this.$route.path) < 0
     }
   }
+}
 </script>
