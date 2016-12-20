@@ -1,33 +1,20 @@
 <template>
   <div>
     <router-link class="page-back" v-if="visible" :to="'/'">
-      <i class="mintui mintui-back"></i>
+      <i class="icon icon-left"></i>
     </router-link>
     <router-view></router-view>
   </div>
 </template>
 
 <style lang="less">
-  html, body {
-    background-color: #fafafa;
-    -webkit-overflow-scrolling: touch;
-    user-select: none;
-  }
-
-  a {
-    color: inherit;
-  }
+  @import "../src/less/vue-mui.less";
 
   .page-back {
-    display: inline-block;
     position: absolute;
-    width: 40px;
-    height: 40px;
+    top: 12px;
+    left: 10px;
     text-align: center;
-    i {
-      font-size: 24px;
-      line-height: 40px;
-    }
   }
 </style>
 

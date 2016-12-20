@@ -11,11 +11,13 @@ var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
-  entry: './examples/index.js',
+  entry: {
+    app: './examples/index.js'
+  },
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
-    filename: '[name].js'
+    filename: 'js/[name].js'
   },
   resolve: {
     extensions: ['', '.js', '.vue'],
@@ -64,15 +66,16 @@ module.exports = {
         loader: 'url',
         query: {
           limit: 1000,
-          name: utils.assetsPath('images/[name].[ext]')
-        }
+          name: 'images/[name].[ext]'
+        },
+        exclude: /fonts/
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
         loader: 'url',
         query: {
           limit: 1000,
-          name: utils.assetsPath('fonts/[name].[ext]')
+          name: 'fonts/[name].[ext]'
         }
       }
     ]

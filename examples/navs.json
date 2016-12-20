@@ -9,9 +9,19 @@
     "title": "CSS Components",
     "list": [
       {
-        "path": "/header",
-        "name": "Header",
-        "icon": "header"
+        "path": "/navbar",
+        "name": "Navbar",
+        "icon": "navbar"
+      },
+      {
+        "path": "/list",
+        "name": "List",
+        "icon": "list"
+      },
+      {
+        "path": "/icon",
+        "name": "Icon",
+        "icon": "icon"
       }
     ]
   },

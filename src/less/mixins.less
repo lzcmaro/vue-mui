@@ -36,6 +36,43 @@
           box-shadow: @shadow;
 }
 
+// Flex
+.flexbox() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex(@f) {
+  -webkit-box-flex: @f;
+          -ms-flex: @f;
+              flex: @f;
+}
+.flex-wrap(@fw) when (@fw = nowrap) {
+  -webkit-box-lines: single;
+     -moz-box-lines: single;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+}
+.flex-wrap(@fw) when (@fw = wrap) {
+  -webkit-box-lines: multiple;
+     -moz-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.flex-wrap(@fw) when not (@fw = wrap) and not (@fw = nowrap) {
+  -webkit-flex-wrap: @fw;
+      -ms-flex-wrap: @fw;
+          flex-wrap: @fw;
+}
+.flex-shrink(@fs) {
+  -webkit-flex-shrink: @fs;
+             -ms-flex: 0 @fs auto;
+          flex-shrink: @fs;
+}
+
 // Gradients
 .linear-gradient(@color-from, @color-to) {
   background-color: @color-from; // Old browsers
@@ -65,6 +102,11 @@
   -webkit-transform: @transform;
       -ms-transform: @transform;
           transform: @transform;
+}
+.transform-origin(@x, @y) {
+  -webkit-transform-origin: @x @y;
+      -ms-transform-origin: @x @y;
+          transform-origin: @x @y;
 }
 
 // Transformations
@@ -165,4 +207,85 @@
 .animation-timing-function(@function) {
   -webkit-animation-timing-function: @function;
           animation-timing-function: @function;
+}
+
+
+// Hairlines
+// --------------------------------------------------
+.hairline-base(@color) {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: @color;
+  display: block;
+  z-index: 1;
+}
+.hairline(@position, @color) when (@position = top) {
+  &:before {
+    left: 0;
+    top: 0;
+    bottom: auto;
+    right: auto;
+    .hairline-base(@color);
+    .transform-origin(50%, 0%);
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+      transform: scaleY(0.5);
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+      transform: scaleY(0.33);
+    }
+  }
+}
+.hairline(@position, @color) when (@position = left) {
+  &:before {
+    left: 0;
+    top: 0;
+    bottom: auto;
+    right: auto;
+    .hairline-base(@color);
+    .transform-origin(0%, 50%);
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+      transform: scaleX(0.5);
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+      transform: scaleX(0.33);
+    }
+  }
+}
+.hairline(@position, @color) when (@position = bottom) {
+  &:after {
+    left: 0;
+    top: auto;
+    bottom: 0;
+    right: auto;
+    .hairline-base(@color);
+    .transform-origin(50%, 100%);
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+      transform: scaleY(0.5);
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+      transform: scaleY(0.33);
+    }
+  }
+}
+.hairline(@position, @color) when (@position = right) {
+  &:after {
+    left: auto;
+    top: 0;
+    bottom: auto;
+    right: 0;
+    .hairline-base(@color);
+    .transform-origin(100%, 50%);
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+      transform: scaleX(0.5);
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+      transform: scaleX(0.33);
+    }
+  }
 }

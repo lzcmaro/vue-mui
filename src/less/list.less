@@ -1,0 +1,70 @@
+.list {
+  margin: @content-spacing 0;
+  font-size: 32/@rem-unit;
+
+  ul {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .hairline(top, @border-color);
+    .hairline(bottom, @border-color);
+  }
+  .list-title, .list-append {
+    color: #888;
+    padding: 8/@rem-unit @content-spacing;
+  }
+  .list-append {
+    font-size: 24/@rem-unit;
+  }
+  li + li {
+    .item-inner {
+      .hairline(top, @border-color);
+    }
+  }
+  .item-inner {
+    .flexbox();
+    margin-left: @content-spacing;
+    position: relative;
+
+    &.item-link {
+      .item-content {
+        padding-right: 38/@rem-unit;
+      }
+      .icon-right {
+        position: absolute;
+        top: 50%;
+        right: 12/@rem-unit;
+        line-height: 1;
+        font-size: 32/@rem-unit;
+        margin-top: -16/@rem-unit;
+      }
+    }
+  }
+  .item-media {
+    .flexbox();
+    align-items: center;
+    justify-content: center; 
+    padding: 16/@rem-unit 0;
+    margin-right: 10/@rem-unit;
+  }
+
+  .item-content {
+    // .flexbox();
+    width: 100%;
+    position: relative;
+    padding: 16/@rem-unit @content-spacing 16/@rem-unit 0;
+    // line-height: 56/@rem-unit;
+    overflow: hidden;
+
+    .item-title {
+      overflow: hidden;
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+    .item-desc, .item-after {
+      color: #888;
+      font-size: 28/@rem-unit;
+    }
+  }
+}

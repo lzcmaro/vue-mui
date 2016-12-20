@@ -1,11 +1,19 @@
 <template>
-  <ul class="mui-list">
-    <slot name="title"></slot>
-  </ul>
+  <div class="list">
+    <div class="list-title" v-if="this.$slots.title">
+      <slot name="title"></slot>
+    </div>
+    <ul>
+      <slot></slot>
+    </ul>
+    <div class="list-append" v-if="this.$slots.append">
+      <slot name="append"></slot>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'mui-list'
+  name: 'vui-list'
 }
 </script>

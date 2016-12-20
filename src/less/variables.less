@@ -5,16 +5,17 @@
 
 // Basic
 // --------------------------------------------------
-@rem-unit: 20rem;
+@rem-unit: 40rem;
+@content-spacing: 30/@rem-unit;
 
 
 // Type
 // --------------------------------------------------
 @font-color-default: #111;
 @font-family-default: "Helvetica Neue", Helvetica, sans-serif;
-@font-size-default: 14/@rem-unit;
+@font-size-default: 16/@rem-unit;
 @font-weight-default: 400;
-@line-height-default: 1.15;
+@line-height-default: 1.5;
 
 
 // Colors
@@ -35,14 +36,18 @@
 
 // Transitions
 // --------------------------------------------------
-
 @timing-fuction: cubic-bezier(.1,.5,.1,1); // Inspired by @c2prods
 
 
 // Borders
 // --------------------------------------------------
-
 @border-color: #e5e5e5 ;
 @border-default-width: 1px;
 @border-default: @border-default-width solid @border-color;
-@border-radius: 6px;
+@border-radius: 6/@rem-unit;
+
+
+
+// Navbar
+// --------------------------------------------------
+@nav-height: 88/@rem-unit;
