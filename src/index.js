@@ -1,3 +1,4 @@
+import Button from './components/button'
 import Icon from './components/icon'
 import ListItem from './components/list-item'
 import List from './components/list'
@@ -6,6 +7,7 @@ import Navbar from './components/navbar'
 const install = function(Vue) {
   if (install.installed) return
 
+  Vue.component(Button.name, Button)
   Vue.component(Icon.name, Icon)
   Vue.component(ListItem.name, ListItem)
   Vue.component(List.name, List)
@@ -20,6 +22,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   install,
   version: '0.0.1',
+  Button,
   Icon,
   ListItem,
   List,

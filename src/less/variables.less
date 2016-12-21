@@ -11,7 +11,7 @@
 
 // Type
 // --------------------------------------------------
-@font-color-default: #111;
+@font-color-default: #222;
 @font-family-default: "Helvetica Neue", Helvetica, sans-serif;
 @font-size-default: 28/@rem-unit;
 @font-weight-default: 400;
@@ -22,15 +22,17 @@
 // --------------------------------------------------
 
 // Main theme colors
-@color-primary: #FF8F3B;
-@color-danger: #f6383a;
+@color-chrome: #fff;
+@color-primary: #EB6B00;
+@color-danger: #ef4f4f;
 @color-warning: #f60;
 @color-success: #4cd964;
 
-@color-primary-active: darken(@color-primary, 10%);
-@color-danger-active: darken(@color-danger, 10%);
-@color-warning-active: darken(@color-warning, 10%);
-@color-success-active: darken(@color-success, 10%);
+@color-split: #c8c8c8;  //分割线的颜色
+@color-text: #3d4145; //文案色
+@color-text-secondary: #5f646e; //次级文案
+@color-text-gray: #999; //灰色文案
+@color-text-gray-light: #ccc; //更灰色文案
 
 
 
@@ -41,10 +43,21 @@
 
 // Borders
 // --------------------------------------------------
-@border-color: #e5e5e5 ;
+@border-color: #c8c8c8 ;
 @border-default-width: 1px;
 @border-default: @border-default-width solid @border-color;
-@border-radius: 6/@rem-unit;
+@border-radius: 8/@rem-unit;
+
+
+// Button
+// --------------------------------------------------
+@btn-default-bg-color: #f6f8fa;
+@btn-default-color: @font-color-default;
+@btn-primary-bg-color: @color-primary;
+@btn-primary-color: @color-chrome;
+@btn-danger-bg-color: @color-danger;
+@btn-danger-color: @color-chrome;
+
 
 
 

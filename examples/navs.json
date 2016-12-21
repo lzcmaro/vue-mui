@@ -9,6 +9,11 @@
     "title": "CSS Components",
     "list": [
       {
+        "path": "/button",
+        "name": "Button",
+        "icon": "button"
+      },
+      {
         "path": "/navbar",
         "name": "Navbar",
         "icon": "navbar"

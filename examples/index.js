@@ -3,6 +3,7 @@ import App from './app'
 import routes from './route'
 import mui from 'src/index'
 import VueRouter from 'vue-router'
+import PageContent from './page-content'
 
 document.addEventListener('DOMContentLoaded', function() {
   if (window.FastClick) window.FastClick.attach(document.body)
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Vue.use(mui)
 Vue.use(VueRouter)
+Vue.component(PageContent.name, PageContent)
 
 const router = new VueRouter({
   base: __dirname,
