@@ -3,9 +3,9 @@
     <vui-navbar fixed>Button</vui-navbar>
     <page-content>
       <div class="btn-group">
-        <vui-button ref="btn1" size="large">Default</vui-button>
-        <vui-button @click="handleClick" size="large" type="primary">Primary</vui-button>
-        <vui-button size="large" type="danger">Danger</vui-button>
+        <vui-button @click="handleClick" size="small">Default</vui-button>
+        <vui-button ref="btn1" size="small" type="primary">Primary</vui-button>
+        <vui-button size="small" type="danger">Danger</vui-button>
       </div>
 
       <div class="btn-group">
@@ -15,9 +15,9 @@
       </div>
 
       <div class="btn-group">
-        <vui-button size="small">Default</vui-button>
-        <vui-button size="small" type="primary">Primary</vui-button>
-        <vui-button size="small" type="danger">Danger</vui-button>
+        <vui-button size="large">Default</vui-button>
+        <vui-button size="large" type="primary">Primary</vui-button>
+        <vui-button size="large" type="danger">Danger</vui-button>
       </div>
 
       <div class="btn-group">

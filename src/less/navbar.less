@@ -5,7 +5,7 @@
   height: @nav-height;
   line-height: 1;
   padding: 0 20/@rem-unit;
-  font-size: 32/@rem-unit;
+  font-size: @nav-font-size;
   color: #fff;
   background-color: #202734;
   z-index: 9;
@@ -18,8 +18,20 @@
     padding: 0;
     margin: 0;
   }
-  .left, .right {
+  .pull-left, .pull-right {
     .flex(.5);
+  }
+  .pull-right {
+    text-align: right;
+  }
+  // link button
+  .link {
+    color: @color-chrome;
+    font-size: @nav-font-size;
+    .icon {
+      font-size: 48/@rem-unit;
+      vertical-align: -4/@rem-unit;
+    }
   }
 }
 

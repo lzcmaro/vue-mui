@@ -16,14 +16,14 @@
 export default {
   name: 'vui-list-item',
   props: {
-    link: String,
+    to: String,
     navigate: Boolean
   },
   computed: {
     href() {
-      if (this.link && !this.added && this.$router) {
-        const resolved = this.$router.match(this.link)
-        if (!resolved.matched.length) return this.link
+      if (this.to && !this.added && this.$router) {
+        const resolved = this.$router.match(this.to)
+        if (!resolved.matched.length) return this.to
 
         this.$nextTick(() => {
           this.added = true
@@ -31,7 +31,7 @@ export default {
         })
         return resolved.path
       }
-      return this.link
+      return this.to
     }
   },
   methods: {

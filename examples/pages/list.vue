@@ -24,6 +24,5 @@
 
 <script>
 export default {
-  name: 'example-list'
 }
 </script>

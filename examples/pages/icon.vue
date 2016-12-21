@@ -14,7 +14,6 @@
 import icons from './icons.json'
 
 export default {
-  name: 'icon',
   data() {
     return {
       icons: []
