@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vui-navbar fixed>Icons</vui-navbar>
+    <vui-header fixed>Icons</vui-header>
     <ul class="icon-list">
       <li v-for="icon in icons">
         <vui-icon :type="icon"></vui-icon>

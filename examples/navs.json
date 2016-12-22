@@ -14,9 +14,9 @@
         "icon": "button"
       },
       {
-        "path": "/navbar",
-        "name": "Navbar",
-        "icon": "navbar"
+        "path": "/header",
+        "name": "Header",
+        "icon": "header"
       },
       {
         "path": "/list",

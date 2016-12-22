@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vui-navbar fixed>Button</vui-navbar>
+    <vui-header fixed>Button</vui-header>
     <page-content>
       <div class="btn-group">
         <vui-button @click="handleClick" size="small">Default</vui-button>

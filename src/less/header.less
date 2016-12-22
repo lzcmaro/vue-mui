@@ -1,14 +1,14 @@
-.nav {
+.header {
   .flexbox();
   width: 100%;
   align-items: center;
-  height: @nav-height;
+  height: @header-height;
   line-height: 1;
   padding: 0 20/@rem-unit;
-  font-size: @nav-font-size;
+  font-size: @header-font-size;
   color: #fff;
   background-color: #202734;
-  z-index: 9;
+  z-index: @level-navigation;
 
   .title {
     .flex(1);
@@ -27,7 +27,7 @@
   // link button
   .link {
     color: @color-chrome;
-    font-size: @nav-font-size;
+    font-size: @header-font-size;
     .icon {
       font-size: 48/@rem-unit;
       vertical-align: -4/@rem-unit;
@@ -35,13 +35,13 @@
   }
 }
 
-.nav-fixed {
+.header-fixed {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
 
   & + * {
-    margin-top: @nav-height;
+    margin-top: @header-height;
   }
 }

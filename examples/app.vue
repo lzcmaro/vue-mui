@@ -28,7 +28,7 @@
 export default {
   computed: {
     visible() {
-      return ['/', '/navbar', '/search'].indexOf(this.$route.path) < 0
+      return ['/', '/header', '/search'].indexOf(this.$route.path) < 0
     }
   }
 }
