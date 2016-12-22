@@ -1,12 +1,12 @@
 <template>
   <li>
-    <a class="item-inner" :class="navigate ? 'item-link' : ''" :href="href">
+    <a class="item-inner" :class="navigate ? 'item-navigate' : ''" :href="href">
       <div class="item-media" v-if="this.$slots.media"><slot name="media"></slot></div>
       <div class="item-content">
         <div class="item-title"><slot></slot></div>
         <div class="item-desc" v-if="this.$slots.desc"><slot name="desc"></slot></div>
-        <div class="item-after" v-if="this.$slots.after"><slot name="after"></slot></div>
       </div>
+      <div class="item-after" v-if="this.$slots.after"><slot name="after"></slot></div>
       <i class="icon icon-right" v-if="navigate"></i>
     </a>
   </li>
