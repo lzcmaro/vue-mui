@@ -12,7 +12,7 @@
 
 .page-back {
   position: fixed;
-  top: 8/@rem-unit;
+  top: 20/@rem-unit;
   left: 20/@rem-unit;
   text-align: center;
   z-index: 99;

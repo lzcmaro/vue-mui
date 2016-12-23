@@ -18,7 +18,7 @@
   font-family: @font-family-default;
   .appearance(none);
 
-  &:not(.btn-link)::after {
+  &::after {
     background-color: #000;
     content: " ";
     opacity: 0;
@@ -29,7 +29,7 @@
     position: absolute;
   }
 
-  &:not(.btn-disabled):not(.btn-link):active::after {
+  &:not(.btn-disabled):active::after {
     opacity: .2;
   }
 }

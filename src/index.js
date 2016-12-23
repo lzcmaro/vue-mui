@@ -4,6 +4,8 @@ import Icon from './components/icon'
 import Link from './components/link'
 import ListItem from './components/list-item'
 import List from './components/list'
+import Overlay from './components/overlay'
+import Toast from './components/toast'
 
 const install = function(Vue) {
   if (install.installed) return
@@ -14,6 +16,8 @@ const install = function(Vue) {
   Vue.component(Link.name, Link)
   Vue.component(ListItem.name, ListItem)
   Vue.component(List.name, List)
+  Vue.component(Overlay.name, Overlay)
+  Vue.component(Toast.name, Toast)
 }
 
 // auto install
@@ -29,5 +33,7 @@ module.exports = {
   Icon,
   Link,
   ListItem,
-  List
+  List,
+  Overlay,
+  Toast
 }

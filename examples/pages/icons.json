@@ -20,8 +20,6 @@
   "right-circle",
   "right-circle-fill",
   "refresh",
-  "spinner",
-  "spinner2",
   "radio-unchecked",
   "radio-checked",
   "radio-checked-fill",
@@ -38,5 +36,9 @@
   "info-fill",
   "help",
   "help-fill",
-  "search"
+  "search",
+  "spinner",
+  "spinner1",
+  "spinner2",
+  "spinner3"
 ]

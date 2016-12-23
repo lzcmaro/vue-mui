@@ -6,7 +6,10 @@
 export default {
   name: 'vui-icon',
   props: {
-    type: String
+    type: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>

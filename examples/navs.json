@@ -2,7 +2,56 @@
   {
     "title": "JS Components",
     "list": [
-      
+      {
+        "path": "/toast",
+        "name": "Toast",
+        "icon": "toast"
+      },
+      {
+        "path": "/indicator",
+        "name": "Indicator",
+        "icon": "indicator"
+      },
+      {
+        "path": "/action-sheet",
+        "name": "Action Sheet",
+        "icon": "action-sheet"
+      },
+      {
+        "path": "/swiper",
+        "name": "Swiper",
+        "icon": "swiper"
+      },
+      {
+        "path": "/modal",
+        "name": "Modal",
+        "icon": "modal"
+      },
+      {
+        "path": "/popup",
+        "name": "Popup",
+        "icon": "popup"
+      },
+      {
+        "path": "/scroll",
+        "name": "Scroll",
+        "icon": "scroll"
+      },
+      {
+        "path": "/infinite-scroll",
+        "name": "Infinite Scroll",
+        "icon": "infinite-scroll"
+      },
+      {
+        "path": "/picker",
+        "name": "Picker",
+        "icon": "picker"
+      },
+      {
+        "path": "/datetime-picker",
+        "name": "Datetime Picker",
+        "icon": "datetime-picker"
+      }
     ]
   },
   {
@@ -19,9 +68,24 @@
         "icon": "header"
       },
       {
+        "path": "/navbar",
+        "name": "Navbar",
+        "icon": "navbar"
+      },
+      {
+        "path": "/tabbar",
+        "name": "Tabbar",
+        "icon": "tabbar"
+      },
+      {
         "path": "/list",
         "name": "List",
         "icon": "list"
+      },
+      {
+        "path": "/badge",
+        "name": "Badge",
+        "icon": "badge"
       },
       {
         "path": "/icon",
@@ -33,7 +97,26 @@
   {
     "title": "Form Components",
     "list": [
-      
+      {
+        "path": "/checkbox",
+        "name": "Checkbox",
+        "icon": "checkbox"
+      },
+      {
+        "path": "/radio",
+        "name": "Radio",
+        "icon": "radio"
+      },
+      {
+        "path": "/switcher",
+        "name": "Switcher",
+        "icon": "switcher"
+      },
+      {
+        "path": "/form",
+        "name": "Form",
+        "icon": "form"
+      }
     ]
   }
 ]
