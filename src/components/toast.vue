@@ -1,17 +1,20 @@
 <template>
-  <transition name="toast-pop">
-    <div class="toast" :class="type ? ('toast-' + type) : ''" v-show="visible">
+  <transition-group name="toast-pop">
+    <vui-overlay key="overlay" v-show="visible" :transparent="true"></vui-overlay>
+    <div key="toast" class="toast" :class="type ? ('toast-' + type) : ''" v-show="visible">
       <div class="icon-wrap" v-if="$slots.icon || type"><slot name="icon"><vui-icon :type="type" /></slot></div><label class="text"><slot></slot></label>
     </div>
-  </transition>
+  </transition-group>
 </template>
 
 <script>
+import VuiOverlay from './overlay'
 import VuiIcon from './icon'
 
 export default {
   name: 'vui-toast',
   compontents: {
+    VuiOverlay,
     VuiIcon
   },
   props: {
