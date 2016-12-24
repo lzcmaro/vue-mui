@@ -68,9 +68,9 @@
         "icon": "header"
       },
       {
-        "path": "/navbar",
-        "name": "Navbar",
-        "icon": "navbar"
+        "path": "/tabs",
+        "name": "Tabs",
+        "icon": "tabs"
       },
       {
         "path": "/tabbar",

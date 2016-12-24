@@ -1,0 +1,39 @@
+.nav {
+  .flexbox();
+  width: 100%;
+  align-items: center;
+  height: @nav-height;
+  line-height: 1;
+  font-size: @nav-font-size;
+  color: @color-text-secondary;
+  text-align: center;
+  z-index: @level-navigation;
+}
+
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+// Tabs
+// ------------------------------------
+.nav-tabs {
+
+}
+
+// Tabbar
+// ------------------------------------
+.nav-tabbar {
+
+}
+
+.tab-item {
+  .flex(1);
+  line-height: @nav-height;
+  
+  &.active {
+    border-bottom: 3px solid @color-primary;
+  }
+}

@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import classnames from 'classnames'
-
 export default {
   name: 'vui-button',
   props: {
@@ -49,7 +47,7 @@ export default {
         'btn-plain': this.plain,
         'btn-disabled': this.disabled
       }
-      return classnames(classes)
+      return classes
     }
   },
   methods: {

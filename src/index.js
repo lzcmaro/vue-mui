@@ -5,6 +5,9 @@ import Link from './components/link'
 import ListItem from './components/list-item'
 import List from './components/list'
 import Overlay from './components/overlay'
+import TabContent from './components/tab-content'
+import TabItem from './components/tab-item'
+import Tabs from './components/tabs'
 import Toast from './components/toast'
 
 const install = function(Vue) {
@@ -17,6 +20,9 @@ const install = function(Vue) {
   Vue.component(ListItem.name, ListItem)
   Vue.component(List.name, List)
   Vue.component(Overlay.name, Overlay)
+  Vue.component(TabContent.name, TabContent)
+  Vue.component(TabItem.name, TabItem)
+  Vue.component(Tabs.name, Tabs)
   Vue.component(Toast.name, Toast)
 }
 
@@ -35,5 +41,8 @@ module.exports = {
   ListItem,
   List,
   Overlay,
+  TabContent,
+  TabItem,
+  Tabs,
   Toast
 }
