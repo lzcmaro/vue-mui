@@ -1,12 +1,12 @@
 .nav {
-  .flexbox();
+  // .flexbox();
   width: 100%;
-  align-items: center;
-  height: @nav-height;
-  line-height: 1;
+  // align-items: center;
+  // height: @nav-height;
+  // line-height: 1;
   font-size: @nav-font-size;
   color: @color-text-secondary;
-  text-align: center;
+  // text-align: center;
   z-index: @level-navigation;
 }
 
@@ -17,23 +17,40 @@
   right: 0;
 }
 
+.nav-tabs,
+.nav-tabbar {
+  > ul {
+    .flexbox();
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      .flex(1);
+      text-align: center;
+      background-color: @color-chrome;
+    }
+  }
+}
+
 // Tabs
 // ------------------------------------
 .nav-tabs {
+  @border-height: 6/@rem-unit;
+  
+  > ul {
+    > li {
+      line-height: @nav-height - @border-height;
 
+      &.active {
+        border-bottom: @border-height solid @color-primary;
+      }
+    }
+  }
 }
 
 // Tabbar
 // ------------------------------------
 .nav-tabbar {
 
-}
-
-.tab-item {
-  .flex(1);
-  line-height: @nav-height;
-  
-  &.active {
-    border-bottom: 3px solid @color-primary;
-  }
 }

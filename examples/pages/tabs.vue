@@ -1,20 +1,60 @@
 <template>
   <div>
     <vui-header fixed>Tabs</vui-header>
-    <vui-tabs :activeKey="activeKey">
-      <vui-tab-item :key="'0'">All</vui-tab-item>
-      <vui-tab-item :key="'1'">Todo</vui-tab-item>
-      <vui-tab-item :key="'2'">Done</vui-tab-item>
+    <vui-tabs :activeKey="activeKey" @on-select-item="onSelectItem">
+      <vui-tab-item eventKey="all">All<div slot="content">All</div></vui-tab-item>
+      <vui-tab-item eventKey="todo">Todo<div slot="content">Todo</div></vui-tab-item>
+      <vui-tab-item eventKey="done">Done<div slot="content">Done</div></vui-tab-item>
     </vui-tabs>
+
+    <vui-tabs :activeKey="activeKey2" @on-select-item="onSelectItem2">
+      <vui-tab-item eventKey="home"><vui-icon type="home"/> Home</vui-tab-item>
+      <vui-tab-item eventKey="search"><vui-icon type="search"/> Search</vui-tab-item>
+      <vui-tab-item eventKey="account"><vui-icon type="account"/> Account</vui-tab-item>
+    </vui-tabs>
+
+    <component :is="tabContent" class="tab-content"></component>
   </div>
 </template>
 
 <script>
+const tabContent = {
+  home: {
+    template: '<div>Home</div>'
+  },
+  search: {
+    template: '<div>Search</div>'
+  },
+  account: {
+    template: '<div>Account</div>'
+  }
+}
+
 export default {
   data() {
     return {
-      activeKey: 0
+      activeKey: 'all',
+      activeKey2: 'home',
+      tabContent: tabContent['home']
+    }
+  },
+  methods: {
+    onSelectItem($evt, eventKey) {
+      this.activeKey = eventKey
+    },
+    onSelectItem2($evt, eventKey) {
+      this.activeKey2 = eventKey
+      this.tabContent = tabContent[eventKey]
     }
   }
 }
 </script>
+
+<style type="text/css">
+  .nav-tabs + .nav-tabs {
+    margin-top: 20px;
+  }
+  .tab-content {
+    text-align: center;
+  }
+</style>
