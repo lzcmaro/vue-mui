@@ -1,7 +1,7 @@
 <template>
   <div>
     <vui-header fixed>Header</vui-header>
-    <div class="header-section clearfix">
+    <page-content class="header-section clearfix">
       <vui-header>
         <vui-link slot="left" to="/"><vui-icon type="left" /></vui-link>
         Header
@@ -15,7 +15,7 @@
         <vui-link slot="right"><vui-icon type="more" /></vui-link>
         Header
       </vui-header>
-    </div>
+    </page-content>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   .header-section .header {
     margin-top: 15px;
   }

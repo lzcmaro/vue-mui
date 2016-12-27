@@ -15,4 +15,8 @@ export default {
   .page-content {
     padding: @content-spacing;
   }
+
+  .header-fixed + .page-content {
+    margin-top: @header-height;
+  }
 </style>

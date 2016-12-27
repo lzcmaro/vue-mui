@@ -52,5 +52,34 @@
 // Tabbar
 // ------------------------------------
 .nav-tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .hairline(top, @border-color);
 
+  > ul {
+    > li {
+      height: 100/@rem-unit;
+      .flexbox();
+      .flex-direction(column);
+      .align-items(center);
+      .justify-content(center);
+
+      &.active {
+        color: @color-primary;
+      }
+
+      .title {
+        line-height: 1.2;
+        font-size: 28/@rem-unit;
+      }
+
+      .icon-wrap .icon {
+        display: block;
+        font-size: 52/@rem-unit;
+        margin-top: 8/@rem-unit;
+      }
+    }
+  }
 }

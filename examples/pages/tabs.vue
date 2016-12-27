@@ -50,7 +50,12 @@ export default {
 }
 </script>
 
-<style type="text/css">
+<style lang="less">
+  @import "../../src/less/variables.less";
+
+  .header + .nav-tabs {
+    margin-top: @header-height;
+  }
   .nav-tabs + .nav-tabs {
     margin-top: 20px;
   }

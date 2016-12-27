@@ -49,7 +49,7 @@ export default {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    margin: 0;
+    margin: 0 !important;
 
     .btn {
       margin-top: 15px;

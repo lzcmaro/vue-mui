@@ -24,3 +24,10 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+  @import "../src/less/variables.less";
+  .list {
+    margin-top: @content-spacing;
+  }
+</style>
