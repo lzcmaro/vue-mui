@@ -1,3 +1,4 @@
+import Badge from './components/badge'
 import Button from './components/button'
 import Header from './components/header'
 import Icon from './components/icon'
@@ -14,6 +15,7 @@ import Toast from './components/toast'
 const install = function(Vue) {
   if (install.installed) return
 
+  Vue.component(Badge.name, Badge)
   Vue.component(Button.name, Button)
   Vue.component(Header.name, Header)
   Vue.component(Icon.name, Icon)
@@ -36,6 +38,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   install,
   version: '0.0.1',
+  Badge,
   Button,
   Header,
   Icon,

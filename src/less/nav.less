@@ -1,6 +1,7 @@
 .nav {
   // .flexbox();
   width: 100%;
+  position: relative;
   // align-items: center;
   // height: @nav-height;
   // line-height: 1;
@@ -29,6 +30,11 @@
       .flex(1);
       text-align: center;
       background-color: @color-chrome;
+
+      .title,
+      .title .icon {
+        font-size: @nav-font-size;
+      }
     }
   }
 }
@@ -70,9 +76,12 @@
         color: @color-primary;
       }
 
+      .title,
+      .title .icon {
+        font-size: 28/@rem-unit;
+      }
       .title {
         line-height: 1.2;
-        font-size: 28/@rem-unit;
       }
 
       .icon-wrap .icon {

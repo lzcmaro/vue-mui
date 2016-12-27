@@ -1,5 +1,5 @@
 <template>
-  <i class="icon" :class="'icon-' + this.type"></i>
+  <i class="icon" :class="'icon-' + type"></i>
 </template>
 
 <script>
