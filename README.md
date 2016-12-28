@@ -3,7 +3,7 @@ Mobile UI elements for Vue 2.0
 
 ## Start
 
-* Clone or download this repository
+ Clone or download this repository
 
 ``` bash
 # install dependencies
