@@ -1,3 +1,6 @@
+import $ from './utils/NodeList.js'
+
+import Alert from './components/alert'
 import Badge from './components/badge'
 import Button from './components/button'
 import Header from './components/header'
@@ -5,6 +8,7 @@ import Icon from './components/icon'
 import Link from './components/link'
 import ListItem from './components/list-item'
 import List from './components/list'
+import Modal from './components/modal'
 import Overlay from './components/overlay'
 import TabContent from './components/tab-content'
 import TabItem from './components/tab-item'
@@ -15,6 +19,7 @@ import Toast from './components/toast'
 const install = function(Vue) {
   if (install.installed) return
 
+  Vue.component(Alert.name, Alert)
   Vue.component(Badge.name, Badge)
   Vue.component(Button.name, Button)
   Vue.component(Header.name, Header)
@@ -22,6 +27,7 @@ const install = function(Vue) {
   Vue.component(Link.name, Link)
   Vue.component(ListItem.name, ListItem)
   Vue.component(List.name, List)
+  Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
   Vue.component(TabContent.name, TabContent)
   Vue.component(TabItem.name, TabItem)
@@ -36,8 +42,10 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
+  $,
   install,
   version: '0.0.1',
+  Alert,
   Badge,
   Button,
   Header,
@@ -45,6 +53,7 @@ module.exports = {
   Link,
   ListItem,
   List,
+  Modal,
   Overlay,
   TabContent,
   TabItem,

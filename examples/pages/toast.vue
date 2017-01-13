@@ -9,11 +9,11 @@
       
     </page-content>
     <vui-toast :show="visible1" @toggle-visible="toggleVisible1">Toast</vui-toast>
-      <vui-toast type="success" :show="visible2" @toggle-visible="toggleVisible2">Toast</vui-toast>
-      <vui-toast :show="visible3" @toggle-visible="toggleVisible3">
-        <vui-icon slot="icon" type="checkmark" :style="{fontSize: '48px'}"></vui-icon>
-        Toast
-      </vui-toast>
+    <vui-toast type="success" :show="visible2" @toggle-visible="toggleVisible2">Toast</vui-toast>
+    <vui-toast :show="visible3" @toggle-visible="toggleVisible3">
+      <vui-icon slot="icon" type="checkmark" :style="{fontSize: '48px'}"></vui-icon>
+      Toast
+    </vui-toast>
   </div>
 </template>
 
