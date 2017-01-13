@@ -275,14 +275,14 @@
 .hairline-base(@color) {
   content: '';
   position: absolute;
-  height: 1px;
-  width: 100%;
   background-color: @color;
   display: block;
   z-index: 1;
 }
 .hairline(@position, @color) when (@position = top) {
   &:before {
+    height: 1px;
+    width: 100%;
     left: 0;
     top: 0;
     bottom: auto;
@@ -300,6 +300,8 @@
 }
 .hairline(@position, @color) when (@position = left) {
   &:before {
+    height: 100%;
+    width: 1px;
     left: 0;
     top: 0;
     bottom: auto;
@@ -317,6 +319,8 @@
 }
 .hairline(@position, @color) when (@position = bottom) {
   &:after {
+    height: 1px;
+    width: 100%;
     left: 0;
     top: auto;
     bottom: 0;
@@ -334,6 +338,8 @@
 }
 .hairline(@position, @color) when (@position = right) {
   &:after {
+    height: 100%;
+    width: 1px;
     left: auto;
     top: 0;
     bottom: auto;
