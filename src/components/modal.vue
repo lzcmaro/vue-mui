@@ -3,9 +3,11 @@
     <vui-overlay v-if="backdrop" v-show="show"></vui-overlay>
     <transition name="modal-pop">
       <div :class="{[type]: !!type}" class="modal-dialog" v-show="show">
-        <div class="modal-header" v-if="$slots.header"><slot name="header"></slot></div>
-        <div class="modal-body"><slot></slot></div>
-        <div class="modal-footer" v-if="$slots.footer"><slot name="footer"></slot></div>
+        <div class="modal-content">
+          <div class="modal-header" v-if="$slots.header"><slot name="header"></slot></div>
+          <div class="modal-body"><slot></slot></div>
+          <div class="modal-footer" v-if="$slots.footer"><slot name="footer"></slot></div>
+        </div>
       </div>
     </transition> 
   </div>

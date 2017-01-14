@@ -2,20 +2,24 @@
 }
 
 .modal-dialog {
-  width: 540/@rem-unit;
+  width: 100%;
   position: fixed;
   left: 50%;
   top: 50%;
   outline: 0;
   z-index: @level-popout;
-  border-radius: 10/@rem-unit;
-  box-shadow: 0 3px 9px rgba(0,0,0,.5);
-  background-color: @color-chrome;
   .transform(translate3d(-50%, -50%, 0));
   .transition(.2s);
 }
 
+.modal-content {
+  border-radius: 10/@rem-unit;
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  background-color: @color-chrome;
+}
+
 .modal-header {
+  position: relative;
   height: 88/@rem-unit;
   line-height: 88/@rem-unit;
   font-size: 32/@rem-unit;
@@ -29,7 +33,8 @@
 }
 
 .modal-body {
-  padding: 20/@rem-unit @content-spacing;
+  position: relative;
+  padding: @content-spacing;
   font-size: 28/@rem-unit;
   overflow: hidden;
 }
@@ -43,9 +48,9 @@
     height: 88/@rem-unit;
     background-color: @color-chrome;
     border-radius: 12/@rem-unit;
-    box-shadow: none;
     color: @color-primary;
     font-size: 32/@rem-unit;
+    .box-shadow(none);
 
     // &::after {
     //   content: none;
@@ -88,11 +93,30 @@ body.modal-open {
 }
 
 .alert, .confirm {
+  width: 540/@rem-unit;
+
   .modal-body {
     min-height: 164/@rem-unit;
     text-align: center;
     .flexbox();
     .justify-content(center);
     .flex-direction(column);
+  }
+}
+
+
+// Dialog
+// ------------------------------
+.dialog {
+  padding: 0 @content-spacing;
+
+  .modal-header {
+    .btn-close {
+      position: absolute;
+      top: 22/@rem-unit;
+      right: 22/@rem-unit;
+      font-size: 40/@rem-unit;
+      opacity: .7;
+    }
   }
 }

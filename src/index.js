@@ -4,6 +4,7 @@ import Alert from './components/alert'
 import Badge from './components/badge'
 import Button from './components/button'
 import Confirm from './components/confirm'
+import Dialog from './components/dialog'
 import Header from './components/header'
 import Icon from './components/icon'
 import Link from './components/link'
@@ -24,6 +25,7 @@ const install = function(Vue) {
   Vue.component(Badge.name, Badge)
   Vue.component(Button.name, Button)
   Vue.component(Confirm.name, Confirm)
+  Vue.component(Dialog.name, Dialog)
   Vue.component(Header.name, Header)
   Vue.component(Icon.name, Icon)
   Vue.component(Link.name, Link)
@@ -51,6 +53,7 @@ module.exports = {
   Badge,
   Button,
   Confirm,
+  Dialog,
   Header,
   Icon,
   Link,
