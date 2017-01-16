@@ -77,7 +77,7 @@ export default {
       width: 100%;
       height: 80/@rem-unit;
       border: @border-default;
-      border-radius: @border-radius;
+      border-radius: @border-radius-default;
     }
   }
 </style>

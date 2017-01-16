@@ -3,14 +3,12 @@
     <vui-header fixed>Toast</vui-header>
     <page-content>
       <vui-button size="large" @click="openToast('visible1')">弹出Toast</vui-button>
-      <vui-button size="large" @click="openToast('visible2')">弹出预设Icon的Toast</vui-button>
-      <vui-button size="large" @click="openToast('visible3')">弹出自定义Icon的Toast</vui-button>
+      <vui-button size="large" @click="openToast('visible2')">弹出带Icon的Toast</vui-button>
 
       
     </page-content>
     <vui-toast :show="visible1" @toggle-visible="toggleVisible1">Toast</vui-toast>
-    <vui-toast type="success" :show="visible2" @toggle-visible="toggleVisible2">Toast</vui-toast>
-    <vui-toast :show="visible3" @toggle-visible="toggleVisible3">
+    <vui-toast :show="visible2" @toggle-visible="toggleVisible2">
       <vui-icon slot="icon" type="checkmark" :style="{fontSize: '48px'}"></vui-icon>
       Toast
     </vui-toast>
@@ -22,8 +20,7 @@ export default {
   data() {
     return {
       visible1: false,
-      visible2: false,
-      visible3: false
+      visible2: false
     }
   },
   methods: {
@@ -35,9 +32,6 @@ export default {
     },
     toggleVisible2(val) {
       this.visible2 = val
-    },
-    toggleVisible3(val) {
-      this.visible3 = val
     }
   }
 }

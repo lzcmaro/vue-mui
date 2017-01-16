@@ -1,0 +1,25 @@
+.toast.indicator {
+  
+  .toast-inner {
+    width: 260/@rem-unit;
+    height: 260/@rem-unit;
+    overflow: hidden;
+    border-radius: 20/@rem-unit;
+  }
+
+  .toast-icon-wrap {
+    .icon {
+      font-size: 96/@rem-unit;
+
+      &.icon-spinner {
+        .animation(spin 1.2s infinite linear);
+      }
+    }
+  }
+
+  .toast-text {
+    font-size: 32/@rem-unit;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

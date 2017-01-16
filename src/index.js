@@ -7,6 +7,7 @@ import Confirm from './components/confirm'
 import Dialog from './components/dialog'
 import Header from './components/header'
 import Icon from './components/icon'
+import Indicator from './components/indicator'
 import Link from './components/link'
 import ListItem from './components/list-item'
 import List from './components/list'
@@ -28,6 +29,7 @@ const install = function(Vue) {
   Vue.component(Dialog.name, Dialog)
   Vue.component(Header.name, Header)
   Vue.component(Icon.name, Icon)
+  Vue.component(Indicator.name, Indicator)
   Vue.component(Link.name, Link)
   Vue.component(ListItem.name, ListItem)
   Vue.component(List.name, List)
@@ -56,6 +58,7 @@ module.exports = {
   Dialog,
   Header,
   Icon,
+  Indicator,
   Link,
   ListItem,
   List,
