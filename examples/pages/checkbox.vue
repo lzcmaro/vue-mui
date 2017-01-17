@@ -2,7 +2,7 @@
   <div>
     <vui-header fixed>Checkbox</vui-header>
     <page-content>
-      <vui-checkbox v-model="checkboxValue.one" value="one" id="one" checked>One</vui-checkbox>
+      <vui-checkbox v-model="checkboxValue.one" @change="changeCheck" value="one" id="one" checked>One</vui-checkbox>
       <vui-checkbox v-model="checkboxValue.two" value="two" disabled checked>Two (disabled)</vui-checkbox>
       <vui-checkbox v-model="checkboxValue.three" value="three" readonly>Three (readonly)</vui-checkbox>
     </page-content>
@@ -18,6 +18,11 @@ export default {
         two: 'two',
         three: null
       }
+    }
+  },
+  methods: {
+    changeCheck: function(val) {
+      console.log(val)
     }
   }
 }

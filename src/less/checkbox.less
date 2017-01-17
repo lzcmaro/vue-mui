@@ -1,0 +1,18 @@
+.checkbox {
+  input[type=checkbox] {
+    &, & + label i.icon-checkbox-checked,
+    &:checked + label i.icon-checkbox-unchecked {
+      display: none;
+    }
+
+    & + label i.icon-checkbox-unchecked,
+    &:checked + label i.icon-checkbox-checked {
+      display: inline-block;
+    }
+
+    &[disabled] + label,
+    &[readonly] + label {
+      opacity: .5;
+    }
+  }
+}

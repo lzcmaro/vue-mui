@@ -1,17 +1,27 @@
 <template>
-  <div class="checkbox-wrap">
-    <input type="checkbox" :value="value" :id="id" class="vui-checkbox" :checked="checked" :disabled="disabled" :readonly="readonly">
+  <div class="checkbox">
+    <input type="checkbox"
+     :value="value"
+     :id="id"
+     :checked="checked"
+     :disabled="disabled"
+     :readonly="readonly"
+     @change="changeCheck">
     <label :for="id">
-      <i class="icon icon-checkbox-checked"></i>
-      <i class="icon icon-checkbox-unchecked"></i>
+      <vui-icon type="checkbox-checked"></vui-icon>
+      <vui-icon type="checkbox-unchecked"></vui-icon>
       <slot></slot>
     </label>
   </div>
 </template>
 
 <script>
+import VuiIcon from './icon'
 export default {
   name: 'vui-checkbox',
+  components: {
+    VuiIcon
+  },
   props: {
     value: {
       type: [String, Number]
@@ -28,21 +38,15 @@ export default {
     readonly: {
       type: Boolean
     }
+  },
+  methods: {
+    changeCheck: function($event) {
+      if (this.disabled || this.readonly) {
+        return false
+      } else {
+        this.$emit('change', $event.target.checked)
+      }
+    }
   }
 }
 </script>
-
-<style>
-input[type="checkbox"]{
-    display: none;
-}
-.vui-checkbox + label i.icon-checkbox-checked, .vui-checkbox:checked + label i.icon-checkbox-unchecked{
-  display: none;
-}
-.vui-checkbox + label i.icon-checkbox-unchecked, .vui-checkbox:checked + label i.icon-checkbox-checked{
-  display: inline-block;
-}
-input[type="checkbox"][disabled] + label i, input[type="checkbox"][readonly] + label i{
-  color: rgba(0, 0, 0, 0.5);
-}
-</style>
