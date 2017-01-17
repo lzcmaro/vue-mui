@@ -18,6 +18,7 @@ import TabItem from './components/tab-item'
 import Tabbar from './components/tabbar'
 import Tabs from './components/tabs'
 import Toast from './components/toast'
+import Checkbox from './components/checkbox'
 
 const install = function(Vue) {
   if (install.installed) return
@@ -40,6 +41,7 @@ const install = function(Vue) {
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(Tabs.name, Tabs)
   Vue.component(Toast.name, Toast)
+  Vue.component(Checkbox.name, Checkbox)
 }
 
 // auto install
