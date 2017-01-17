@@ -1,7 +1,7 @@
 <template> 
   <div class="modal">
     <vui-overlay v-if="backdrop" v-show="show"></vui-overlay>
-    <transition name="modal-pop">
+    <transition :name="transition">
       <div :class="{[type]: !!type}" class="modal-dialog" v-show="show">
         <div class="modal-content">
           <div class="modal-header" v-if="$slots.header"><slot name="header"></slot></div>
@@ -34,6 +34,10 @@ export default {
     backdrop: {
       type: Boolean,
       default: true
+    },
+    transition: {
+      type: String,
+      default: 'modal-pop'
     }
   },
   data() {

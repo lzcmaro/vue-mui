@@ -13,8 +13,9 @@
 }
 
 .modal-content {
-  border-radius: 10/@rem-unit;
+  border-radius: @border-radius-default;
   background-color: @color-chrome;
+  overflow: hidden;
   .box-shadow(0 3px 9px rgba(0,0,0,.5));
 }
 
@@ -25,6 +26,7 @@
   font-size: 32/@rem-unit;
   text-align: center;
   padding: 0 @content-spacing;
+  overflow: hidden;
 
   & + .modal-body {
     padding-top: 0 !important;
@@ -42,6 +44,7 @@
 .modal-footer {
   position: relative;
   height: 88/@rem-unit;
+  overflow: hidden;
   .hairline(top, @border-color);
 
   .btn {

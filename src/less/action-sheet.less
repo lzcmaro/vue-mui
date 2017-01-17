@@ -1,0 +1,52 @@
+.actionsheet {
+  top: inherit;
+  bottom: 68/@rem-unit;
+  padding: 0 @content-spacing;
+  .transform(translate3d(-50%, 0, 0));
+  .transition(transform .3s ease-out);
+
+  .modal-content {
+    background-color: transparent;
+    border-radius: 0;
+    overflow: visible;
+    .box-shadow(none);
+
+    .modal-body {
+      padding: 0;
+      border-radius: @border-radius-default;
+      .box-shadow(0 3px 9px rgba(0,0,0,.5));
+    }
+
+    .modal-footer {
+      margin-top: @content-spacing;
+      border-radius: @border-radius-default;
+      .box-shadow(0 3px 9px rgba(0,0,0,.5));
+    }
+
+    .btn {
+      border-radius: 0;
+      background-color: @color-chrome;
+
+      &.btn-default {
+        color: @font-color-default;
+      }
+
+      &.btn-primary {
+        color: @color-primary;
+      }
+
+      &.btn-danger {
+        color: @color-danger;
+      }
+
+      & + .btn {
+        .hairline(top, @border-color);
+      }
+    }
+  }
+}
+
+.actionsheet-float-enter,
+.actionsheet-float-leave-active {
+  .transform(translate3d(-50%, 100%, 0));
+}

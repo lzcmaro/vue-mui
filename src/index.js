@@ -1,5 +1,7 @@
 import $ from './utils/NodeList.js'
 
+import ActionSheetButton from './components/action-sheet-button'
+import ActionSheet from './components/action-sheet'
 import Alert from './components/alert'
 import Badge from './components/badge'
 import Button from './components/button'
@@ -22,6 +24,8 @@ import Toast from './components/toast'
 const install = function(Vue) {
   if (install.installed) return
 
+  Vue.component(ActionSheetButton.name, ActionSheetButton)
+  Vue.component(ActionSheet.name, ActionSheet)
   Vue.component(Alert.name, Alert)
   Vue.component(Badge.name, Badge)
   Vue.component(Button.name, Button)
@@ -51,6 +55,8 @@ module.exports = {
   $,
   install,
   version: '0.0.1',
+  ActionSheetButton,
+  ActionSheet,
   Alert,
   Badge,
   Button,
