@@ -1,10 +1,17 @@
+import $ from './utils/NodeList.js'
+
+import Alert from './components/alert'
 import Badge from './components/badge'
 import Button from './components/button'
+import Confirm from './components/confirm'
+import Dialog from './components/dialog'
 import Header from './components/header'
 import Icon from './components/icon'
+import Indicator from './components/indicator'
 import Link from './components/link'
 import ListItem from './components/list-item'
 import List from './components/list'
+import Modal from './components/modal'
 import Overlay from './components/overlay'
 import TabContent from './components/tab-content'
 import TabItem from './components/tab-item'
@@ -16,13 +23,18 @@ import Checkbox from './components/checkbox'
 const install = function(Vue) {
   if (install.installed) return
 
+  Vue.component(Alert.name, Alert)
   Vue.component(Badge.name, Badge)
   Vue.component(Button.name, Button)
+  Vue.component(Confirm.name, Confirm)
+  Vue.component(Dialog.name, Dialog)
   Vue.component(Header.name, Header)
   Vue.component(Icon.name, Icon)
+  Vue.component(Indicator.name, Indicator)
   Vue.component(Link.name, Link)
   Vue.component(ListItem.name, ListItem)
   Vue.component(List.name, List)
+  Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
   Vue.component(TabContent.name, TabContent)
   Vue.component(TabItem.name, TabItem)
@@ -38,15 +50,21 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
+  $,
   install,
   version: '0.0.1',
+  Alert,
   Badge,
   Button,
+  Confirm,
+  Dialog,
   Header,
   Icon,
+  Indicator,
   Link,
   ListItem,
   List,
+  Modal,
   Overlay,
   TabContent,
   TabItem,

@@ -1,5 +1,5 @@
 <template>
-  <i class="icon" :class="'icon-' + type"></i>
+  <i class="icon" :class="'icon-' + type" @click="handleClick"></i>
 </template>
 
 <script>
@@ -9,6 +9,11 @@ export default {
     type: {
       type: String,
       required: true
+    }
+  },
+  methods: {
+    handleClick($evt) {
+      this.$emit('click', $evt)
     }
   }
 }
