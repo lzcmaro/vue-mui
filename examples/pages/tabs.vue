@@ -1,13 +1,13 @@
 <template>
   <div>
     <vui-header fixed>Tabs</vui-header>
-    <vui-tabs :activeKey="activeKey" @on-select-item="onSelectItem">
+    <vui-tabs :activeKey="activeKey" @change="onChange">
       <vui-tab-item eventKey="all">All<div slot="content">All</div></vui-tab-item>
       <vui-tab-item eventKey="todo">Todo<div slot="content">Todo</div></vui-tab-item>
       <vui-tab-item eventKey="done">Done<div slot="content">Done</div></vui-tab-item>
     </vui-tabs>
 
-    <vui-tabs :activeKey="activeKey2" @on-select-item="onSelectItem2">
+    <vui-tabs :activeKey="activeKey2" @change="onChange2">
       <vui-tab-item eventKey="home"><vui-icon type="home"/> Home</vui-tab-item>
       <vui-tab-item eventKey="search"><vui-icon type="search"/> Search</vui-tab-item>
       <vui-tab-item eventKey="account"><vui-icon type="account"/> Account</vui-tab-item>
@@ -39,10 +39,10 @@ export default {
     }
   },
   methods: {
-    onSelectItem($evt, eventKey) {
+    onChange($evt, eventKey) {
       this.activeKey = eventKey
     },
-    onSelectItem2($evt, eventKey) {
+    onChange2($evt, eventKey) {
       this.activeKey2 = eventKey
       this.tabContent = tabContent[eventKey]
     }
