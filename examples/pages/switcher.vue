@@ -3,9 +3,9 @@
     <vui-header fixed>Switcher</vui-header>
     <page-content>
       <template>
-        <vui-switcher :checkedState="switcherValue.one" @change="handleChange">One</vui-switcher>
-        <vui-switcher :checkedState="switcherValue.two" disabled>Two (disabled)</vui-switcher>
-        <vui-switcher :checkedState="switcherValue.three" readonly>Two (readonly)</vui-switcher>
+        <vui-switcher :checked="switcherValue.one" @change="handleChange">One</vui-switcher>
+        <vui-switcher :checked="switcherValue.two" disabled>Two (disabled)</vui-switcher>
+        <vui-switcher :checked="switcherValue.three" readonly>Two (readonly)</vui-switcher>
       </template>
     </page-content>
   </div>

@@ -6,17 +6,26 @@ export default {
   name: 'vui-switcher',
   compontents: {},
   props: {
-    checkedState: Boolean,
-    disabled: Boolean,
-    readonly: Boolean
+    checked: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
-      visible: this.checkedState || false
+      visible: this.checked || false
     }
   },
   watch: {
-    checkedState(val) {
+    checked(val) {
       this.visible = val
     }
   },
@@ -33,6 +42,12 @@ export default {
   methods: {
     handleClick($event) {
       $event.preventDefault()
+      if (this.disabled === true) {
+        return
+      }
+      if (this.readonly === true) {
+        return
+      }
       // this.visible = !this.visible
       this.$emit('change', !this.visible)
     }
