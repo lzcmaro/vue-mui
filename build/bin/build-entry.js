@@ -6,7 +6,9 @@ var path = require('path');
 var OUTPUT_PATH = path.join(__dirname, '../../src/index.js');
 var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}\'';
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})';
-var MAIN_TEMPLATE = `{{include}}
+var MAIN_TEMPLATE = `import $ from './utils/NodeList.js'
+
+{{include}}
 
 const install = function(Vue) {
   if (install.installed) return
@@ -20,6 +22,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
+  $,
   install,
   version: '{{version}}',
 {{list}}

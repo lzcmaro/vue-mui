@@ -1,0 +1,125 @@
+.modal {
+}
+
+.modal-dialog {
+  width: 100%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  outline: 0;
+  z-index: @level-popout;
+  .transform(translate3d(-50%, -50%, 0));
+  .transition(.2s);
+}
+
+.modal-content {
+  border-radius: @border-radius-default;
+  background-color: @color-chrome;
+  overflow: hidden;
+  .box-shadow(0 3px 9px rgba(0,0,0,.5));
+}
+
+.modal-header {
+  position: relative;
+  height: 88/@rem-unit;
+  line-height: 88/@rem-unit;
+  font-size: 32/@rem-unit;
+  text-align: center;
+  padding: 0 @content-spacing;
+  overflow: hidden;
+
+  & + .modal-body {
+    padding-top: 0 !important;
+    min-height: 0 !important;
+  }
+}
+
+.modal-body {
+  position: relative;
+  padding: @content-spacing;
+  font-size: 28/@rem-unit;
+  overflow: hidden;
+}
+
+.modal-footer {
+  position: relative;
+  height: 88/@rem-unit;
+  overflow: hidden;
+  .hairline(top, @border-color);
+
+  .btn {
+    height: 88/@rem-unit;
+    background-color: @color-chrome;
+    border-radius: 12/@rem-unit;
+    color: @color-primary;
+    font-size: 32/@rem-unit;
+    .box-shadow(none);
+
+    // &::after {
+    //   content: none;
+    // }
+  }
+}
+
+.modal-pop-leave-active {
+  opacity: 0;
+  .transform(translate3d(-50%, -50%, 0) scale(.9));
+}
+
+.modal-pop-enter {
+  opacity: 0;
+  .transform(translate3d(-50%, -50%, 0) scale(.7));
+}
+
+
+body.modal-open {
+  overflow: hidden;
+}
+
+
+// Alert
+// ------------------------------
+.alert {
+}
+
+
+// Confirm
+// ------------------------------
+.confirm {
+  .modal-footer {
+    .flexbox();
+
+    .btn:last-child {
+      .hairline(left, @border-color);
+    }
+  }
+}
+
+.alert, .confirm {
+  width: 540/@rem-unit;
+
+  .modal-body {
+    min-height: 164/@rem-unit;
+    text-align: center;
+    .flexbox();
+    .justify-content(center);
+    .flex-direction(column);
+  }
+}
+
+
+// Dialog
+// ------------------------------
+.dialog {
+  padding: 0 @content-spacing;
+
+  .modal-header {
+    .btn-close {
+      position: absolute;
+      top: 22/@rem-unit;
+      right: 22/@rem-unit;
+      font-size: 40/@rem-unit;
+      opacity: .7;
+    }
+  }
+}
