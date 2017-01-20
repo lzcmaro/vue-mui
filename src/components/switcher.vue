@@ -1,5 +1,5 @@
 <template>
-  <input class="switcher" type="checkbox" :class="switcherClasses" :disabled="disabled" :readonly="readonly?'readonly':''" @click="handleClick" />
+  <input class="switcher" type="checkbox" :class="switcherClasses" :disabled="disabled" @click="handleClick" />
 </template>
 <script>
 export default {
@@ -11,10 +11,6 @@ export default {
       default: false
     },
     disabled: {
-      type: Boolean,
-      default: false
-    },
-    readonly: {
       type: Boolean,
       default: false
     }
@@ -33,7 +29,6 @@ export default {
     switcherClasses() {
       const classes = {
         'switcher-disabled': this.disabled,
-        'switcher-readonly': this.readonly,
         'checked': this.visible
       }
       return classes
@@ -43,9 +38,6 @@ export default {
     handleClick($event) {
       $event.preventDefault()
       if (this.disabled === true) {
-        return
-      }
-      if (this.readonly === true) {
         return
       }
       // this.visible = !this.visible

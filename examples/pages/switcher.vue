@@ -5,7 +5,6 @@
       <template>
         <vui-switcher :checked="switcherValue.one" @change="handleChange">One</vui-switcher>
         <vui-switcher :checked="switcherValue.two" disabled>Two (disabled)</vui-switcher>
-        <vui-switcher :checked="switcherValue.three" readonly>Two (readonly)</vui-switcher>
       </template>
     </page-content>
   </div>
@@ -17,8 +16,7 @@ export default {
     return {
       switcherValue: {
         one: false,
-        two: true,
-        three: false
+        two: true
       }
     }
   },
