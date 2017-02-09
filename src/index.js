@@ -20,6 +20,7 @@ import TabItem from './components/tab-item'
 import Tabbar from './components/tabbar'
 import Tabs from './components/tabs'
 import Toast from './components/toast'
+import Switcher from './components/switcher'
 
 const install = function(Vue) {
   if (install.installed) return
@@ -44,6 +45,7 @@ const install = function(Vue) {
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(Tabs.name, Tabs)
   Vue.component(Toast.name, Toast)
+  Vue.component(Switcher.name, Switcher)
 }
 
 // auto install
@@ -74,5 +76,6 @@ module.exports = {
   TabItem,
   Tabbar,
   Tabs,
-  Toast
+  Toast,
+  Switcher
 }
