@@ -46,9 +46,9 @@ const install = function(Vue) {
   Vue.component(List.name, List)
   Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
-  Vue.component(Switcher.name, Switcher)
   Vue.component(RadioGroup.name, RadioGroup)
   Vue.component(Radio.name, Radio)
+  Vue.component(Switcher.name, Switcher)
   Vue.component(TabContent.name, TabContent)
   Vue.component(TabItem.name, TabItem)
   Vue.component(Tabbar.name, Tabbar)
@@ -82,9 +82,9 @@ module.exports = {
   List,
   Modal,
   Overlay,
-  Switcher,
   RadioGroup,
   Radio,
+  Switcher,
   TabContent,
   TabItem,
   Tabbar,
