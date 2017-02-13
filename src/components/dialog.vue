@@ -2,7 +2,7 @@
   <vui-modal type="dialog" :show="show">
     <template slot="header" v-if="title || closeButton">
       {{title}}
-      <vui-icon class="btn-close" type="cross2" @click="handleClick"></vui-icon>
+      <vui-icon class="btn-close" type="cross2" @click="$emit('close')"></vui-icon>
     </template>
     <slot></slot>
     <template slot="footer" v-if="$slots.footer">
@@ -12,9 +12,11 @@
 </template>
 
 <script>
-import VuiModal from './modal'
+import VuiModal from './base-modal'
 import VuiButton from './button'
 import VuiIcon from './icon'
+
+import modalMixins from '../mixins/modal'
 
 export default {
   name: 'vui-dialog',
@@ -23,22 +25,6 @@ export default {
     VuiButton,
     VuiIcon
   },
-  props: {
-    show: {
-      type: Boolean,
-      default: false,
-      required: true
-    },
-    title: String,
-    closeButton: {
-      type: Boolean,
-      default: true
-    }
-  },
-  methods: {
-    handleClick($evt) {
-      this.$emit('close')
-    }
-  }
+  mixins: [modalMixins]
 }
 </script>

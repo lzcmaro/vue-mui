@@ -34,3 +34,9 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+  .btn + .btn {
+    margin-top: 15px;
+  }
+</style>

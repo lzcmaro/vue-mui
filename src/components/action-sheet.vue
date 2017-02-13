@@ -1,5 +1,5 @@
 <template>
-  <vui-modal type="actionsheet" transition="actionsheet-float" :show="show">
+  <vui-modal type="actionsheet" transition="slide-up" :show="show">
     <slot></slot>
     <template slot="footer" v-if="cancelButton">
       <vui-action-sheet-button @click="handleCancel">{{cancelButtonText}}</vui-action-sheet-button>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import VuiModal from './modal'
+import VuiModal from './base-modal'
 import VuiActionSheetButton from './action-sheet-button'
 
 export default {
