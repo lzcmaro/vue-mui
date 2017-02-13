@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vui-header fixed>Popup</vui-header>
+    <vui-header fixed>Popover</vui-header>
   </div>
 </template>
 

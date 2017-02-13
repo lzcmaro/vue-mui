@@ -23,14 +23,19 @@
         "icon": "swiper"
       },
       {
-        "path": "/modal",
-        "name": "Modal",
-        "icon": "modal"
+        "path": "/alerts",
+        "name": "Alerts",
+        "icon": "alerts"
       },
       {
-        "path": "/popup",
-        "name": "Popup",
-        "icon": "popup"
+        "path": "/modal",
+        "name": "Modals",
+        "icon": "modals"
+      },
+      {
+        "path": "/popover",
+        "name": "Popover",
+        "icon": "popover"
       },
       {
         "path": "/scroll",
@@ -59,8 +64,8 @@
     "list": [
       {
         "path": "/button",
-        "name": "Button",
-        "icon": "button"
+        "name": "Buttons",
+        "icon": "buttons"
       },
       {
         "path": "/header",
@@ -79,18 +84,18 @@
       },
       {
         "path": "/list",
-        "name": "List",
-        "icon": "list"
+        "name": "Lists",
+        "icon": "lists"
       },
       {
         "path": "/badge",
-        "name": "Badge",
-        "icon": "badge"
+        "name": "Badges",
+        "icon": "badges"
       },
       {
         "path": "/icon",
-        "name": "Icon",
-        "icon": "icon"
+        "name": "Icons",
+        "icon": "icons"
       }
     ]
   },
