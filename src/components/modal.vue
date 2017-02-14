@@ -1,60 +1,35 @@
-<template> 
-  <div class="modal">
-    <vui-overlay v-if="backdrop" v-show="show"></vui-overlay>
-    <transition :name="transition">
-      <div :class="{[type]: !!type}" class="modal-dialog" v-show="show">
-        <div class="modal-content">
-          <div class="modal-header" v-if="$slots.header"><slot name="header"></slot></div>
-          <div class="modal-body"><slot></slot></div>
-          <div class="modal-footer" v-if="$slots.footer"><slot name="footer"></slot></div>
-        </div>
-      </div>
-    </transition> 
-  </div>
+<template>
+  <vui-base-modal :show="show" :transition="transition">
+    <template slot="header" v-if="title || closeButton">
+      <a href="javascript:;" class="btn-close" @click.prevent="$emit('close')" v-if="closeButton">{{closeButtonText}}</a>
+      {{title}}
+    </template>
+    <slot></slot>
+    <template slot="footer" v-if="$slots.footer">
+      <slot name="footer"></slot>
+    </template>
+  </vui-base-modal>
 </template>
 
 <script>
-import VuiOverlay from './overlay'
-import $ from '../utils/NodeList.js'
+import VuiBaseModal from './base-modal'
+import VuiButton from './button'
+import VuiIcon from './icon'
 
-// const noop = () => {}
-let zIndex = 999;
+import modalMixins from '../mixins/modal'
 
 export default {
   name: 'vui-modal',
   components: {
-    VuiOverlay
+    VuiBaseModal,
+    VuiButton,
+    VuiIcon
   },
+  mixins: [modalMixins],
   props: {
-    show: Boolean,
-    type: {
+    closeButtonText: {
       type: String,
-      required: true
-    },
-    backdrop: {
-      type: Boolean,
-      default: true
-    },
-    transition: {
-      type: String,
-      default: 'modal-pop'
-    }
-  },
-  data() {
-    return {
-      zIndex: zIndex
-    }
-  },
-  mounted() {
-    if (this.show) {
-      this.zIndex = (++zIndex)
-    }
-    $(document.body).toggleClass('modal-open', this.show)
-  },
-  watch: {
-    show(val) {
-      this.zIndex = val ? (++zIndex) : (--zIndex)
-      $(document.body).toggleClass('modal-open', val)
+      default: '取消'
     }
   }
 }

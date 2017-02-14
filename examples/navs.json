@@ -103,6 +103,16 @@
     "title": "Form Components",
     "list": [
       {
+        "path": "/input",
+        "name": "Input",
+        "icon": "input"
+      },
+      {
+        "path": "/select",
+        "name": "Select",
+        "icon": "select"
+      },
+      {
         "path": "/checkbox",
         "name": "Checkbox",
         "icon": "checkbox"
@@ -116,11 +126,6 @@
         "path": "/switcher",
         "name": "Switcher",
         "icon": "switcher"
-      },
-      {
-        "path": "/form",
-        "name": "Form",
-        "icon": "form"
       }
     ]
   }

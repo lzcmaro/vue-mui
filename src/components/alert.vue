@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import VuiModal from './modal'
+import VuiModal from './base-modal'
 import VuiButton from './button'
 
 export default {

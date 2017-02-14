@@ -4,6 +4,7 @@ import ActionSheetButton from './components/action-sheet-button'
 import ActionSheet from './components/action-sheet'
 import Alert from './components/alert'
 import Badge from './components/badge'
+import BaseModal from './components/base-modal'
 import Button from './components/button'
 import Confirm from './components/confirm'
 import Dialog from './components/dialog'
@@ -31,6 +32,7 @@ const install = function(Vue) {
   Vue.component(ActionSheet.name, ActionSheet)
   Vue.component(Alert.name, Alert)
   Vue.component(Badge.name, Badge)
+  Vue.component(BaseModal.name, BaseModal)
   Vue.component(Button.name, Button)
   Vue.component(Confirm.name, Confirm)
   Vue.component(Dialog.name, Dialog)
@@ -65,6 +67,7 @@ module.exports = {
   ActionSheet,
   Alert,
   Badge,
+  BaseModal,
   Button,
   Confirm,
   Dialog,

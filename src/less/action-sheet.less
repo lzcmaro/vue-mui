@@ -2,8 +2,6 @@
   top: inherit;
   bottom: 68/@rem-unit;
   padding: 0 @content-spacing;
-  .transform(translate3d(-50%, 0, 0));
-  .transition(transform .3s ease-out);
 
   .modal-content {
     background-color: transparent;
@@ -18,12 +16,23 @@
     }
 
     .modal-footer {
+      height: auto;
+      padding-left: 0;
+      padding-right: 0;
       margin-top: @content-spacing;
       border-radius: @border-radius-default;
       .box-shadow(0 3px 9px rgba(0,0,0,.5));
+
+      &::before {
+        content: none;
+      }
+
+      .btn-actionsheet {
+        border-radius: @border-radius-default;
+      }
     }
 
-    .btn {
+    .btn-actionsheet {
       border-radius: 0;
       background-color: @color-chrome;
 
@@ -42,11 +51,16 @@
       & + .btn {
         .hairline(top, @border-color);
       }
+
+      &:first-child {
+        border-top-left-radius: @border-radius-default;
+        border-top-right-radius: @border-radius-default;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: @border-radius-default;
+        border-bottom-right-radius: @border-radius-default;
+      }
     }
   }
-}
-
-.actionsheet-float-enter,
-.actionsheet-float-leave-active {
-  .transform(translate3d(-50%, 100%, 0));
 }
