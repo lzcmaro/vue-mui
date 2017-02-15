@@ -16,14 +16,14 @@ import ListItem from './components/list-item'
 import List from './components/list'
 import Modal from './components/modal'
 import Overlay from './components/overlay'
+import Slide from './components/slide'
+import Swiper from './components/swiper'
 import Switcher from './components/switcher'
 import TabContent from './components/tab-content'
 import TabItem from './components/tab-item'
 import Tabbar from './components/tabbar'
 import Tabs from './components/tabs'
 import Toast from './components/toast'
-import Slide from './components/slide'
-import Swiper from './components/swiper'
 
 const install = function(Vue) {
   if (install.installed) return
@@ -44,14 +44,14 @@ const install = function(Vue) {
   Vue.component(List.name, List)
   Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
+  Vue.component(Slide.name, Slide)
+  Vue.component(Swiper.name, Swiper)
   Vue.component(Switcher.name, Switcher)
   Vue.component(TabContent.name, TabContent)
   Vue.component(TabItem.name, TabItem)
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(Tabs.name, Tabs)
   Vue.component(Toast.name, Toast)
-  Vue.component(Slide.name, Slide)
-  Vue.component(Swiper.name, Swiper)
 }
 
 // auto install
@@ -79,12 +79,12 @@ module.exports = {
   List,
   Modal,
   Overlay,
+  Slide,
+  Swiper,
   Switcher,
   TabContent,
   TabItem,
   Tabbar,
   Tabs,
-  Toast,
-  Slide,
-  Swiper
+  Toast
 }

@@ -157,37 +157,8 @@ export default {
     this.amount = this.slider.children.length;
     this._autoSlide();
     this.firstSlider = this.slider.childNodes[0];
+    var newSlideItem = this.firstItem.cloneNode(true);
+    this.slider.appendChild(newSlideItem);
   }
 }
 </script>
-
-<style lang="less" scoped>
-  .slider {
-    overflow: hidden;
-    position: relative;
-
-    .slide-group {
-    	position: relative;
-	    font-size: 0;
-	    white-space: nowrap;
-	    -webkit-transition: all 0s linear;
-	    -moz-transition: all 0s linear;
-	    transition: all 0s linear;
-
-	    .slide {
-	    	display: inline-block;
-		    width: 100%;
-		    height: 100%;
-		    font-size: 14px;
-		    vertical-align: top;
-	    }
-    }
-
-    .slider-indicator {
-    	width:100%; position:absolute; bottom:8px; text-align:center; background:0 0;
-
-    	.indicator {display:inline-block; width:10px; height:10px; margin:1px 3px; cursor:pointer; background:#ccc; border:1px solid #fff; border-radius:50%;}
-    	.indicator.active {background:#29bc98;}
-    }
-  }
-</style>
