@@ -3,8 +3,8 @@
     <a class="item-inner" :class="navigate ? 'item-navigate' : ''" :href="href">
       <div class="media" v-if="$slots.media"><slot name="media"></slot></div>
       <div class="content">
-        <div class="title"><slot></slot></div>
-        <div class="desc" v-if="$slots.desc"><slot name="desc"></slot></div>
+        <label class="title"><slot></slot></label>
+        <label class="desc" v-if="$slots.desc"><slot name="desc"></slot></label>
       </div>
       <div class="after" v-if="$slots.after"><slot name="after"></slot></div>
       <i class="icon icon-right" v-if="navigate"></i>

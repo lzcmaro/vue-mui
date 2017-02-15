@@ -11,6 +11,7 @@ import Dialog from './components/dialog'
 import Header from './components/header'
 import Icon from './components/icon'
 import Indicator from './components/indicator'
+import Input from './components/input'
 import Link from './components/link'
 import ListItem from './components/list-item'
 import List from './components/list'
@@ -37,6 +38,7 @@ const install = function(Vue) {
   Vue.component(Header.name, Header)
   Vue.component(Icon.name, Icon)
   Vue.component(Indicator.name, Indicator)
+  Vue.component(Input.name, Input)
   Vue.component(Link.name, Link)
   Vue.component(ListItem.name, ListItem)
   Vue.component(List.name, List)
@@ -70,6 +72,7 @@ module.exports = {
   Header,
   Icon,
   Indicator,
+  Input,
   Link,
   ListItem,
   List,

@@ -1,0 +1,107 @@
+.field {
+  position: relative;
+
+  label {
+    display: block;
+    padding: 16/@rem-unit 12/@rem-unit 0 0;
+    line-height: 1.15;
+    font-size: 28/@rem-unit;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    line-height: 1.15;
+    padding: 16/@rem-unit 12/@rem-unit 16/@rem-unit 0;
+    border: none;
+    color: @color-text;
+    -webkit-appearance: none;
+            appearance: none;
+               outline: none;
+
+    &[disabled], &[readonly] {
+      color: @color-text-gray;
+    }
+  }
+
+  .btn-clear {
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 10/@rem-unit;
+    padding: 0;
+    background-color: transparent;
+    .box-shadow(none);
+
+    > .icon {
+      color: @color-text-secondary;
+      font-size: 36/@rem-unit;
+    }
+  }
+
+
+  &.field-inline {
+    .flexbox();
+
+    label {
+      display: inline-block;
+      padding-bottom: 16/@rem-unit;
+      font-size: 100%;
+    }
+
+    input {
+      padding: 0 12/@rem-unit 0 16/@rem-unit;
+    }
+  }
+
+  &.field-bordered {
+    padding: 16/@rem-unit 0;
+
+    label {
+      padding-bottom: 16/@rem-unit;
+    }
+
+    input {
+      padding-left: 16/@rem-unit;
+      border: @border-default;     
+      border-radius: @border-radius-default;
+    }
+
+    &:not(.field-inline) {
+      label {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &.field-has-button {
+    input {
+      padding-right: 50/@rem-unit;
+    }
+  }
+
+  // &.field-has-focus.field-has-value .btn-clear{
+  //   display: block;
+  // }
+  &.field-has-value .btn-clear{
+    display: block;
+  }
+}
+
+// Fields in the list
+.field-list .item-inner .content {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 80/@rem-unit;
+
+  .field.field-has-button:not(.field-bordered) {
+    input {
+      padding-right: 40/@rem-unit;
+    }
+
+    .btn-clear {
+      right: 0;
+    }
+  }
+}
