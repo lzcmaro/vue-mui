@@ -10,6 +10,9 @@ baseWebpackConfig.entry = undefined
 var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
+    // 组件库不同于站点的 publicPath='/'
+    // 这里的publicPath需要使用相对路径，以便build后的css url()能正确指向相关资源文件（如图片等）
+    publicPath: '../',
     filename: '[name].js',
     library: 'VueMUI',
     libraryTarget: 'umd'
