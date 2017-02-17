@@ -1,14 +1,6 @@
 <template>
-  <label>
-    <span :class="wrapClasses">
-        <i class="icon" :class="iconClasses"></i>
-        <input 
-          type="radio"
-          class="mui-radio-input"
-          :disabled="disabled"
-          :checked="group ? $parent.model === value : checked"
-          @change="changeRadio">
-    </span>
+  <label @click="changeRadio">
+    <i class="v-radio-icon icon" :class="iconClasses" :disabled="disabled"></i>
     <slot>{{value}}</slot>
   </label>
 </template>
@@ -44,28 +36,24 @@ export default {
     }
   },
   computed: {
-    wrapClasses() {
-      if (this.disabled) {
-        return 'vui-radio-disabled'
-      }
-    },
     iconClasses() {
-      if (this.checked || this.$parent.model === this.value) {
-        return 'icon-radio-checked-fill'
-      } else {
-        return 'icon-radio-unchecked'
+      const classes = {
+        'disabled': this.disabled,
+        'icon-radio-checked-fill': this.checked || this.$parent.model === this.value,
+        'icon-radio-unchecked': !(this.checked || this.$parent.model === this.value)
       }
+      return classes
     }
   },
   methods: {
-    changeRadio($event) {
-      if (this.disabled) {
+    changeRadio() {
+      if (this.disabled || this.checked) {
         return false
       }
       if (this.group) {
         this.$parent.$emit('change', this.value)
       } else {
-        this.$emit('change', $event.target.checked)
+        this.$emit('change', !this.checked)
       }
     }
   }

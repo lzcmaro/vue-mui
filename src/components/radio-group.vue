@@ -14,16 +14,8 @@ export default {
     }
   },
   mounted() {
-    // this.updateModel()
   },
   methods: {
-    // updateModel() {
-    //   const model = this.model
-    //   this.$children.forEach((child) => {
-    //     child.selected = model === child.value
-    //     child.group = true
-    //   })
-    // }
   }
 }
 </script>
