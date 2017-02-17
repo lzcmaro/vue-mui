@@ -1,6 +1,6 @@
 <template>
   <li>
-    <a class="item-inner" :class="navigate ? 'item-navigate' : ''" :href="href">
+    <vui-link class="item-inner" :class="navigate ? 'item-navigate' : ''" :to="to">
       <div class="media" v-if="$slots.media"><slot name="media"></slot></div>
       <div class="content">
         <label class="title"><slot></slot></label>
@@ -8,37 +8,21 @@
       </div>
       <div class="after" v-if="$slots.after"><slot name="after"></slot></div>
       <i class="icon icon-right" v-if="navigate"></i>
-    </a>
+    </vui-link>
   </li>
 </template>
 
 <script>
+import VuiLink from './link'
+
 export default {
   name: 'vui-list-item',
+  components: {
+    VuiLink
+  },
   props: {
     to: String,
     navigate: Boolean
-  },
-  computed: {
-    href() {
-      if (this.to && !this.added && this.$router) {
-        const resolved = this.$router.match(this.to)
-        if (!resolved.matched.length) return this.to
-
-        this.$nextTick(() => {
-          this.added = true
-          this.$el.addEventListener('click', this.handleClick)
-        })
-        return resolved.path
-      }
-      return this.to
-    }
-  },
-  methods: {
-    handleClick($event) {
-      $event.preventDefault()
-      this.$router.push(this.href)
-    }
   }
 }
 </script>
