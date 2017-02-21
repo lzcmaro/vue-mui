@@ -56,6 +56,11 @@
         "path": "/datetime-picker",
         "name": "Datetime Picker",
         "icon": "datetime-picker"
+      },
+      {
+        "path": "/searchbar",
+        "name": "Searchbar",
+        "icon": "search"
       }
     ]
   },

@@ -17,6 +17,7 @@ import ListItem from './components/list-item'
 import List from './components/list'
 import Modal from './components/modal'
 import Overlay from './components/overlay'
+import Searchbar from './components/searchbar'
 import Switcher from './components/switcher'
 import TabContent from './components/tab-content'
 import TabItem from './components/tab-item'
@@ -44,6 +45,7 @@ const install = function(Vue) {
   Vue.component(List.name, List)
   Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
+  Vue.component(Searchbar.name, Searchbar)
   Vue.component(Switcher.name, Switcher)
   Vue.component(TabContent.name, TabContent)
   Vue.component(TabItem.name, TabItem)
@@ -78,6 +80,7 @@ module.exports = {
   List,
   Modal,
   Overlay,
+  Searchbar,
   Switcher,
   TabContent,
   TabItem,
