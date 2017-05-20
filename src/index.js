@@ -17,7 +17,7 @@ import ListItem from './components/list-item'
 import List from './components/list'
 import Modal from './components/modal'
 import Overlay from './components/overlay'
-import Switcher from './components/switcher'
+import Switch from './components/switch'
 import TabContent from './components/tab-content'
 import TabItem from './components/tab-item'
 import Tabbar from './components/tabbar'
@@ -44,7 +44,7 @@ const install = function(Vue) {
   Vue.component(List.name, List)
   Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
-  Vue.component(Switcher.name, Switcher)
+  Vue.component(Switch.name, Switch)
   Vue.component(TabContent.name, TabContent)
   Vue.component(TabItem.name, TabItem)
   Vue.component(Tabbar.name, Tabbar)
@@ -78,7 +78,7 @@ module.exports = {
   List,
   Modal,
   Overlay,
-  Switcher,
+  Switch,
   TabContent,
   TabItem,
   Tabbar,

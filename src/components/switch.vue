@@ -1,10 +1,10 @@
 <template>
-  <input class="switcher" type="checkbox" :class="switcherClasses" :disabled="disabled" @click.prevent="handleClick" />
+  <input class="switch" type="checkbox" :class="switcherClasses" :disabled="disabled" @click.prevent="handleClick" />
 </template>
 
 <script>
 export default {
-  name: 'vui-switcher',
+  name: 'vui-switch',
   props: {
     checked: {
       type: Boolean,

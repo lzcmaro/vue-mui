@@ -61,16 +61,16 @@ export default {
   .dlg-login {
     .login-img {
       display: block;
-      width: 260/@rem-unit;
-      height: 260/@rem-unit;
+      width: 130px;
+      height: 130px;
       margin: 0 auto 30px;
       border-radius: 50%;
       overflow: hidden;
       background-color: #e5e5e5;
 
       > img {
-        width: 260/@rem-unit;
-        height: 260/@rem-unit;
+        width: 130px;
+        height: 130px;
         border: none;
       }
     }
@@ -81,7 +81,7 @@ export default {
 
     input {
       width: 100%;
-      height: 80/@rem-unit;
+      height: 40px;
       border: @border-default;
       border-radius: @border-radius-default;
     }

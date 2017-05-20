@@ -26,7 +26,7 @@
   width: 100%;
   height: @modal-header-height;
   line-height: @modal-header-height;
-  font-size: 32/@rem-unit;
+  font-size: 16px;
   text-align: center;
   padding: 0 @content-spacing;
   background-color: @modal-header-gb-color;
@@ -48,7 +48,7 @@
   width: 100%;
   position: relative;
   padding: @content-spacing;
-  font-size: 28/@rem-unit;
+  font-size: @font-size-default;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -96,7 +96,7 @@ body.modal-open {
 }
 
 .alert, .confirm {
-  width: 540/@rem-unit;
+  width: 270px;
 
   .modal-body {
     text-align: center;
@@ -109,11 +109,10 @@ body.modal-open {
     padding: 0;
 
     .btn {
-      height: 88/@rem-unit;
       background-color: @color-chrome;
-      border-radius: 12/@rem-unit;
+      border-radius: 6px;
       color: @color-primary;
-      font-size: 32/@rem-unit;
+      font-size: 16px;
       .box-shadow(none);
 
       // &::after {
@@ -137,7 +136,7 @@ body.modal-open {
 // ------------------------------
 .confirm {
   .modal-body {
-    min-height: 164/@rem-unit;
+    min-height: 82px;
   }
 
   .modal-footer {
@@ -159,11 +158,11 @@ body.modal-open {
 
     .btn-close {
       position: absolute;
-      top: 22/@rem-unit;
-      right: 22/@rem-unit;
+      top: 11px;
+      right: 11px;
       left: inherit;
       color: inherit;
-      font-size: 40/@rem-unit;
+      font-size: 20px;
       opacity: .7;
     }
   } 

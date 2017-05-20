@@ -123,9 +123,9 @@
         "icon": "radio"
       },
       {
-        "path": "/switcher",
-        "name": "Switcher",
-        "icon": "switcher"
+        "path": "/switch",
+        "name": "Switch",
+        "icon": "switch"
       }
     ]
   }

@@ -11,79 +11,10 @@
   -webkit-touch-callout: none; // Removes the dark touch outlines in webkit browsers.
 }
 
-/**
- * 为方便计算，我们一般会设置1rem=10px。
- * 因为浏览器的默认字体大小为16px，所以要使1rem=10px，那么只要在html选择器中声明font-size=62.5%（10/16*100%=62.5%）即可。
- * 但是，并不是所有的浏览器的默认字体大小都是16px，所以直接声明font-size=62.5%是不严谨的。
- * 因为chrome的最小字体为12，向上取整为20，而设计稿为640的，所以这里取值40
- */
-html {
-  font-size: 40px;
-}
-@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
- html {
-  font-size:67.5px;
- }
-}
-@media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
- html {
-  font-size:60px;
- }
-}
-@media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
- html {
-  font-size:50px;
- }
-}
-@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
- html {
-  font-size:45px;
- }
-}
-@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
- html {
-  font-size:40px;
- }
-}
-@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
- html {
-  font-size:37.5px;
- }
-}
-@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
- html {
-  font-size:33.75px;
- }
-}
-@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
- html {
-  font-size:30px;
- }
-}
-@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
- html {
-  font-size:25.875px;
- }
-}
-@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
- html {
-  font-size:25px;
- }
-}
-@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
- html {
-  font-size:23.4375px;
- }
-}
-@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
- html {
-  font-size:22.5px;
- }
-}
-@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
- html {
-  font-size:20px;
- }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 // We fix position the body and scroll `.content`.
@@ -98,12 +29,6 @@ body {
   line-height: @line-height-default;
   color: @font-color-default;
   background-color: #fff;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 button,

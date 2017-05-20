@@ -1,13 +1,12 @@
-.switcher {
-  @switch-height: 64;
+.switch {
   display: inline-block;
   appearance: none;
   position: relative;
-  width: 104/@rem-unit;
-  height: @switch-height/@rem-unit;
+  width: 60px;
+  height: 36px;
   border: @border-width-default solid #FDFDFD;
   outline: 0;
-  border-radius: 32/@rem-unit;
+  border-radius: 18px;
   background: #FDFDFD;
 
   &::before, &::after {
@@ -15,19 +14,19 @@
     position: absolute;
     top: 0;
     left: 0;  
-    border-radius: 30/@rem-unit;
+    border-radius: 17px;
     background-color: @color-chrome;
     .transition(transform .3s);
   }
 
   &::before {
-    width: 100/@rem-unit;
-    height: (@switch-height - 4)/@rem-unit;
+    width: 54px;
+    height: 34px;
   }
 
   &::after {
-    width: (@switch-height - 4)/@rem-unit;
-    height: (@switch-height - 4)/@rem-unit;
+    width: 34px;
+    height: 34px;
     .box-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
   }
 
@@ -40,7 +39,7 @@
     }
 
     &::after {
-      .transform(translateX(40/@rem-unit));
+      .transform(translateX(24px));
     }
   }
 

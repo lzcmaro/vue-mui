@@ -1,10 +1,10 @@
 <template>
   <div>
-    <vui-header fixed>Switcher</vui-header>
+    <vui-header fixed>Switch</vui-header>
     <page-content>
       <template>
-        <vui-switcher :checked="switcherValue.one" @change="handleChange">One</vui-switcher>
-        <vui-switcher :checked="switcherValue.two" disabled>Two (disabled)</vui-switcher>
+        <vui-switch :checked="switchValue.one" @change="handleChange">One</vui-switch>
+        <vui-switch :checked="switchValue.two" disabled>Two (disabled)</vui-switch>
       </template>
     </page-content>
   </div>
@@ -14,7 +14,7 @@
 export default {
   data () {
     return {
-      switcherValue: {
+      switchValue: {
         one: false,
         two: true
       }
@@ -23,7 +23,7 @@ export default {
   methods: {
     handleChange(val) {
       console.info(val)
-      this.switcherValue.one = val
+      this.switchValue.one = val
     }
   }
 }
