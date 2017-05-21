@@ -96,6 +96,11 @@
         "path": "/icon",
         "name": "Icons",
         "icon": "icons"
+      },
+      {
+        "path": "/spinner",
+        "name": "Spinner",
+        "icon": "Spinner"
       }
     ]
   },

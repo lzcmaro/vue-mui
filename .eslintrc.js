@@ -21,6 +21,8 @@ module.exports = {
     // function括号前面的空格是否必需
     'space-before-function-paren': 0,
     // 行末分号是否必需
-    'semi': 0
+    'semi': 0,
+    // 允许尾随空格
+    'no-trailing-spaces': 0
   }
 }

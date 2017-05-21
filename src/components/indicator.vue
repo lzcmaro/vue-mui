@@ -2,7 +2,8 @@
   <div class="indicator" :class="{[`indicator-${type}`]: true}" >
     <vui-overlay v-show="show" :transparent="true"></vui-overlay>
     <vui-toast :show="show" @toggle-visible="toggleVisible">
-      <vui-icon :type="type === 'loading' ? 'spinner' : type" slot="icon"></vui-icon>
+      <vui-spinner v-if="type==='loading'" type="spinner" slot="icon"></vui-spinner>
+      <vui-icon v-else :type="type" slot="icon"></vui-icon>
       <slot></slot>
     </vui-toast>
   </div>    
@@ -12,13 +13,15 @@
 import VuiOverlay from './overlay'
 import VuiToast from './toast'
 import VuiIcon from './icon'
+import VuiSpinner from './spinner'
 
 export default {
   name: 'vui-indicator',
   components: {
     VuiOverlay,
     VuiToast,
-    VuiIcon
+    VuiIcon,
+    VuiSpinner
   },
   props: {
     show: {

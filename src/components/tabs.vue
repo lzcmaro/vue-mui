@@ -44,7 +44,6 @@ export default {
     this.updateTabContent()
   },
   render(h) {
-    console.log('tabs.render', this.$el)
     const props = {
       class: {
         'nav': true,

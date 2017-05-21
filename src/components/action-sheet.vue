@@ -2,7 +2,7 @@
   <vui-modal type="actionsheet" transition="slide-up" :show="show">
     <slot></slot>
     <template slot="footer" v-if="cancelButton">
-      <vui-action-sheet-button @click="handleCancel">{{cancelButtonText}}</vui-action-sheet-button>
+      <vui-action-sheet-button @click="$emit('cancel', $event)">{{cancelButtonText}}</vui-action-sheet-button>
     </template>
   </vui-modal>
 </template>
@@ -30,11 +30,6 @@ export default {
     cancelButtonText: {
       type: String,
       default: '取消'
-    }
-  },
-  methods: {
-    handleCancel($evt) {
-      this.$emit('cancel', $evt)
     }
   }
 }

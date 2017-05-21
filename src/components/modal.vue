@@ -1,7 +1,7 @@
 <template>
   <vui-base-modal :show="show" :transition="transition">
     <template slot="header" v-if="title || closeButton">
-      <a href="javascript:;" class="btn-close" @click.prevent="$emit('close')" v-if="closeButton">{{closeButtonText}}</a>
+      <a href="javascript:;" class="btn-close" @click.prevent="$emit('close', $event)" v-if="closeButton">{{closeButtonText}}</a>
       {{title}}
     </template>
     <slot></slot>

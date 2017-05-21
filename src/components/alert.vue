@@ -5,7 +5,7 @@
     </template>
     <slot></slot>
     <template slot="footer">
-      <vui-button size="large" @click="handleClick">{{buttonText}}</vui-button>
+      <vui-button size="large" @click="$emit('ok', $event)">{{buttonText}}</vui-button>
     </template>
   </vui-modal>
 </template>
@@ -33,11 +33,6 @@ export default {
     buttonText: {
       type: String,
       default: '确定'
-    }
-  },
-  methods: {
-    handleClick($evt) {
-      this.$emit('ok', $evt)
     }
   }
 }

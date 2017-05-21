@@ -11,12 +11,14 @@ import Dialog from './components/dialog'
 import Header from './components/header'
 import Icon from './components/icon'
 import Indicator from './components/indicator'
+import InfiniteScroll from './components/infinite-scroll'
 import Input from './components/input'
 import Link from './components/link'
 import ListItem from './components/list-item'
 import List from './components/list'
 import Modal from './components/modal'
 import Overlay from './components/overlay'
+import Spinner from './components/spinner'
 import Switch from './components/switch'
 import TabContent from './components/tab-content'
 import TabItem from './components/tab-item'
@@ -44,12 +46,14 @@ const install = function(Vue) {
   Vue.component(List.name, List)
   Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
+  Vue.component(Spinner.name, Spinner)
   Vue.component(Switch.name, Switch)
   Vue.component(TabContent.name, TabContent)
   Vue.component(TabItem.name, TabItem)
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(Tabs.name, Tabs)
   Vue.component(Toast.name, Toast)
+  Vue.use(InfiniteScroll);
 }
 
 // auto install
@@ -60,7 +64,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   $,
   install,
-  version: '1.0.0-beta2',
+  version: '1.0.0-beta3',
   ActionSheetButton,
   ActionSheet,
   Alert,
@@ -72,12 +76,14 @@ module.exports = {
   Header,
   Icon,
   Indicator,
+  InfiniteScroll,
   Input,
   Link,
   ListItem,
   List,
   Modal,
   Overlay,
+  Spinner,
   Switch,
   TabContent,
   TabItem,

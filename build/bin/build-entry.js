@@ -14,6 +14,7 @@ const install = function(Vue) {
   if (install.installed) return
 
 {{install}}
+  Vue.use(InfiniteScroll);
 }
 
 // auto install
@@ -65,6 +66,8 @@ componentNames.forEach(name => {
   }));
 
   if ([
+    // directives
+    'InfiniteScroll'
   ].indexOf(componentName) === -1) {
     installTemplate.push(render(ISNTALL_COMPONENT_TEMPLATE, {
       name: componentName,

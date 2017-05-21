@@ -1,10 +1,9 @@
 <template>
   <button 
-    class="btn" 
     :class="btnClasses"
     :type="nativeType"
     :disabled="disabled"
-    @click="handleClick">
+    @click="$emit('click', $event)">
     <slot></slot>
   </button>
 </template>
@@ -42,17 +41,13 @@ export default {
   computed: {
     btnClasses() {
       const classes = {
+        'btn': true,
         [`btn-${this.type}`]: true,
         [`btn-${this.size}`]: true,
         'btn-plain': this.plain,
         'btn-disabled': this.disabled
       }
       return classes
-    }
-  },
-  methods: {
-    handleClick(evt) {
-      this.$emit('click', evt)
     }
   }
 }

@@ -48,12 +48,6 @@ export default {
 
 <style lang="less" scoped>
   .page-content {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0 !important;
-
     .btn {
       margin-top: 15px;
     }
