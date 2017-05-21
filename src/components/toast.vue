@@ -1,6 +1,5 @@
 <template>
   <div class="toast">
-    <vui-overlay v-show="visible" :transparent="true"></vui-overlay>
     <transition name="toast-pop">
       <div class="toast-inner" v-show="visible">
         <div class="toast-icon-wrap" v-if="$slots.icon"><slot name="icon"></slot></div><label class="toast-text"><slot></slot></label>
@@ -10,13 +9,11 @@
 </template>
 
 <script>
-import VuiOverlay from './overlay'
 import VuiIcon from './icon'
 
 export default {
   name: 'vui-toast',
   compontents: {
-    VuiOverlay,
     VuiIcon
   },
   props: {
@@ -27,7 +24,7 @@ export default {
     },
     duration: {
       type: Number,
-      default: 3000
+      default: 2500
     }
   },
   data() {
