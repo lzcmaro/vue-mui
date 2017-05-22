@@ -38,10 +38,9 @@ const scrollHandler = function() {
   const clientHeight = getVisibleHeight(eventTarget)
   const scrollHeight = eventTarget.scrollHeight
   const scrollTop = getScrollTop(eventTarget)
+  const shouldScroll = scrollHeight - scrollTop <= clientHeight + this.scrollDistance
 
-  if (this.disabled) return;
-
-  if (scrollHeight - scrollTop <= clientHeight + this.distance) {
+  if (shouldScroll && this.scrollEnabled) {
     this.expression()
   }
 }
@@ -100,22 +99,23 @@ const detachScrollListener = function() {
 
 export default {
   bind(el, binding, vnode) {
-    const distance = Number(vnode.data.attrs[ATTR_DISTANCE]) || 0
+    const vm = vnode.context
+    const scrollDistance = Number(vnode.data.attrs[ATTR_DISTANCE]) || 0
     const disabled = Boolean(vnode.data.attrs[ATTR_DISABLED])
     
     el[ctx] = {
       el,
-      vm: vnode.context,
+      vm,
       expression: binding.value || noop,
-      distance,
-      disabled
+      scrollDistance,
+      scrollEnabled: !disabled
     }
 
-    vnode.context.$on('hook:mounted', () => {
+    vm.$on('hook:mounted', () => {
       const eventTarget = getScrollEventTarget(el)      
 
       // 在$nextTick()中添加scroll事件，这时候可以取到el的实际scrollHeight值
-      vnode.context.$nextTick(() => {
+      vm.$nextTick(() => {
         el[ctx].scrollEventTarget = eventTarget
         attachScrollListener.call(el[ctx])
       })     
@@ -128,9 +128,9 @@ export default {
     // 这里判断绑定的值是否有更新，避免多余的操作
     if (disabled === oldVnode.data.attrs[ATTR_DISABLED]) return;
 
-    el[ctx].disabled = disabled
-    detachScrollListener.call(el[ctx])
-    disabled === false && attachScrollListener.call(el[ctx])
+    el[ctx].scrollEnabled = !disabled
+    // detachScrollListener.call(el[ctx])
+    // disabled === false && attachScrollListener.call(el[ctx])
   },
   unbind(el) {
     detachScrollListener.call(el[ctx])

@@ -24,6 +24,7 @@
     bottom: 0;
     overflow-x: hidden;
     overflow-y: scroll;
+    -webkit-overflow-scrolling : touch;
   }
   .spinner-wrapper {
     height: 44px;
