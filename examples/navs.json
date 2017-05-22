@@ -23,14 +23,19 @@
         "icon": "swiper"
       },
       {
-        "path": "/modal",
-        "name": "Modal",
-        "icon": "modal"
+        "path": "/alerts",
+        "name": "Alerts",
+        "icon": "alerts"
       },
       {
-        "path": "/popup",
-        "name": "Popup",
-        "icon": "popup"
+        "path": "/modal",
+        "name": "Modals",
+        "icon": "modals"
+      },
+      {
+        "path": "/popover",
+        "name": "Popover",
+        "icon": "popover"
       },
       {
         "path": "/scroll",
@@ -59,8 +64,8 @@
     "list": [
       {
         "path": "/button",
-        "name": "Button",
-        "icon": "button"
+        "name": "Buttons",
+        "icon": "buttons"
       },
       {
         "path": "/header",
@@ -79,24 +84,39 @@
       },
       {
         "path": "/list",
-        "name": "List",
-        "icon": "list"
+        "name": "Lists",
+        "icon": "lists"
       },
       {
         "path": "/badge",
-        "name": "Badge",
-        "icon": "badge"
+        "name": "Badges",
+        "icon": "badges"
       },
       {
         "path": "/icon",
-        "name": "Icon",
-        "icon": "icon"
+        "name": "Icons",
+        "icon": "icons"
+      },
+      {
+        "path": "/spinner",
+        "name": "Spinner",
+        "icon": "Spinner"
       }
     ]
   },
   {
     "title": "Form Components",
     "list": [
+      {
+        "path": "/input",
+        "name": "Input",
+        "icon": "input"
+      },
+      {
+        "path": "/select",
+        "name": "Select",
+        "icon": "select"
+      },
       {
         "path": "/checkbox",
         "name": "Checkbox",
@@ -108,14 +128,9 @@
         "icon": "radio"
       },
       {
-        "path": "/switcher",
-        "name": "Switcher",
-        "icon": "switcher"
-      },
-      {
-        "path": "/form",
-        "name": "Form",
-        "icon": "form"
+        "path": "/switch",
+        "name": "Switch",
+        "icon": "switch"
       }
     ]
   }

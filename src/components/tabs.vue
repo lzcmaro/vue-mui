@@ -29,7 +29,9 @@ export default {
         // 遍历child，如果存在slot="content"的分发内容，且当前activeKey===item.eventKey的话，把它添加到data.tabContent中
         for (let item of child) {
           if (item.eventKey && this.activeKey === item.eventKey && item.$slots.content) {
-            this.tabContent = item.$slots.content
+            // $slots.content 得到的是一个VNode数组，直接赋值给tabContent的话，会导致render()执行多次
+            // 所以这里只取$slots.content的第一个VNode
+            this.tabContent = item.$slots.content.pop()
             return
           }
         }
@@ -42,8 +44,6 @@ export default {
     this.updateTabContent()
   },
   render(h) {
-    // TODO: 这里每次更新tabContent，都会render两次，未知原因，待解决
-    console.log('tabs.render')
     const props = {
       class: {
         'nav': true,

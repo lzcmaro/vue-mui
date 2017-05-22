@@ -29,7 +29,6 @@ export default {
 </script>
 
 <style lang="less">
-@import "../../src/less/variables.less";
 .icon-list {
   ul {
     margin: 0;
@@ -39,14 +38,14 @@ export default {
 
     li {
       float: left;
-      width: 160/@rem-unit;
-      height: 220/@rem-unit;
+      width: 29%;
+      height: 110px;
       text-align: center;
       list-style: none;
-      margin-left: 20/@rem-unit;
+      margin-left: 10px;
     }
     .icon {
-      font-size: 48/@rem-unit;
+      font-size: 24px;
     }
   }   
 }

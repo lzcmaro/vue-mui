@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vui-header fixed>Form</vui-header>
+    <vui-header fixed>Select</vui-header>
   </div>
 </template>
 

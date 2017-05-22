@@ -1,12 +1,12 @@
 <template>
   <div class="list">
-    <div class="list-title" v-if="this.$slots.title">
+    <div class="list-title" v-if="$slots.title">
       <slot name="title"></slot>
     </div>
     <ul>
       <slot></slot>
     </ul>
-    <div class="list-append" v-if="this.$slots.append">
+    <div class="list-append" v-if="$slots.append">
       <slot name="append"></slot>
     </div>
   </div>

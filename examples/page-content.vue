@@ -13,6 +13,7 @@ export default {
 <style lang="less">
   @import "../src/less/variables.less";
   .page-content {
+    position: relative;
     padding: @content-spacing;
   }
 

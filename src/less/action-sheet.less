@@ -1,0 +1,66 @@
+.actionsheet {
+  top: inherit;
+  bottom: 34px;
+  padding: 0 @content-spacing;
+
+  .modal-content {
+    background-color: transparent;
+    border-radius: 0;
+    overflow: visible;
+    .box-shadow(none);
+
+    .modal-body {
+      padding: 0;
+      border-radius: @border-radius-default;
+      .box-shadow(0 3px 9px rgba(0,0,0,.5));
+    }
+
+    .modal-footer {
+      height: auto;
+      padding-left: 0;
+      padding-right: 0;
+      margin-top: @content-spacing;
+      border-radius: @border-radius-default;
+      .box-shadow(0 3px 9px rgba(0,0,0,.5));
+
+      &::before {
+        content: none;
+      }
+
+      .btn-actionsheet {
+        border-radius: @border-radius-default;
+      }
+    }
+
+    .btn-actionsheet {
+      border-radius: 0;
+      background-color: @color-chrome;
+
+      &.btn-default {
+        color: @font-color-default;
+      }
+
+      &.btn-primary {
+        color: @color-primary;
+      }
+
+      &.btn-danger {
+        color: @color-danger;
+      }
+
+      & + .btn {
+        .hairline(top, @border-color);
+      }
+
+      &:first-child {
+        border-top-left-radius: @border-radius-default;
+        border-top-right-radius: @border-radius-default;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: @border-radius-default;
+        border-bottom-right-radius: @border-radius-default;
+      }
+    }
+  }
+}

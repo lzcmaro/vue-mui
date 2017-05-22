@@ -1,20 +1,19 @@
 <template>
-  <transition-group name="toast-pop">
-    <vui-overlay key="overlay" v-show="visible" :transparent="true"></vui-overlay>
-    <div key="toast" class="toast" :class="type ? ('toast-' + type) : ''" v-show="visible">
-      <div class="icon-wrap" v-if="$slots.icon || type"><slot name="icon"><vui-icon :type="type" /></slot></div><label class="text"><slot></slot></label>
-    </div>
-  </transition-group>
+  <div class="toast">
+    <transition name="toast-pop">
+      <div class="toast-inner" v-show="visible">
+        <div class="toast-icon-wrap" v-if="$slots.icon"><slot name="icon"></slot></div><label class="toast-text"><slot></slot></label>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
-import VuiOverlay from './overlay'
 import VuiIcon from './icon'
 
 export default {
   name: 'vui-toast',
   compontents: {
-    VuiOverlay,
     VuiIcon
   },
   props: {
@@ -23,18 +22,9 @@ export default {
       default: false,
       required: true
     },
-    type: {
-      type: String,
-      validator(value) {
-        return [
-          'success',
-          'failure'
-        ].indexOf(value) > -1
-      }
-    },
     duration: {
       type: Number,
-      default: 3000
+      default: 2500
     }
   },
   data() {
@@ -47,6 +37,7 @@ export default {
       this.visible = val
       this.timer && clearTimeout(this.timer)
 
+      // 因为toast组件，默认是自动隐藏的，这里避免外部在toggle-visible处理后，重新传值过来，而导致死循环的问题
       if (val === true) {
         this.timer = setTimeout(() => {
           this.visible = !val

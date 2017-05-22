@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay" :class="transparent ? 'overlay-transparent' : ''" @click="handleClick"></div>  
+  <div class="overlay" :class="transparent ? 'overlay-transparent' : ''" @click="$emit('click', $event)"></div>  
 </template>
 
 <script>
@@ -9,11 +9,6 @@ export default {
     transparent: {
       type: Boolean,
       default: false
-    }
-  },
-  methods: {
-    handleClick(evt) {
-      this.$emit('click', evt)
     }
   }
 }

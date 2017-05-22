@@ -1,0 +1,49 @@
+.switch {
+  display: inline-block;
+  appearance: none;
+  position: relative;
+  width: 60px;
+  height: 36px;
+  border: @border-width-default solid #FDFDFD;
+  outline: 0;
+  border-radius: 18px;
+  background: #FDFDFD;
+
+  &::before, &::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;  
+    border-radius: 17px;
+    background-color: @color-chrome;
+    .transition(transform .3s);
+  }
+
+  &::before {
+    width: 54px;
+    height: 34px;
+  }
+
+  &::after {
+    width: 34px;
+    height: 34px;
+    .box-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+  }
+
+  &.checked {
+    border-color: @color-success;
+    background-color: @color-success;
+
+    &::before {
+      .scale(0);
+    }
+
+    &::after {
+      .transform(translateX(24px));
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+  }
+}

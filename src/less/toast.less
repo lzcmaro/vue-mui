@@ -1,41 +1,43 @@
-.toast {
+.toast {}
+
+.toast-inner {
   position: fixed;
   left: 50%;
   top: 50%;
   max-width: 80%;
-  border-radius: 10/@rem-unit;
+  border-radius: @border-radius-default;
   background-color: rgba(0, 0, 0, 0.7);
   color: @color-chrome;
   text-align: center;
   z-index: @level-popout;
-  padding: 20/@rem-unit @content-spacing;
+  padding: 10px @content-spacing;
+  overflow: hidden;
+  .box-shadow(0 3px 9px rgba(0,0,0,.5));
   .translate(-50%, -50%);
-  // .transition(opacity .3s linear);
-
-  .icon-wrap {
-    display: block;
-    text-align: center;
-    padding-bottom: 10/@rem-unit;
-  }
-
-  .text {
-    display: block;
-    font-size: 32/@rem-unit; 
-    text-align: center;
-  }
+  // .transition(opacity .3s linear); 
+  .flexbox();
+  .justify-content(center);
+  .flex-direction(column);
 }
 
-.toast-success {
+.toast-icon-wrap {
+  display: block;
+  text-align: center;
+  padding-bottom: 5px;
+
   .icon {
-    font-size: 88/@rem-unit;
+    background-color: transparent;
   }
 }
 
-.toast-failure {
-  .icon {
-    font-size: 64/@rem-unit;
-  }
+.toast-text {
+  display: block;
+  font-size: 16px; 
+  text-align: center;
+  word-wrap: break-word;  
+  word-break: normal;
 }
+
 
 .toast-pop-enter-active, .toast-pop-leave-active {
   .transition(opacity .3s linear);

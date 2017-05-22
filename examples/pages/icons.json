@@ -28,6 +28,7 @@
   "checkbox-checked-fill",
   "checkmark",
   "cross",
+  "cross2",
   "check",
   "check-fill",
   "cancel",
@@ -40,5 +41,8 @@
   "spinner",
   "spinner1",
   "spinner2",
-  "spinner3"
+  "spinner3",
+  "success",
+  "failure",
+  "warning"
 ]

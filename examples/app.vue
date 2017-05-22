@@ -16,14 +16,14 @@ body {
 
 .page-back {
   position: fixed;
-  top: 20/@rem-unit;
-  left: 20/@rem-unit;
+  top: 10px;
+  left: 10px;
   text-align: center;
   z-index: 99;
 
   .icon {
     color: #fff;
-    font-size: 48/@rem-unit;
+    font-size: 24px;
   }
 }
 </style>

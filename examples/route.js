@@ -14,7 +14,7 @@ const registerRoute = (config) => {
             description: page.description
           }
         })
-      } catch (e) {}       
+      } catch (e) {}
     })
   )
 

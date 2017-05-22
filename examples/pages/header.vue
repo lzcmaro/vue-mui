@@ -3,7 +3,7 @@
     <vui-header fixed>Header</vui-header>
     <page-content class="header-section clearfix">
       <vui-header>
-        <vui-link slot="left" to="/"><vui-icon type="left" /></vui-link>
+        <vui-link slot="left" to="/" @click="clickHandler"><vui-icon type="left" /></vui-link>
         Header
       </vui-header>
       <vui-header>
@@ -21,6 +21,11 @@
 
 <script>
 export default {
+  methods: {
+    clickHandler($evt) {
+      console.log('clickHandler...', $evt, this)
+    }
+  }
 }
 </script>
 

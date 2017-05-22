@@ -1,0 +1,107 @@
+.field {
+  position: relative;
+
+  label {
+    display: block;
+    padding: 10px 6px 0 0;
+    line-height: 1.15;
+    font-size: @font-size-default;
+    font-weight: 500;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    font-size: @font-size-default;
+    line-height: 1.15;
+    padding: 10px 6px 10px 0;
+    border: none;
+    color: @color-text;
+    outline: none;
+    .appearance(none);
+
+    &[disabled], &[readonly] {
+      color: @color-text-gray;
+    }
+  }
+
+  .btn-clear {
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 5px;
+    padding: 0;
+    background-color: transparent;
+    .box-shadow(none);
+
+    > .icon {
+      color: @color-text-secondary;
+      font-size: 18px;
+    }
+  }
+
+
+  &.field-inline {
+    .flexbox();
+
+    label {
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    input {
+      padding: 0 6px 0 8px;
+    }
+  }
+
+  &.field-bordered {
+    padding: 8px 0;
+
+    label {
+      padding-bottom: 8px;
+    }
+
+    input {
+      padding-left: 8px;
+      border: @border-default;     
+      border-radius: @border-radius-default;
+    }
+
+    &:not(.field-inline) {
+      label {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &.field-has-button {
+    input {
+      padding-right: 25px;
+    }
+  }
+
+  // &.field-has-focus.field-has-value .btn-clear{
+  //   display: block;
+  // }
+  &.field-has-value .btn-clear{
+    display: block;
+  }
+}
+
+// Fields in the list
+.field-list .item-inner .content {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 40px;
+
+  .field.field-has-button:not(.field-bordered) {
+    input {
+      padding-right: 20px;
+    }
+
+    .btn-clear {
+      right: 0;
+    }
+  }
+}

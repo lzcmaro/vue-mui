@@ -1,0 +1,48 @@
+// Animation
+// --------------------------------------------------
+@keyframes spin {
+  0% {
+    .rotate(0deg);
+  }
+  100% {
+    .rotate(360deg);
+  }
+}
+
+
+
+// transition
+// --------------------------------------------------
+.fade {
+  .transform(translate3d(0, 0, 0));
+  .transition(.2s);
+}
+.fade-leave-active {
+  opacity: 0;
+  .scale(.9);
+}
+.fade-enter {
+  opacity: 0;
+  .scale(.7);
+}
+
+
+.slide-up {
+  .transform(translate3d(0, 0, 0));
+  .transition(transform .3s ease-out);
+}
+.slide-up-leave-active,
+.slide-up-enter {
+  .transform(translate3d(0, 100%, 0));
+}
+
+
+
+.slide-left {
+  .transform(translate3d(0, 0, 0));
+  .transition(transform .3s ease-out);
+}
+.slide-left-leave-active,
+.slide-left-enter {
+  .transform(translate3d(100%, 0, 0));
+}
