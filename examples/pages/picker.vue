@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div style="padding-top:44px;">
     <vui-header fixed>Picker</vui-header>
     <vui-picker :valueGroups="valueGroups" :optionGroups="optionGroups" @click="handleItemClick">
-      <div>Hi, {{valueGroups.title}} {{valueGroups.firstName}} {{valueGroups.secondName}}</div>
     </vui-picker>
+    <div>Hi, {{valueGroups.title}} {{valueGroups.firstName}} {{valueGroups.secondName}}</div>
   </div>
 </template>
 
@@ -30,7 +30,6 @@ export default {
     },
     handleItemClick(e,v) {
       console.log('value',v)
-      console.log('event',e)
     }
   }
 }
