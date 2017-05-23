@@ -6,7 +6,7 @@
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd"
     @touchcancel="handleTouchCancel">
-      <div class="picker-item" :class="option === this.value ? 'picker-item-selected' : ''" v-for="option in options" @click="handleItemClick(option)" :style="[itemStyle]">{{option}}</div>
+      <div class="picker-item" :class="option === value ? 'picker-item-selected' : ''" v-for="option in options" @click="handleItemClick(option)" :style="[itemStyle]">{{option}}</div>
     </div>
   </div>
 </template>
@@ -66,7 +66,6 @@ export default {
     },
 
     computeTranslate() {
-      console.log(333);
       let selectedIndex = this.options.indexOf(this.value);
       if (selectedIndex < 0) {
         // throw new ReferenceError();
@@ -113,9 +112,7 @@ export default {
       console.log(touchY)
 
       if (!this.isMoving) {
-        return {
-          isMoving: true
-        };
+        this.isMoving = true;
       }
 
       let nextScrollerTranslate =
