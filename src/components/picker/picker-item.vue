@@ -6,7 +6,7 @@
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd"
     @touchcancel="handleTouchCancel">
-      <div class="picker-item" :class="option === value ? 'picker-item-selected' : ''" v-for="option in options" @click="handleItemClick(option)" :style="[itemStyle]">{{option}}</div>
+      <div class="picker-item" :class="option === value ? 'picker-item-selected' : ''" v-for="option in options" @click="handleItemClick(option,name)" :style="[itemStyle]">{{option}}</div>
     </div>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
   },
   data() {
     return {
+      currentValue: this.value,
       itemStyle: {
         height: this.itemHeight + 'px',
         lineHeight: this.itemHeight + 'px'
@@ -66,14 +67,14 @@ export default {
     },
 
     computeTranslate() {
-      let selectedIndex = this.options.indexOf(this.value);
+      let selectedIndex = this.options.indexOf(this.currentValue);
       if (selectedIndex < 0) {
         // throw new ReferenceError();
         console.warn(
           'Warning: "' +
             this.name +
             '" doesn\'t contain an option of "' +
-            this.value +
+            this.currentValue +
             '".'
         );
         this.onValueSelected(this.options[0]);
@@ -92,13 +93,17 @@ export default {
     },
 
     onValueSelected(v) {
-      console.log(v);
+      console.log('value____', v);
+      console.log('name', this.name);
+
+      console.log('parent_____', this.$parent);
+      this.currentValue = v;
+      this.$parent.valueGroups[this.name] = v;
+      this.computeTranslate();
     },
 
     handleTouchStart(event) {
       const startTouchY = event.targetTouches[0].pageY;
-
-      console.log(startTouchY);
 
       this.startTouchY = startTouchY;
       this.startScrollerTranslate = this.scrollerTranslate;
@@ -108,8 +113,6 @@ export default {
       event.preventDefault();
 
       const touchY = event.targetTouches[0].pageY;
-
-      console.log(touchY)
 
       if (!this.isMoving) {
         this.isMoving = true;
@@ -164,18 +167,23 @@ export default {
       this.scrollerTranslate = this.startScrollerTranslate;
     },
 
-    handleItemClick(option) {
-      if (option !== this.value) {
+    handleItemClick(option, name) {
+      console.log('option', option);
+      console.log('name', name);
+      this.$emit('click', option, name);
+
+      console.log('value:', this.currentValue);
+
+      if (option !== this.currentValue) {
         this.onValueSelected(option);
       }
     }
   },
 
-  mounted() {
+  created() {
     this.computeTranslate();
   }
 };
-
 </script>
 
 <style lang="css">

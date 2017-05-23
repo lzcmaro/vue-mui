@@ -8,7 +8,7 @@
               :value="valueGroups[name]"
               :itemHeight="itemHeight"
               :columnHeight="height"
-              @change="handleChange">
+              @click="handleItemClick">
             </PickItem>
             <div class="picker-highlight" :style="highlightStyles()"></div>
           </div>
@@ -50,8 +50,10 @@ export default {
       );
     },
 
-    handleChange(e) {
-      this.$emit('change')
+    handleItemClick(option, name) {
+      console.log('parent option:', option);
+      console.log('parent name:', name);
+      this.$emit('click', option, name);
     }
   },
 
@@ -59,7 +61,6 @@ export default {
     PickItem
   }
 };
-
 </script>
 
 <style lang="css">

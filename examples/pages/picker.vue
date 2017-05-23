@@ -3,7 +3,7 @@
     <vui-header fixed>Picker</vui-header>
     <vui-picker :valueGroups="valueGroups" :optionGroups="optionGroups" @click="handleItemClick">
     </vui-picker>
-    <div>Hi, {{valueGroups.title}} {{valueGroups.firstName}} {{valueGroups.secondName}}</div>
+    <div style="text-align:center;padding:6px 0;">Hi, {{valueGroups.title}} {{valueGroups.firstName}} {{valueGroups.secondName}}</div>
   </div>
 </template>
 
@@ -11,26 +11,25 @@
 export default {
   data() {
     return {
-        valueGroups: {
-          title: 'Mr.',
-          firstName: 'Micheal',
-          secondName: 'Jordan'
-        },
-        optionGroups: {
-          title: ['Mr.', 'Mrs.', 'Ms.', 'Dr.'],
-          firstName: ['John', 'Micheal', 'Elizabeth'],
-          secondName: ['Lennon', 'Jackson', 'Jordan', 'Legend', 'Taylor']
-        }
-    }
+      valueGroups: {
+        title: 'Mr.',
+        firstName: 'Micheal',
+        secondName: 'Jordan'
+      },
+      optionGroups: {
+        title: ['Mr.', 'Mrs.', 'Ms.', 'Dr.'],
+        firstName: ['John', 'Micheal', 'Elizabeth'],
+        secondName: ['Lennon', 'Jackson', 'Jordan', 'Legend', 'Taylor']
+      }
+    };
   },
 
   methods: {
-    handleChange(event) {
-      // console.log(event);
-    },
-    handleItemClick(e,v) {
-      console.log('value',v)
+    handleItemClick(option, name) {
+      this.valueGroups[name] = option;
+      console.log('top parent option:', option);
+      console.log('top parent name:', name);
     }
   }
-}
+};
 </script>
