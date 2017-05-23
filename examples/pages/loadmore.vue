@@ -42,63 +42,56 @@ export default {
         list: [],
         page: 1,
         pageSize: 20,
-        totalPage: 5,
+        totalPage: 3,
         hasNext: true
       },
-      pulldownStatus: 'idle',
-      pullupStatus: 'idle'
+      pulldownStatus: null,
+      pullupStatus: null
     }
   },
   computed: {
     pulldownText() {
       return {
-        'idle': '下拉可以刷新...',
-        'flip': '松开即可刷新...',
-        'loading': '正在加载中...'
+        'idle': '下拉可以刷新',
+        'flip': '松开即可刷新',
+        'loading': '正在加载中...',
+        'nomore': '暂无更多数据'
       }
     },
     pullupText() {
       return {
-        'idle': '上拉可以刷新...',
-        'flip': '松开即可刷新...',
-        'loading': '正在加载中...'
+        'idle': '上拉可以刷新',
+        'flip': '松开即可刷新',
+        'loading': '正在加载中...',
+        'nomore': '暂无更多数据'
       }
     }
   },
   mounted() {
-    let pager = this.pager
-    for (let i = 1; i <= pager.pageSize; i++) {
-      pager.list.push(i);
-    }
+    this.fetch(1)
   },
   methods: {
     refresh() {
       console.log('refresh')
-      let pager = this.pager
-      
-      setTimeout(() => {
-        pager.list = []
-        for (let i = 1; i <= pager.pageSize; i++) {
-          pager.list.push(i);
-        }
-        pager.page = 1
-        pager.hasNext = pager.page < pager.totalPage
-        this.pulldownStatus = 'idle'
-      }, 1000)
+      this.fetch(1)
     },
     loadMore() {
       console.log('loadMore')
+      this.fetch(this.pager.page + 1, true)
+    },
+    fetch(page, isLoadMore) {
       let pager = this.pager
-
       setTimeout(() => {
-        let last = pager.list[pager.list.length - 1];
+        let last = 0
+        isLoadMore ? (last = pager.list[pager.list.length - 1]) : (pager.list = [])
         for (let i = 1; i <= pager.pageSize; i++) {
           pager.list.push(last + i);
         }
-        pager.page += 1
+        pager.page = page
         pager.hasNext = pager.page < pager.totalPage
-        this.pullupStatus = 'idle'
-      }, 1000);
+        this.pulldownStatus = 'idle'
+        this.pullupStatus = pager.hasNext ? 'idle' : 'nomore'
+      }, 300)
     },
     handleTopStatusChange(val) {
       this.pulldownStatus = val
