@@ -2,7 +2,7 @@
   <div>
     <vui-header fixed>Picker</vui-header>
     <vui-picker :valueGroups="valueGroups" :optionGroups="optionGroups" @click="handleItemClick">
-      <div className="weui_cell_bd weui_cell_primary">Hi, {valueGroups.title} {valueGroups.firstName} {valueGroups.secondName}</div>
+      <div>Hi, {{valueGroups.title}} {{valueGroups.firstName}} {{valueGroups.secondName}}</div>
     </vui-picker>
   </div>
 </template>
