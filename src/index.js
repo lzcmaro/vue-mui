@@ -16,6 +16,7 @@ import Input from './components/input'
 import Link from './components/link'
 import ListItem from './components/list-item'
 import List from './components/list'
+import Loadmore from './components/loadmore'
 import Modal from './components/modal'
 import Overlay from './components/overlay'
 import Spinner from './components/spinner'
@@ -44,6 +45,7 @@ const install = function(Vue) {
   Vue.component(Link.name, Link)
   Vue.component(ListItem.name, ListItem)
   Vue.component(List.name, List)
+  Vue.component(Loadmore.name, Loadmore)
   Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
   Vue.component(Spinner.name, Spinner)
@@ -81,6 +83,7 @@ module.exports = {
   Link,
   ListItem,
   List,
+  Loadmore,
   Modal,
   Overlay,
   Spinner,

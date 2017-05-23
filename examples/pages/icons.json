@@ -13,10 +13,10 @@
   "bottom",
   "align-top",
   "align-bottom",
-  "arrow-left",
-  "arrow-right",
-  "arrow-top",
-  "arrow-bottom",
+  "arrow-left-circle",
+  "arrow-right-circle",
+  "arrow-top-circle",
+  "arrow-bottom-circle",
   "right-circle",
   "right-circle-fill",
   "refresh",
@@ -44,5 +44,7 @@
   "spinner3",
   "success",
   "failure",
-  "warning"
+  "warning",
+  "arrow-up",
+  "arrow-down"
 ]

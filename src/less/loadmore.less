@@ -1,0 +1,26 @@
+.loadmore {
+  overflow: hidden;
+
+  .loadmore-top,
+  .loadmore-bottom {
+    height: 40px;
+    line-height: 40px;
+    color: @color-text-gray;
+    font-size: 12px;
+    text-align: center;
+
+    > .icon {
+      vertical-align: -3px;
+    }
+  }
+  .loadmore-top {
+    margin-top: -40px;
+  }
+  .loadmore-bottom {
+    margin-bottom: -40px;
+  }
+
+  .loadmore-inner.dropped {
+    .transition(.2s)
+  }
+}

@@ -38,9 +38,9 @@
         "icon": "popover"
       },
       {
-        "path": "/scroll",
-        "name": "Scroll",
-        "icon": "scroll"
+        "path": "/loadmore",
+        "name": "Load More",
+        "icon": "load-more"
       },
       {
         "path": "/infinite-scroll",
