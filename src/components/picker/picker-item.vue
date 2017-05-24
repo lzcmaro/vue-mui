@@ -1,11 +1,6 @@
 <template>
   <div class="picker-column">
-    <div class="picker-scroller"
-    :style="columnStyles()"
-    @touchstart="handleTouchStart"
-    @touchmove="handleTouchMove"
-    @touchend="handleTouchEnd"
-    @touchcancel="handleTouchCancel">
+    <div class="picker-scroller" :style="columnStyles()" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd" @touchcancel="handleTouchCancel">
       <div class="picker-item" :class="option === value ? 'picker-item-selected' : ''" v-for="option in options" @click="handleItemClick(option,name)" :style="[itemStyle]">{{option}}</div>
     </div>
   </div>
@@ -32,6 +27,10 @@ export default {
     columnHeight: {
       required: true,
       type: Number
+    },
+    onChange: {
+      required: true,
+      type: Function
     }
   },
   data() {
@@ -52,6 +51,7 @@ export default {
   methods: {
     columnStyles() {
       const translateString = `translate3d(0, ${this.scrollerTranslate}px, 0)`;
+
       const style = {
         MsTransform: translateString,
         MozTransform: translateString,
@@ -59,6 +59,7 @@ export default {
         WebkitTransform: translateString,
         transform: translateString
       };
+
       if (this.isMoving) {
         style.transitionDuration = '0ms';
       }
@@ -92,32 +93,24 @@ export default {
       this.maxTranslate = this.columnHeight / 2 - this.itemHeight / 2;
     },
 
-    onValueSelected(v) {
-      console.log('value____', v);
-      console.log('name', this.name);
-
-      console.log('parent_____', this.$parent);
-      this.currentValue = v;
-      this.$parent.valueGroups[this.name] = v;
+    onValueSelected(value) {
+      this.currentValue = value;
+      this.$parent.valueGroups[this.name] = value; // 修改父组件的值
       this.computeTranslate();
     },
 
     handleTouchStart(event) {
       const startTouchY = event.targetTouches[0].pageY;
-
       this.startTouchY = startTouchY;
       this.startScrollerTranslate = this.scrollerTranslate;
     },
 
     handleTouchMove(event) {
       event.preventDefault();
-
       const touchY = event.targetTouches[0].pageY;
-
       if (!this.isMoving) {
         this.isMoving = true;
       }
-
       let nextScrollerTranslate =
         this.startScrollerTranslate + touchY - this.startTouchY;
       if (nextScrollerTranslate < this.minTranslate) {
@@ -138,7 +131,7 @@ export default {
         return;
       }
 
-      this.isMoving = 0;
+      this.isMoving = false;
       this.startTouchY = 0;
       this.startScrollerTranslate = 0;
 
@@ -153,9 +146,11 @@ export default {
             (this.scrollerTranslate - this.maxTranslate) / this.itemHeight
           );
         }
+        this.onChange(this.options[activeIndex], this.name);
         this.onValueSelected(this.options[activeIndex]);
       }, 0);
     },
+
     handleTouchCancel() {
       if (!this.isMoving) {
         return;
@@ -170,11 +165,8 @@ export default {
     handleItemClick(option, name) {
       console.log('option', option);
       console.log('name', name);
-      this.$emit('click', option, name);
-
-      console.log('value:', this.currentValue);
-
       if (option !== this.currentValue) {
+        this.$emit('click', option, name);
         this.onValueSelected(option);
       }
     }
@@ -184,6 +176,7 @@ export default {
     this.computeTranslate();
   }
 };
+
 </script>
 
 <style lang="css">

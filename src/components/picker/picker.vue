@@ -8,6 +8,7 @@
               :value="valueGroups[name]"
               :itemHeight="itemHeight"
               :columnHeight="height"
+              :onChange="onChange"
               @click="handleItemClick">
             </PickItem>
             <div class="picker-highlight" :style="highlightStyles()"></div>
@@ -36,6 +37,10 @@ export default {
     height: {
       type: Number,
       default: 216
+    },
+    onChange: {
+      required: true,
+      type: Function
     }
   },
 
@@ -111,6 +116,7 @@ export default {
     white-space: nowrap;
     color: #999;
     overflow: hidden;
+    font-size: 14px;
     text-overflow: ellipsis
 }
 .picker-container .picker-column .picker-item.picker-item-selected {
