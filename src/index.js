@@ -66,7 +66,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   $,
   install,
-  version: '1.0.0-beta4',
+  version: '1.0.0-beta5',
   ActionSheetButton,
   ActionSheet,
   Alert,

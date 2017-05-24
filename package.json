@@ -1,6 +1,6 @@
 {
   "name": "v-mui",
-  "version": "1.0.0-beta4",
+  "version": "1.0.0-beta5",
   "description": "Mobile UI elements for Vue 2.0",
   "main": "dist/vue-mui.js",
   "scripts": {
