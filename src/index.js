@@ -26,6 +26,7 @@ import TabItem from './components/tab-item'
 import Tabbar from './components/tabbar'
 import Tabs from './components/tabs'
 import Toast from './components/toast'
+import Picker from './components/picker/picker'
 
 const install = function(Vue) {
   if (install.installed) return
@@ -49,6 +50,7 @@ const install = function(Vue) {
   Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
   Vue.component(Spinner.name, Spinner)
+  Vue.component(Picker.name, Picker)
   Vue.component(Switch.name, Switch)
   Vue.component(TabContent.name, TabContent)
   Vue.component(TabItem.name, TabItem)
@@ -79,6 +81,7 @@ module.exports = {
   Icon,
   Indicator,
   InfiniteScroll,
+  Picker,
   Input,
   Link,
   ListItem,
