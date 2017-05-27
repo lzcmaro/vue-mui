@@ -1,14 +1,37 @@
 <template>
   <div style="padding-top:44px;">
-    <vui-header fixed>Picker</vui-header>
-    <div style="padding:8px 0;text-align:center;" @click="visibled = !visibled">选择城市: {{defaultCity.province}} - {{defaultCity.city}} - {{defaultCity.area}}</div>
-    <vui-picker :valueGroups="valueGroups" :onChange="onChange" :optionGroups="optionGroups" @click="handleItemClick"></vui-picker>
-    <div style="text-align:center;padding:6px 0;">Hi, {{valueGroups.title}} {{valueGroups.firstName}} {{valueGroups.secondName}}</div>
-    <vui-action-sheet :show="visibled" :cancelButton="true" cancelButtonText="Cancel" @cancel="handleCancel">
-      <div style="width:100%;height:200px;z-index:100001;background:#fff;">
-        <vui-picker :valueGroups="defaultCity" :onChange="onChange" :optionGroups="cityGroups" @click="handleItemClick"></vui-picker>
-      </div>
-    </vui-action-sheet>
+      <vui-header fixed>Picker</vui-header>
+      <div style="padding:8px 0;text-align:center;" @click="visibled = !visibled">选择城市: {{defaultCity.province.value}} - {{defaultCity.city.value}} - {{defaultCity.area.value}}</div>
+      <vui-picker>
+          <vui-picker-column @click="handleItemClick" :columnHeight="height" :itemHeight="itemHeight" :onChange="onChange" :options="optionGroups.firstName">
+              <vui-picker-item :onChange="onChange" v-for="option in optionGroups.firstName" :option="option" :options="optionGroups.firstName" :itemHeight="itemHeight" :value='valueGroups.firstName'>
+                  {{option}}
+              </vui-picker-item>
+          </vui-picker-column>
+          <vui-picker-column @click="handleItemClick" :columnHeight="height" :itemHeight="itemHeight" :onChange="onChange" :options="optionGroups.firstName">
+              <vui-picker-item :onChange="onChange" v-for="option in optionGroups.secondName" :option="option" :itemHeight="itemHeight" :value='valueGroups.secondName'>
+                  {{option}}
+              </vui-picker-item>
+          </vui-picker-column>
+      </vui-picker>
+      <div style="text-align:center;padding:6px 0;">Hi, {{valueGroups.title}} {{valueGroups.firstName}} {{valueGroups.secondName}}</div>
+
+      <vui-action-sheet :show="visibled" :cancelButton="true" cancelButtonText="Cancel" @cancel="handleCancel">
+          <div style="width:100%;height:200px;z-index:100001;background:#fff;">
+              <vui-picker @click="handleItemClick">
+                  <vui-picker-column @click="handleItemClick" :columnHeight="height" :itemHeight="itemHeight" :onChange="onChange" :options="cityGroups.province">
+                      <vui-picker-item :onChange="onChange" v-for="option in cityGroups.province" :option="option" :itemHeight="itemHeight" :value="defaultCity.province">
+                          {{option.value}}
+                      </vui-picker-item>
+                  </vui-picker-column>
+                  <vui-picker-column @click="handleItemClick" :columnHeight="height" :itemHeight="itemHeight" :onChange="onChange" :options="cityGroups.city">
+                      <vui-picker-item :onChange="onChange" v-for="option in cityGroups.city" :option="option" :itemHeight="itemHeight" :value="defaultCity.city">
+                          {{option.value}}
+                      </vui-picker-item>
+                  </vui-picker-column>
+              </vui-picker>
+          </div>
+      </vui-action-sheet>
   </div>
 </template>
 
@@ -30,17 +53,27 @@ export default {
       },
 
       defaultCity: {
-        province: '广西壮族自治区',
-        city: '来宾市',
-        area: '兴宾区'
+        province: {
+          key: '450000',
+          value: '广西壮族自治区'
+        },
+        city: {
+          key: '451300',
+          value: '来宾市',
+        },
+        area: {
+          key: '451302',
+          value: '兴宾区'
+        }
       },
 
       cityGroups: {
-        province: Object.values(cityList['86']),
-        city: ["南宁市", "柳州市", "桂林市", "梧州市", "北海市", "防城港市", "钦州市", "贵港市", "玉林市", "百色市", "贺州市", "河池市", "来宾市", "崇左市"],
-        area: ["兴宾区", "忻城县", "象州县", "武宣县", "金秀瑶族自治县", "合山市"]
+        province: this.generateKeyValueObj(cityList['86']),
+        city: this.generateKeyValueObj(cityList['450000']),
+        area: this.generateKeyValueObj(cityList['451300'])
       },
-
+      itemHeight: 36,
+      height: 216,
       visibled: false,
       provinceKey: null,
       cityKey: null,
@@ -49,18 +82,31 @@ export default {
   },
 
   methods: {
-    onChange(a, b) {
-      console.log('city', a);
-      console.log('name', b);
-      this._updateData(a, b);
+    generateKeyValueObj(o) {
+      var p = []
+      for(var k in o){
+        p.push({
+          'key': k,
+          'value': o[k]
+        })
+      }
+      return p
+    },
+
+    onChange(e) {
+      console.log('Index___________', e)
+      // this.valueGroups.firstName = this.optionGroups.firstName[e]
+      // this.valueGroups.secondName = this.optionGroups.secondName[e]
     },
     getKeybyValue(object, value) {
       if (object) {
         return Object.keys(object).find(key => object[key] === value);
       }
     },
-    handleItemClick(option, name) {
-      this._updateData(option, name);
+    handleItemClick(event) {
+      console.log('click event', event.target)
+
+      //this._updateData(option, name);
     },
     handleCancel() {
       this.visibled = false;

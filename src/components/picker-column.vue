@@ -1,30 +1,24 @@
 <template>
   <div class="picker-column">
-    <div class="picker-scroller" :style="columnStyles()" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd" @touchcancel="handleTouchCancel">
-      <div class="picker-item" :class="option === value ? 'picker-item-selected' : ''" v-for="option in options" @click="handleItemClick(option,name)" :style="[itemStyle]">{{option}}</div>
+    <div class="picker-scroller" @click="handleItemClick" :style="columnStyles()" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd" @touchcancel="handleTouchCancel">
+      <slot></slot>
     </div>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'vue-picker-item',
+  name: 'vui-picker-column',
   props: {
     options: {
       required: true,
       type: Array
     },
-    name: {
-      required: true,
-      type: String
-    },
-    value: {
-      required: true
-    },
-    itemHeight: {
+    columnHeight: {
       required: true,
       type: Number
     },
-    columnHeight: {
+    itemHeight: {
       required: true,
       type: Number
     },
@@ -35,11 +29,7 @@ export default {
   },
   data() {
     return {
-      currentValue: this.value,
-      itemStyle: {
-        height: this.itemHeight + 'px',
-        lineHeight: this.itemHeight + 'px'
-      },
+      currentIndex: 0,
       isMoving: false,
       startTouchY: 0,
       startScrollerTranslate: 0,
@@ -49,6 +39,47 @@ export default {
     };
   },
   methods: {
+    computeTranslate() {
+      let selectedIndex = this.currentIndex;
+      console.log(this)
+      console.log('selectedIndex_____________________', selectedIndex)
+      if (selectedIndex < 0) {
+        // throw new ReferenceError();
+        console.warn(
+          'Warning: "' +
+            this.name +
+            '" doesn\'t contain an option of "' +
+            this.currentValue +
+            '".'
+        );
+        this.onValueSelected(selectedIndex);
+        selectedIndex = 0;
+      }
+
+      this.scrollerTranslate =
+        this.columnHeight / 2 -
+        this.itemHeight / 2 -
+        selectedIndex * this.itemHeight;
+      this.minTranslate =
+        this.columnHeight / 2 -
+        this.itemHeight * this.options.length +
+        this.itemHeight / 2;
+      this.maxTranslate = this.columnHeight / 2 - this.itemHeight / 2;
+    },
+
+    _onChange(e) {
+      console.log('e__________', e);
+    },
+
+    onValueSelected(index) {
+      this.currentIndex = index;
+      this.computeTranslate();
+    },
+
+    handleItemClick(event) {
+      this.$emit('click', event)
+    },
+
     columnStyles() {
       const translateString = `translate3d(0, ${this.scrollerTranslate}px, 0)`;
 
@@ -66,39 +97,6 @@ export default {
 
       return style;
     },
-
-    computeTranslate() {
-      let selectedIndex = this.options.indexOf(this.currentValue);
-      if (selectedIndex < 0) {
-        // throw new ReferenceError();
-        console.warn(
-          'Warning: "' +
-            this.name +
-            '" doesn\'t contain an option of "' +
-            this.currentValue +
-            '".'
-        );
-        this.onValueSelected(this.options[0]);
-        selectedIndex = 0;
-      }
-
-      this.scrollerTranslate =
-        this.columnHeight / 2 -
-        this.itemHeight / 2 -
-        selectedIndex * this.itemHeight;
-      this.minTranslate =
-        this.columnHeight / 2 -
-        this.itemHeight * this.options.length +
-        this.itemHeight / 2;
-      this.maxTranslate = this.columnHeight / 2 - this.itemHeight / 2;
-    },
-
-    onValueSelected(value) {
-      this.currentValue = value;
-      this.$parent.valueGroups[this.name] = value; // 修改父组件的值
-      this.computeTranslate();
-    },
-
     handleTouchStart(event) {
       const startTouchY = event.targetTouches[0].pageY;
       this.startTouchY = startTouchY;
@@ -137,6 +135,7 @@ export default {
 
       setTimeout(() => {
         let activeIndex;
+
         if (this.scrollerTranslate > this.maxTranslate) {
           activeIndex = 0;
         } else if (this.scrollerTranslate < this.minTranslate) {
@@ -146,8 +145,8 @@ export default {
             (this.scrollerTranslate - this.maxTranslate) / this.itemHeight
           );
         }
-        this.onChange(this.options[activeIndex], this.name);
-        this.onValueSelected(this.options[activeIndex]);
+        this.onValueSelected(activeIndex)
+        this.onChange(activeIndex);
       }, 0);
     },
 
@@ -160,18 +159,8 @@ export default {
       this.startTouchY = 0;
       this.startScrollerTranslate = 0;
       this.scrollerTranslate = this.startScrollerTranslate;
-    },
-
-    handleItemClick(option, name) {
-      console.log('option', option);
-      console.log('name', name);
-      if (option !== this.currentValue) {
-        this.$emit('click', option, name);
-        this.onValueSelected(option);
-      }
     }
   },
-
   created() {
     this.computeTranslate();
   }
