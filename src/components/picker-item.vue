@@ -37,7 +37,7 @@ export default {
   methods: {
     selectedItem(option) {
       if (typeof option === 'object') {
-        if (!option.key || option.value) {
+        if (!option.key || !option.value) {
           // throw new ReferenceError();
           console.warn('Warning: data must be key and value.');
           return;
