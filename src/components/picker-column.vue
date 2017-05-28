@@ -10,6 +10,14 @@
 export default {
   name: 'vui-picker-column',
   props: {
+    name: {
+      required: true,
+      type: String
+    },
+    value: {
+      required: true,
+      type: [String, Object]
+    },
     options: {
       required: true,
       type: Array
@@ -30,6 +38,7 @@ export default {
   data() {
     return {
       currentIndex: 0,
+      currentValue: this.value,
       isMoving: false,
       startTouchY: 0,
       startScrollerTranslate: 0,
@@ -40,16 +49,24 @@ export default {
   },
   methods: {
     computeTranslate() {
-      let selectedIndex = this.currentIndex;
-      console.log(this)
-      console.log('selectedIndex_____________________', selectedIndex)
+      let selectedIndex;
+      if (typeof this.currentValue === 'object') {
+        var arr = [];
+        for (var i = 0; i < this.options.length; i++) {
+          arr.push(this.options[i].key);
+        }
+        selectedIndex = arr.indexOf(this.currentValue.key);
+      } else {
+        selectedIndex = this.options.indexOf(this.currentValue);
+      }
+
       if (selectedIndex < 0) {
         // throw new ReferenceError();
         console.warn(
           'Warning: "' +
             this.name +
             '" doesn\'t contain an option of "' +
-            this.currentValue +
+            this.currentValue.value +
             '".'
         );
         this.onValueSelected(selectedIndex);
@@ -67,17 +84,14 @@ export default {
       this.maxTranslate = this.columnHeight / 2 - this.itemHeight / 2;
     },
 
-    _onChange(e) {
-      console.log('e__________', e);
-    },
-
     onValueSelected(index) {
       this.currentIndex = index;
+      this.currentValue = this.options[index];
       this.computeTranslate();
     },
 
     handleItemClick(event) {
-      this.$emit('click', event)
+      this.$emit('click', event);
     },
 
     columnStyles() {
@@ -135,7 +149,6 @@ export default {
 
       setTimeout(() => {
         let activeIndex;
-
         if (this.scrollerTranslate > this.maxTranslate) {
           activeIndex = 0;
         } else if (this.scrollerTranslate < this.minTranslate) {
@@ -145,8 +158,8 @@ export default {
             (this.scrollerTranslate - this.maxTranslate) / this.itemHeight
           );
         }
-        this.onValueSelected(activeIndex)
-        this.onChange(activeIndex);
+        this.onValueSelected(activeIndex);
+        this.onChange(activeIndex, this.name);
       }, 0);
     },
 
@@ -165,7 +178,6 @@ export default {
     this.computeTranslate();
   }
 };
-
 </script>
 
 <style lang="css">

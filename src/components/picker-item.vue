@@ -14,7 +14,8 @@ export default {
       required: true
     },
     value: {
-      required: true
+      required: true,
+      type: [String, Object]
     },
     itemHeight: {
       required: true,
@@ -63,7 +64,6 @@ export default {
     }
   }
 };
-
 </script>
 <style lang="css">
 </style>

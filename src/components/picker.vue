@@ -32,16 +32,9 @@ export default {
         -(this.itemHeight / 2) +
         'px'
       );
-    },
-
-    handleItemClick(option, name) {
-      console.log('parent option:', option);
-      console.log('parent name:', name);
-      this.$emit('click', option, name);
     }
   }
 };
-
 </script>
 
 <style lang="css">
