@@ -12,26 +12,14 @@ export default {
     option: {
       type: [String, Object],
       required: true
-    },
-    value: {
-      required: true,
-      type: [String, Object]
-    },
-    itemHeight: {
-      required: true,
-      type: Number
-    },
-    onChange: {
-      required: true,
-      type: Function
     }
   },
   data() {
     return {
-      currentValue: this.value,
+      currentValue: this.$parent.value,
       itemStyle: {
-        height: this.itemHeight + 'px',
-        lineHeight: this.itemHeight + 'px'
+        height: this.$parent.itemHeight + 'px',
+        lineHeight: this.$parent.itemHeight + 'px'
       }
     };
   },
@@ -44,13 +32,13 @@ export default {
           return;
         }
 
-        if (option.key === this.value.key) {
+        if (option.key === this.$parent.value.key) {
           return 'picker-item-selected';
         }
       }
 
       if (typeof option === 'string') {
-        if (option === this.value) {
+        if (option === this.$parent.value) {
           return 'picker-item-selected';
         }
       }
@@ -58,8 +46,9 @@ export default {
       return '';
     },
     handleItemClick(e) {
+      e.preventDefault();
       if (e.target.innerText !== this.currentValue) {
-        this.$emit('click', e);
+        this.$emit('click', e, this.$parent.name);
       }
     }
   }

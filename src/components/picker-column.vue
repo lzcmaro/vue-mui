@@ -1,6 +1,6 @@
 <template>
-  <div class="picker-column">
-    <div class="picker-scroller" @click="handleItemClick" :style="columnStyles()" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd" @touchcancel="handleTouchCancel">
+  <div class="picker-column" @click="handleItemClick">
+    <div class="picker-scroller" :style="columnStyles()" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd" @touchcancel="handleTouchCancel">
       <slot></slot>
     </div>
   </div>
@@ -47,26 +47,23 @@ export default {
       maxTranslate: 0
     };
   },
+  watch: {
+    value(value) {
+      console.log('value', value);
+      this.currentValue = value;
+      this.computeTranslate();
+    }
+  },
   methods: {
     computeTranslate() {
-      let selectedIndex;
-      if (typeof this.currentValue === 'object') {
-        var arr = [];
-        for (var i = 0; i < this.options.length; i++) {
-          arr.push(this.options[i].key);
-        }
-        selectedIndex = arr.indexOf(this.currentValue.key);
-      } else {
-        selectedIndex = this.options.indexOf(this.currentValue);
-      }
-
+      let selectedIndex = this.getCurrentIndex();
       if (selectedIndex < 0) {
         // throw new ReferenceError();
         console.warn(
           'Warning: "' +
             this.name +
             '" doesn\'t contain an option of "' +
-            this.currentValue.value +
+            this.currentValue +
             '".'
         );
         this.onValueSelected(selectedIndex);
@@ -84,14 +81,28 @@ export default {
       this.maxTranslate = this.columnHeight / 2 - this.itemHeight / 2;
     },
 
-    onValueSelected(index) {
-      this.currentIndex = index;
-      this.currentValue = this.options[index];
-      this.computeTranslate();
+    getCurrentIndex() {
+      let selectedIndex;
+      if (typeof this.currentValue === 'object') {
+        var arr = [];
+        for (var i = 0; i < this.options.length; i++) {
+          arr.push(this.options[i].key);
+        }
+        selectedIndex = arr.indexOf(this.currentValue.key);
+      } else {
+        selectedIndex = this.options.indexOf(this.currentValue);
+      }
+
+      return selectedIndex;
     },
 
-    handleItemClick(event) {
-      this.$emit('click', event);
+    onValueSelected(index) {
+      this.currentIndex = index < 0 ? 0 : index;
+      if (!this.options.length) {
+        return;
+      }
+      this.currentValue = this.options[this.currentIndex];
+      this.computeTranslate();
     },
 
     columnStyles() {
@@ -172,6 +183,10 @@ export default {
       this.startTouchY = 0;
       this.startScrollerTranslate = 0;
       this.scrollerTranslate = this.startScrollerTranslate;
+    },
+
+    handleItemClick(e) {
+      this.$emit('click', e, this.name);
     }
   },
   created() {
