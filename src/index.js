@@ -19,6 +19,9 @@ import List from './components/list'
 import Loadmore from './components/loadmore'
 import Modal from './components/modal'
 import Overlay from './components/overlay'
+import PickerColumn from './components/picker-column'
+import PickerItem from './components/picker-item'
+import Picker from './components/picker'
 import Spinner from './components/spinner'
 import Switch from './components/switch'
 import TabContent from './components/tab-content'
@@ -48,6 +51,9 @@ const install = function(Vue) {
   Vue.component(Loadmore.name, Loadmore)
   Vue.component(Modal.name, Modal)
   Vue.component(Overlay.name, Overlay)
+  Vue.component(PickerColumn.name, PickerColumn)
+  Vue.component(PickerItem.name, PickerItem)
+  Vue.component(Picker.name, Picker)
   Vue.component(Spinner.name, Spinner)
   Vue.component(Switch.name, Switch)
   Vue.component(TabContent.name, TabContent)
@@ -86,6 +92,9 @@ module.exports = {
   Loadmore,
   Modal,
   Overlay,
+  PickerColumn,
+  PickerItem,
+  Picker,
   Spinner,
   Switch,
   TabContent,
