@@ -13,10 +13,10 @@ const getScrollTop = function(element) {
 
 const getVisibleHeight = function(element) {
   if (element === window) {
-    return document.documentElement.clientHeight
+    return document.documentElement.offsetHeight
   }
 
-  return element.clientHeight
+  return element.offsetHeight
 }
 
 const getScrollEventTarget = function(element) {
@@ -35,10 +35,10 @@ const getScrollEventTarget = function(element) {
 
 const scrollHandler = function() {
   const eventTarget = this.scrollEventTarget
-  const clientHeight = getVisibleHeight(eventTarget)
+  const offsetHeight = getVisibleHeight(eventTarget)
   const scrollHeight = eventTarget.scrollHeight
   const scrollTop = getScrollTop(eventTarget)
-  const shouldScroll = scrollHeight - scrollTop <= clientHeight + this.scrollDistance
+  const shouldScroll = scrollHeight - scrollTop <= offsetHeight + this.scrollDistance
 
   if (shouldScroll && this.scrollEnabled) {
     this.expression()
@@ -80,10 +80,10 @@ function throttle(func, wait) {
 }
 
 const hasScrollContent = function(element) {
-  const clientHeight = getVisibleHeight(element)
+  const offsetHeight = getVisibleHeight(element)
   const scrollHeight = element.scrollHeight
 
-  return scrollHeight > clientHeight
+  return scrollHeight > offsetHeight
 }
 
 const attachScrollListener = function() {
