@@ -21,7 +21,7 @@
       <p>地址：{{cityGroups.province[provinceCode]}} - {{cityGroups.city[cityCode]}} - {{cityGroups.area[areaCode]}}</p>
       <vui-button size="small" @click="visibleActionSheet = true">点击选择地址</vui-button>
       
-      <vui-action-sheet :show="visibleActionSheet" @cancel="handleCloseActionSheet">
+      <vui-action-sheet :show="visibleActionSheet" cancelButtonText="确定" @cancel="handleCloseActionSheet">
         <vui-picker :visible-item-count="5" @change="handleChangeAddress">
           <vui-picker-column :activeKey="provinceCode">
             <vui-picker-item v-for="(value, key) in cityGroups.province" :eventKey="key">
