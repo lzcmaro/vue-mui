@@ -1,4 +1,5 @@
 <script>
+import isVisibleElement from '../utils/isVisibleElement'
 const DETAULT_VISIBLE_ITEMS = 3
 
 export default {
@@ -57,11 +58,27 @@ export default {
     )
   },
   mounted() {
-    // 设置picker-inner的高度
     const $inner = this.$refs.inner
-    const $item = $inner.querySelector('.picker-column .picker-item')
-    const itemHeight = $item.clientHeight
+    const itemSelector = '.picker-column .picker-item'
+    let $item, emptyDiv
+
+    // 避免picker放到隐藏的元素中，而无法获取到正确的元素高度，这里需要额外处理
+    if (isVisibleElement(this.$el) && this.$el.offsetHeight === 0) {
+      const styles = { position: 'absolute', visibility: 'hidden', display: 'block', top: '10000px' }
+      emptyDiv = document.createElement('div')    
+      for (let k in styles) {
+        emptyDiv.style[k] = styles[k]
+      }
+      emptyDiv.appendChild(this.$el.cloneNode(true))
+      document.body.appendChild(emptyDiv)
+      $item = emptyDiv.querySelector(itemSelector)
+    } else {
+      $item = $inner.querySelector(itemSelector)
+    }
+    // 设置picker-inner的高度
+    const itemHeight = $item ? $item.offsetHeight : 0
     $inner.style.height = itemHeight * this.visibleItemCount + 'px'
+    emptyDiv && document.body.removeChild(emptyDiv)
   }
 }
 </script>

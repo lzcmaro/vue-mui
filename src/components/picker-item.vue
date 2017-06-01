@@ -1,5 +1,5 @@
 <template>
-  <label class="picker-item" :class="{'active': $parent.activeKey === eventKey}">
+  <label class="picker-item" :class="{'active': $parent.activeKey === eventKey}" :data-key="eventKey">
     <slot></slot>
   </label>
 </template>

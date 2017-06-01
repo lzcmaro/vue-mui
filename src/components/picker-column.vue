@@ -12,6 +12,9 @@
 </template>
 
 <script>
+import isVisibleElement from '../utils/isVisibleElement'
+import getParent from '../utils/getParent'
+
 export default {
   name: 'vui-picker-column',
   props: {
@@ -110,11 +113,8 @@ export default {
         let activeIndex;
         if (this.scrollerTranslate > this.maxTranslate) {
           activeIndex = 0;
-          // 在activeIndex = 0时，如果继续往下拖，它的activeKey不会变，这里需要调用computeTranslate()回复位置
-          this.computeTranslate()
         } else if (this.scrollerTranslate < this.minTranslate) {
           activeIndex = this.itemLength - 1;
-          this.computeTranslate()
         } else {
           activeIndex = -Math.floor(
             (this.scrollerTranslate - this.maxTranslate) / this.itemHeight
@@ -122,6 +122,10 @@ export default {
         }
 
         const eventKey = this.getItemEventKey(activeIndex)
+        // 在activeIndex = 0或activeIndex = itemLength - 1时
+        // 如果继续拖，它的activeKey不会变，这里需要调用computeTranslate()回复位置
+        // 而且为了避免外边没有更新this.activeKey，而导致组件没有复位，这里先调用computeTranslate()
+        this.computeTranslate()
         this.$emit('change', eventKey)
       }, 0);
     },
@@ -145,15 +149,43 @@ export default {
       console.warn('Missing required prop: "activeKey"')
     }
   },
+  updated() {
+    const children = this.$children
+    // children发生变化时（可能是动态的级联选项），更新this.itemLength，并重新设置元素的translate
+    if (children.length !== this.itemLength) {
+      this.itemLength = children.length
+      this.computeTranslate()
+    }
+  },
   mounted() {
     // 因为父组件picker会在mounted中重置picker-inner的height值，
-    // 这里需要等待下一次渲染完成后才能获取到正确的clientHeight
+    // 这里需要等待下一次渲染完成后才能获取到正确的offsetHeight
     this.$nextTick(() => {
-      const $item = this.$el.querySelector('.picker-item')
-      $item && (this.itemHeight = $item.clientHeight)
-      this.containerHeight = this.$el.clientHeight
+      const itemSelector = '.picker-item'
+      let $container, emptyDiv
+
+      // 避免picker放到隐藏的元素中，而无法获取到正确的元素高度，这里需要额外处理
+      if (isVisibleElement(this.$el) && this.$el.offsetHeight === 0) {
+        const styles = { position: 'absolute', visibility: 'hidden', display: 'block', top: '10000px' }
+        emptyDiv = document.createElement('div')    
+        for (let k in styles) {
+          emptyDiv.style[k] = styles[k]
+        }
+        // 这里把整个picker结构都clone出来，避免它的样式受到影响
+        const $picker = getParent(this.$el, '.picker')
+        emptyDiv.appendChild($picker.cloneNode(true))
+        document.body.appendChild(emptyDiv)
+        $container = emptyDiv.querySelector('.picker-column')
+      } else {
+        $container = this.$el
+      }
+      
+      const $item = $container.querySelector(itemSelector)
+      this.itemHeight = $item ? $item.offsetHeight : 0
+      this.containerHeight = $container.offsetHeight
       this.itemLength = this.$children.length
       this.computeTranslate()
+      emptyDiv && document.body.removeChild(emptyDiv)
     })
   }
 }

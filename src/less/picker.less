@@ -1,7 +1,7 @@
 .picker {
   width: 100%;
   z-index: @level-navigation;
-  
+
   .picker-inner {
     position: relative;
     height: 100%;
@@ -11,7 +11,7 @@
   }
 
   .picker-column {
-    .flex(auto);
+    .flex(1 1);
     height: 100%;
     position: relative;
     max-height: 100%;
@@ -52,7 +52,31 @@
     left: 0;
     margin-top: -18px;
     pointer-events: none;
-    .hairline(top, @border-color);
-    .hairline(bottom, @border-color);
+    
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background-color: @border-color;
+      display: block;
+      z-index: 1;
+      .scaleY(0.5);
+    }
+
+    &:before {
+      left: 0;
+      top: 0;
+      bottom: auto;
+      right: auto;
+    }
+
+    &:after {
+      left: 0;
+      bottom: 0;
+      right: auto;
+      top: auto;
+    }
   }
 }
