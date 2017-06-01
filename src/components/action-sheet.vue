@@ -1,5 +1,5 @@
 <template>
-  <vui-modal type="actionsheet" transition="slide-up" :show="show">
+  <vui-modal type="actionsheet" transition="slide-up" :show="show" @click-backdrop="$emit('cancel')">
     <slot></slot>
     <template slot="footer" v-if="cancelButton">
       <vui-action-sheet-button @click="$emit('cancel', $event)">{{cancelButtonText}}</vui-action-sheet-button>

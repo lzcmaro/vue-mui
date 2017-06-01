@@ -1,6 +1,6 @@
 <template> 
   <div class="modal">
-    <vui-overlay v-if="backdrop" v-show="show"></vui-overlay>
+    <vui-overlay v-if="backdrop" v-show="show" @click="$emit('click-backdrop', $event)"></vui-overlay>
     <transition :name="transition">
       <div :class="{[type]: !!type, [transition]: true}" class="modal-dialog" :style="{zIndex: zIndex}" v-show="show">
         <div class="modal-content">
@@ -47,17 +47,17 @@ export default {
       zIndex: zIndex
     }
   },
-  mounted() {
-    if (this.show) {
-      this.zIndex = (++zIndex)
-    }
-    $(document.body).toggleClass('modal-open', this.show)
-  },
   watch: {
     show(val) {
       this.zIndex = val ? (++zIndex) : (--zIndex)
       $(document.body).toggleClass('modal-open', val)
     }
+  },
+  mounted() {
+    if (this.show) {
+      this.zIndex = (++zIndex)
+    }
+    $(document.body).toggleClass('modal-open', this.show)
   }
 }
 </script>

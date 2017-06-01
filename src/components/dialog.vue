@@ -1,5 +1,5 @@
 <template>
-  <vui-modal type="dialog" :show="show">
+  <vui-modal type="dialog" :show="show" @click-backdrop="$emit('close')">
     <template slot="header" v-if="title || closeButton">
       {{title}}
       <vui-icon class="btn-close" type="cross2" @click="$emit('close')"></vui-icon>

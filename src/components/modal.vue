@@ -1,5 +1,5 @@
 <template>
-  <vui-base-modal :show="show" :transition="transition">
+  <vui-base-modal :show="show" :transition="transition" @click-backdrop="$emit('click-backdrop', $event)">
     <template slot="header" v-if="title || closeButton">
       <a href="javascript:;" class="btn-close" @click.prevent="$emit('close', $event)" v-if="closeButton">{{closeButtonText}}</a>
       {{title}}

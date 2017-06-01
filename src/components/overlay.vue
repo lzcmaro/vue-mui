@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay" :class="transparent ? 'overlay-transparent' : ''" @click="$emit('click', $event)"></div>  
+  <div class="overlay" :class="transparent ? 'overlay-transparent' : ''" @click.stop.prevent="$emit('click', $event)"></div>  
 </template>
 
 <script>
