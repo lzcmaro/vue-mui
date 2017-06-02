@@ -1,4 +1,5 @@
 <script>
+import swap from '../utils/swap'
 import isVisibleElement from '../utils/isVisibleElement'
 const DETAULT_VISIBLE_ITEMS = 3
 
@@ -24,6 +25,10 @@ export default {
     handleChange(columnIndex, eventKey) {
       this.activeKeys[columnIndex] = eventKey
       this.$emit('change', this.activeKeys)
+    },
+    getItemHeight($container) {
+      const $item = $container.querySelector('.picker-column .picker-item')
+      return $item ? $item.offsetHeight : 0
     }
   },
   render(h) {
@@ -59,26 +64,19 @@ export default {
   },
   mounted() {
     const $inner = this.$refs.inner
-    const itemSelector = '.picker-column .picker-item'
-    let $item, emptyDiv
+    let itemHeight
 
     // 避免picker放到隐藏的元素中，而无法获取到正确的元素高度，这里需要额外处理
     if (isVisibleElement(this.$el) && this.$el.offsetHeight === 0) {
-      const styles = { position: 'absolute', visibility: 'hidden', display: 'block', top: '10000px' }
-      emptyDiv = document.createElement('div')    
-      for (let k in styles) {
-        emptyDiv.style[k] = styles[k]
-      }
-      emptyDiv.appendChild(this.$el.cloneNode(true))
-      document.body.appendChild(emptyDiv)
-      $item = emptyDiv.querySelector(itemSelector)
+      swap(this.$el, ($wrap) => {
+        itemHeight = this.getItemHeight($wrap)
+      })    
     } else {
-      $item = $inner.querySelector(itemSelector)
+      itemHeight = this.getItemHeight($inner)
     }
+
     // 设置picker-inner的高度
-    const itemHeight = $item ? $item.offsetHeight : 0
     $inner.style.height = itemHeight * this.visibleItemCount + 'px'
-    emptyDiv && document.body.removeChild(emptyDiv)
   }
 }
 </script>

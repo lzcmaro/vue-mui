@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import swap from '../utils/swap'
 import isVisibleElement from '../utils/isVisibleElement'
 import getParent from '../utils/getParent'
 
@@ -142,6 +143,10 @@ export default {
       if (children && children.length) {
         return children[activeIndex] && children[activeIndex].eventKey
       }
+    },
+    getItemHeight($container) {
+      const $item = $container.querySelector('.picker-item')
+      return $item ? $item.offsetHeight : 0
     }
   },
   created() {
@@ -161,31 +166,22 @@ export default {
     // 因为父组件picker会在mounted中重置picker-inner的height值，
     // 这里需要等待下一次渲染完成后才能获取到正确的offsetHeight
     this.$nextTick(() => {
-      const itemSelector = '.picker-item'
-      let $container, emptyDiv
-
       // 避免picker放到隐藏的元素中，而无法获取到正确的元素高度，这里需要额外处理
       if (isVisibleElement(this.$el) && this.$el.offsetHeight === 0) {
-        const styles = { position: 'absolute', visibility: 'hidden', display: 'block', top: '10000px' }
-        emptyDiv = document.createElement('div')    
-        for (let k in styles) {
-          emptyDiv.style[k] = styles[k]
-        }
         // 这里把整个picker结构都clone出来，避免它的样式受到影响
         const $picker = getParent(this.$el, '.picker')
-        emptyDiv.appendChild($picker.cloneNode(true))
-        document.body.appendChild(emptyDiv)
-        $container = emptyDiv.querySelector('.picker-column')
+        swap($picker, ($wrap) => {
+          const $container = $wrap.querySelector('.picker-column')
+          this.itemHeight = this.getItemHeight($container)
+          this.containerHeight = $container.offsetHeight
+        })
       } else {
-        $container = this.$el
+        this.itemHeight = this.getItemHeight(this.$el)
+        this.containerHeight = this.$el.offsetHeight
       }
-      
-      const $item = $container.querySelector(itemSelector)
-      this.itemHeight = $item ? $item.offsetHeight : 0
-      this.containerHeight = $container.offsetHeight
+
       this.itemLength = this.$children.length
       this.computeTranslate()
-      emptyDiv && document.body.removeChild(emptyDiv)
     })
   }
 }
