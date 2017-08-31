@@ -5,7 +5,7 @@
  */
 const swap = function(elem, cb) {
   const styles = { position: 'absolute', visibility: 'hidden', display: 'block', top: '10000px' }
-  const $wrap = document.createElement('div')    
+  const $wrap = document.createElement('div')
   for (let k in styles) {
     $wrap.style[k] = styles[k]
   }

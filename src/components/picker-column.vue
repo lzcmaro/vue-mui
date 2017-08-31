@@ -45,16 +45,16 @@ export default {
   },
   methods: {
     computeTranslate() {
-      let selectedIndex = this.getCurrentIndex();
+      let selectedIndex = this.getCurrentIndex()
       // 更新picker-scroller的translate值
-      this.scrollerTranslate = this.containerHeight / 2 - this.itemHeight / 2 - selectedIndex * this.itemHeight;
+      this.scrollerTranslate = this.containerHeight / 2 - this.itemHeight / 2 - selectedIndex * this.itemHeight
       // 最小偏移量=最后一个item在中间位置时，它距离picker-column的偏移量
-      this.minTranslate = this.containerHeight / 2 - this.itemHeight * this.itemLength + this.itemHeight / 2;
+      this.minTranslate = this.containerHeight / 2 - this.itemHeight * this.itemLength + this.itemHeight / 2
       // 最大偏移量=最前面一个item在中间位置时，它距离picker-column的偏移量
-      this.maxTranslate = this.containerHeight / 2 - this.itemHeight / 2;
+      this.maxTranslate = this.containerHeight / 2 - this.itemHeight / 2
     },
     getCurrentIndex() {
-      let selectedIndex = 0;
+      let selectedIndex = 0
       const children = this.$children
 
       if (children && children.length) {
@@ -64,62 +64,65 @@ export default {
           }
         }
       }
-      return selectedIndex;
+      return selectedIndex
     },
     columnStyles() {
-      const translateString = `translate3d(0, ${this.scrollerTranslate}px, 0)`;
-
+      const translateString = `translate3d(0, ${this.scrollerTranslate}px, 0)`
       const style = {
         MsTransform: translateString,
         MozTransform: translateString,
         OTransform: translateString,
         WebkitTransform: translateString,
         transform: translateString
-      };
+      }
 
       if (this.isMoving) {
-        style.transitionDuration = 0;
+        style.transitionDuration = 0
       }
 
-      return style;
+      return style
     },
     handleTouchStart(event) {
-      this.startTouchY = event.targetTouches[0].pageY;
-      this.startScrollerTranslate = this.scrollerTranslate;
+      this.startTouchY = event.targetTouches[0].pageY
+      this.startScrollerTranslate = this.scrollerTranslate
     },
     handleTouchMove(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      this.isMoving = true;
-      const touchY = event.targetTouches[0].pageY;
-      let nextScrollerTranslate = this.startScrollerTranslate + touchY - this.startTouchY;
+      const touchY = event.targetTouches[0].pageY
+      let nextScrollerTranslate = this.startScrollerTranslate + touchY - this.startTouchY
+
+      this.isMoving = true
+
+      event.preventDefault()
+      event.stopPropagation()
+
       if (nextScrollerTranslate < this.minTranslate) {
-        nextScrollerTranslate = this.minTranslate - Math.pow(this.minTranslate - nextScrollerTranslate, 0.8);
+        nextScrollerTranslate = this.minTranslate - Math.pow(this.minTranslate - nextScrollerTranslate, 0.8)
       } else if (nextScrollerTranslate > this.maxTranslate) {
-        nextScrollerTranslate = this.maxTranslate + Math.pow(nextScrollerTranslate - this.maxTranslate, 0.8);
+        nextScrollerTranslate = this.maxTranslate + Math.pow(nextScrollerTranslate - this.maxTranslate, 0.8)
       }
 
-      this.scrollerTranslate = nextScrollerTranslate;
+      this.scrollerTranslate = nextScrollerTranslate
     },
     handleTouchEnd(event) {
       if (!this.isMoving) {
-        return;
+        return
       }
 
-      this.isMoving = false;
-      this.startTouchY = 0;
-      this.startScrollerTranslate = 0;
+      this.isMoving = false
+      this.startTouchY = 0
+      this.startScrollerTranslate = 0
 
       setTimeout(() => {
-        let activeIndex;
+        let activeIndex
+
         if (this.scrollerTranslate > this.maxTranslate) {
-          activeIndex = 0;
+          activeIndex = 0
         } else if (this.scrollerTranslate < this.minTranslate) {
-          activeIndex = this.itemLength - 1;
+          activeIndex = this.itemLength - 1
         } else {
           activeIndex = -Math.floor(
             (this.scrollerTranslate - this.maxTranslate) / this.itemHeight
-          );
+          )
         }
 
         const eventKey = this.getItemEventKey(activeIndex)
@@ -128,15 +131,15 @@ export default {
         // 而且为了避免外边没有更新this.activeKey，而导致组件没有复位，这里先调用computeTranslate()
         this.computeTranslate()
         this.$emit('change', eventKey)
-      }, 0);
+      }, 0)
     },
     handleTouchCancel() {
       if (!this.isMoving) {
-        return;
+        return
       }
 
-      this.isMoving = false;
-      this.startTouchY = this.scrollerTranslate = this.startScrollerTranslate = 0;
+      this.isMoving = false
+      this.startTouchY = this.scrollerTranslate = this.startScrollerTranslate = 0
     },
     getItemEventKey(activeIndex) {
       const children = this.$children

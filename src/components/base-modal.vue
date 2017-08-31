@@ -1,4 +1,4 @@
-<template> 
+<template>
   <div class="modal">
     <vui-overlay v-if="backdrop" v-show="show" @click="$emit('click-backdrop', $event)"></vui-overlay>
     <transition :name="transition">
@@ -9,7 +9,7 @@
           <div class="modal-footer" v-if="$slots.footer"><slot name="footer"></slot></div>
         </div>
       </div>
-    </transition> 
+    </transition>
   </div>
 </template>
 
@@ -19,8 +19,7 @@ import VuiOverlay from './overlay'
 import modalMixins from '../mixins/modal'
 import $ from '../utils/NodeList.js'
 
-// const noop = () => {}
-let zIndex = 999;
+let zIndex = 999
 
 export default {
   name: 'vui-base-modal',

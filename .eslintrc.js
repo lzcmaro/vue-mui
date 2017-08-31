@@ -18,11 +18,9 @@ module.exports = {
     'generator-star-spacing': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    // function括号前面的空格是否必需
-    'space-before-function-paren': 0,
-    // 行末分号是否必需
-    'semi': 0,
-    // 允许尾随空格
-    'no-trailing-spaces': 0
+    // function括号前面的空格
+    'space-before-function-paren': [1, 'never'],
+    // 行末分号
+    'semi': [1, 'never']
   }
 }

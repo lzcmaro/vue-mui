@@ -150,7 +150,7 @@ export default {
           this.topStatus = val
         }, 200)
       }
-      this.topStatus = val     
+      this.topStatus = val
     },
     pullupStatus(val) {
       if (this.bottomStatus === STATUS_LOADING && val === STATUS_IDLE || val === STATUS_NO_MORE) {
@@ -211,7 +211,7 @@ export default {
     },
     handleTouchMove(event) {
       const distanceIndex = 2
-      const boundingClientRect = this.$el.getBoundingClientRect()    
+      const boundingClientRect = this.$el.getBoundingClientRect()
       if (this.startY < boundingClientRect.top && this.startY > boundingClientRect.bottom) {
         return
       }
@@ -274,13 +274,13 @@ export default {
           const status = -this.translate >= this.pullupDistance ? STATUS_FLIP : STATUS_IDLE
           this.$emit('pullup-status-change', status)
           this.bottomStatus = status
-        }        
+        }
       }
     },
     handleTouchEnd() {
       this.touchEnd = true
 
-      // pulldown    
+      // pulldown
       if (this.direction === DRIECTION_DOWN && this.getScrollTop(this.scrollEventTarget) === 0 && this.translate > 0) {
         if (this.topStatus === STATUS_FLIP) {
           this.translate = TOP_HEIGHT

@@ -34,7 +34,7 @@ export default {
   render(h) {
     let columnIndex = 0
     let $defaultSlots = this.$slots.default
-    
+
     if ($defaultSlots && $defaultSlots.length) {
       // 遍历this.$slots.default，如果为picker-column，为它注册change事件
       $defaultSlots.forEach((slot) => {
@@ -70,7 +70,7 @@ export default {
     if (isVisibleElement(this.$el) && this.$el.offsetHeight === 0) {
       swap(this.$el, ($wrap) => {
         itemHeight = this.getItemHeight($wrap)
-      })    
+      })
     } else {
       itemHeight = this.getItemHeight($inner)
     }

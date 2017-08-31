@@ -14,7 +14,7 @@ const install = function(Vue) {
   if (install.installed) return
 
 {{install}}
-  Vue.use(InfiniteScroll);
+  Vue.use(InfiniteScroll)
 }
 
 // auto install
@@ -39,7 +39,7 @@ var getComponentNames = () => {
   if (stats.isDirectory()) {
     fs.readdirSync(componentsPath).forEach(filename => {
       extname = path.extname( filename )
-      
+
       if (fs.statSync(`${componentsPath}/${filename}`).isDirectory()) {
         componentNames.push( filename )
       } else if (extname === '.vue') {

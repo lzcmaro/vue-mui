@@ -61,7 +61,7 @@ const install = function(Vue) {
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(Tabs.name, Tabs)
   Vue.component(Toast.name, Toast)
-  Vue.use(InfiniteScroll);
+  Vue.use(InfiniteScroll)
 }
 
 // auto install

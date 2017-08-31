@@ -9,13 +9,8 @@
 </template>
 
 <script>
-import VuiIcon from './icon'
-
 export default {
   name: 'vui-toast',
-  compontents: {
-    VuiIcon
-  },
   props: {
     show: {
       type: Boolean,
