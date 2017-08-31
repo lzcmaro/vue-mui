@@ -1,6 +1,7 @@
 <script>
 import swap from '../utils/swap'
 import isVisibleElement from '../utils/isVisibleElement'
+
 const DETAULT_VISIBLE_ITEMS = 3
 
 export default {
@@ -32,12 +33,31 @@ export default {
     }
   },
   render(h) {
+    const $slots = this.$slots
+    let $slotHeader = $slots.header
+    let $slotFooter = $slots.footer
+    let $slotDefault = $slots.default
     let columnIndex = 0
-    let $defaultSlots = this.$slots.default
 
-    if ($defaultSlots && $defaultSlots.length) {
+    if ($slotHeader && $slotHeader.length) {
+      $slotHeader = (
+        <div class="picker-header">{$slotHeader}</div>
+      )
+    } else {
+      $slotHeader = null
+    }
+
+    if ($slotFooter && $slotFooter.length) {
+      $slotFooter = (
+        <div class="picker-footer">{$slotFooter}</div>
+      )
+    } else {
+      $slotFooter = null
+    }
+
+    if ($slotDefault && $slotDefault.length) {
       // 遍历this.$slots.default，如果为picker-column，为它注册change事件
-      $defaultSlots.forEach((slot) => {
+      $slotDefault.forEach((slot) => {
         let componentOptions = slot.componentOptions
         // 由于无法判断当前component是否为picker-column，这里简单的判断它是否为vue component
         // 排除divider不为false的picker-column项
@@ -55,10 +75,12 @@ export default {
 
     return (
       <div class="picker">
+        {$slotHeader}
         <div ref="inner" class="picker-inner">
-          {$defaultSlots}
+          {$slotDefault}
           <div class="picker-highlight"></div>
         </div>
+        {$slotFooter}
       </div>
     )
   },

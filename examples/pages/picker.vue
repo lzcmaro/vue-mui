@@ -3,7 +3,7 @@
     <vui-header fixed>Picker</vui-header>
     <page-content>
       <p style="margin-top: 0">在校时间：{{beginYear}} 至 {{endYear}}</p>
-      
+
       <vui-picker @change="handleChangeYears">
         <vui-picker-column :activeKey="beginYear">
           <vui-picker-item v-for="(year, index) in years" :eventKey="year">
@@ -17,12 +17,13 @@
           </vui-picker-item>
         </vui-picker-column>
       </vui-picker>
-      
+
       <p>地址：{{cityGroups.province[provinceCode]}} - {{cityGroups.city[cityCode]}} - {{cityGroups.area[areaCode]}}</p>
       <vui-button size="small" @click="visibleActionSheet = true">点击选择地址</vui-button>
-      
-      <vui-action-sheet :show="visibleActionSheet" cancelButtonText="确定" @cancel="handleCloseActionSheet">
+
+      <vui-action-sheet :show="visibleActionSheet" :cancelButton="false" @cancel="handleCloseActionSheet">
         <vui-picker :visible-item-count="5" @change="handleChangeAddress">
+          <h3 slot="header">Header</h3>
           <vui-picker-column :activeKey="provinceCode">
             <vui-picker-item v-for="(value, key) in cityGroups.province" :eventKey="key">
               {{value}}
@@ -97,3 +98,12 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+  .picker-header,
+  .picker-footer {
+    h3 {
+      margin: 0;
+    }
+  }
+</style>

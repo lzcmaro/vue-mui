@@ -192,7 +192,7 @@
 }
 .skew(@x, @y) {
   -webkit-transform: skewX(@x) skewY(@y);
-      -ms-transform: skewX(@x) skewY(@y); 
+      -ms-transform: skewX(@x) skewY(@y);
           transform: skewX(@x) skewY(@y);
 }
 .translate(@x, @y) {
@@ -283,7 +283,7 @@
   display: block;
   z-index: 1;
 }
-.hairline(@position, @color) when (@position = top) {
+.hairline(@position, @color: @border-color) when (@position = top) {
   &:before {
     height: 1px;
     width: 100%;
@@ -302,7 +302,7 @@
     }
   }
 }
-.hairline(@position, @color) when (@position = left) {
+.hairline(@position, @color: @border-color) when (@position = left) {
   &:before {
     height: 100%;
     width: 1px;
@@ -321,7 +321,7 @@
     }
   }
 }
-.hairline(@position, @color) when (@position = bottom) {
+.hairline(@position, @color: @border-color) when (@position = bottom) {
   &:after {
     height: 1px;
     width: 100%;
@@ -340,7 +340,7 @@
     }
   }
 }
-.hairline(@position, @color) when (@position = right) {
+.hairline(@position, @color: @border-color) when (@position = right) {
   &:after {
     height: 100%;
     width: 1px;

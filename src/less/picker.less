@@ -2,6 +2,21 @@
   width: 100%;
   z-index: @level-navigation;
 
+  .picker-header,
+  .picker-footer {
+    position: relative;
+    height: @modal-header-height;
+    line-height: @modal-header-height;
+    font-size: 16px;
+    text-align: center;
+  }
+  .picker-header {
+    .hairline(bottom);
+  }
+  .picker-footer {
+    .hairline(top);
+  }
+
   .picker-inner {
     position: relative;
     height: 100%;
@@ -25,7 +40,7 @@
       position: relative;
       height: 36px;
       line-height: 36px;
-      padding: 0 10px;    
+      padding: 0 10px;
       color: @color-text-gray;
       font-size: @font-size-default;
       overflow: hidden;
@@ -52,7 +67,7 @@
     left: 0;
     margin-top: -18px;
     pointer-events: none;
-    
+
     &:before,
     &:after {
       content: '';
