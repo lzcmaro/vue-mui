@@ -1,12 +1,14 @@
 <template>
   <div class="indicator" :class="{[`indicator-${type}`]: true}" >
     <vui-overlay v-show="show" :transparent="true"></vui-overlay>
-    <vui-toast :show="show" @toggle-visible="toggleVisible">
-      <vui-spinner v-if="type==='loading'" type="spinner" slot="icon"></vui-spinner>
-      <vui-icon v-else :type="type" slot="icon"></vui-icon>
+    <vui-toast :show="show" @hide="$emit('hide')">
+      <div class="icon-wrap">
+        <vui-spinner v-if="type==='loading'" type="spinner"></vui-spinner>
+        <vui-icon v-else :type="type"></vui-icon>
+      </div>
       <slot></slot>
     </vui-toast>
-  </div>    
+  </div>
 </template>
 
 <script>
@@ -40,11 +42,6 @@ export default {
           'warning'
         ].indexOf(value) > -1
       }
-    }
-  },
-  methods: {
-    toggleVisible(val) {
-      this.$emit('toggle-visible', val)
     }
   }
 }

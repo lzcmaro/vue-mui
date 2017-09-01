@@ -9,10 +9,10 @@
       <vui-button size="large" @click="openIndicator('visibleWarning')">Warning</vui-button>
     </page-content>
 
-    <vui-indicator :show="visibleLoading" type="loading" @toggle-visible="toggleVisible1">加载中...</vui-indicator>
-    <vui-indicator :show="visibleSuccess" type="success" @toggle-visible="toggleVisible2">操作成功</vui-indicator>
-    <vui-indicator :show="visibleFailure" type="failure" @toggle-visible="toggleVisible3">注册失败</vui-indicator>
-    <vui-indicator :show="visibleWarning" type="warning" @toggle-visible="toggleVisible4">信息错误</vui-indicator>
+    <vui-indicator :show="visibleLoading" type="loading" @hide="onHide('visibleLoading')">加载中...</vui-indicator>
+    <vui-indicator :show="visibleSuccess" type="success" @hide="onHide('visibleSuccess')">操作成功</vui-indicator>
+    <vui-indicator :show="visibleFailure" type="failure" @hide="onHide('visibleFailure')">注册失败</vui-indicator>
+    <vui-indicator :show="visibleWarning" type="warning" @hide="onHide('visibleWarning')">信息错误</vui-indicator>
   </div>
 </template>
 
@@ -30,17 +30,8 @@ export default {
     openIndicator(key) {
       this[key] = !this[key]
     },
-    toggleVisible1(val) {
-      this.visibleLoading = val
-    },
-    toggleVisible2(val) {
-      this.visibleSuccess = val
-    },
-    toggleVisible3(val) {
-      this.visibleFailure = val
-    },
-    toggleVisible4(val) {
-      this.visibleWarning = val
+    onHide(key) {
+      this[key] = false
     }
   }
 }

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './app'
 import routes from './route'
-import mui from 'src/index'
+import mui from '@/index'
 import VueRouter from 'vue-router'
 import PageContent from './page-content'
 

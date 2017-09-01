@@ -1,4 +1,5 @@
 import $ from './utils/NodeList.js'
+import $toast from './components/toast/service'
 
 import ActionSheetButton from './components/action-sheet-button'
 import ActionSheet from './components/action-sheet'
@@ -62,6 +63,8 @@ const install = function(Vue) {
   Vue.component(Tabs.name, Tabs)
   Vue.component(Toast.name, Toast)
   Vue.use(InfiniteScroll)
+
+  Vue.$toast = Vue.prototype.$toast = $toast
 }
 
 // auto install

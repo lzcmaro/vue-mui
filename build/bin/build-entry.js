@@ -7,6 +7,7 @@ var OUTPUT_PATH = path.join(__dirname, '../../src/index.js');
 var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}\'';
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})';
 var MAIN_TEMPLATE = `import $ from './utils/NodeList.js'
+import $toast from './components/toast/service'
 
 {{include}}
 
@@ -15,6 +16,8 @@ const install = function(Vue) {
 
 {{install}}
   Vue.use(InfiniteScroll)
+
+  Vue.$toast = Vue.prototype.$toast = $toast
 }
 
 // auto install

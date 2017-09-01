@@ -1,6 +1,6 @@
 .toast {}
 
-.toast-inner {
+.toast-body {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -14,30 +14,16 @@
   overflow: hidden;
   .box-shadow(0 3px 9px rgba(0,0,0,.5));
   .translate(-50%, -50%);
-  // .transition(opacity .3s linear); 
-  .flexbox();
-  .justify-content(center);
-  .flex-direction(column);
-}
 
-.toast-icon-wrap {
-  display: block;
-  text-align: center;
-  padding-bottom: 5px;
-
-  .icon {
-    background-color: transparent;
+  .toast-content {
+    display: block;
+    height: 100%;
+    font-size: 16px;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: normal;
   }
 }
-
-.toast-text {
-  display: block;
-  font-size: 16px; 
-  text-align: center;
-  word-wrap: break-word;  
-  word-break: normal;
-}
-
 
 .toast-pop-enter-active, .toast-pop-leave-active {
   .transition(opacity .3s linear);
