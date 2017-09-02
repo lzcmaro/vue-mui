@@ -16,7 +16,7 @@
 <script>
 import VuiOverlay from './overlay'
 
-import modalMixins from '../mixins/modal'
+import modalMixins from '../mixins/modalMixins'
 import $ from '../utils/NodeList.js'
 
 let zIndex = 999

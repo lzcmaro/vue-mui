@@ -16,7 +16,7 @@ import VuiModal from './base-modal'
 import VuiButton from './button'
 import VuiIcon from './icon'
 
-import modalMixins from '../mixins/modal'
+import modalMixins from '../mixins/modalMixins'
 
 export default {
   name: 'vui-dialog',
