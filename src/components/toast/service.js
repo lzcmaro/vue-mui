@@ -4,11 +4,6 @@ import createChainedFunction from '@/utils/createChainedFunction'
 
 let pool = []
 
-function removeDOM(event) {
-  const $target = event.target
-  $target.parentNode && $target.parentNode.removeChild($target)
-}
-
 function createInstance() {
   return new Vue({
     el: document.createElement('div'),
@@ -23,8 +18,8 @@ function createInstance() {
       onHiddenChanged() {
         // 虽然Toast是自动隐藏的，但由于该实例可能会被复用，这里需要重置this.visible
         this.visible = false
-        // 在隐藏的动画完成后删除该DOM元素
-        this.$el.addEventListener('transitionend', removeDOM)
+        // 隐藏后删除该DOM元素
+        this.$el.parentNode.removeChild(this.$el)
         // 缓存当前实例，以便后面可以从pool中直接使用
         pool.push(this)
       }
@@ -56,11 +51,19 @@ function getInstance() {
 /**
  * ToastService
  * 把Toast组件封装成service，以便方便调用
- * @param {String|Object} message String：即显示的文本信息；Object：参数配置，见上面的createInstance.data
+ * @param {String|Object} options
+ *   String类型，即显示的文本信息;
+ *   Object类型，Toast的参数配置，这时将忽略onHidden参数，具体有：
+ *     message,
+ *     className,
+ *     iconClass,
+ *     onHidden
+ * @param {Function} onHidden Toast隐藏后的回调
  */
-let ToastService = function(options = {}) {
+function ToastService(options = {}, onHidden) {
   if (typeof options === 'string') {
     options = {message: options}
+    typeof onHidden === 'function' && (options.onHidden = onHidden)
   }
 
   let instance = getInstance()
@@ -75,8 +78,6 @@ let ToastService = function(options = {}) {
 
   Vue.nextTick(function() {
     instance.visible = true
-    // 移除该实例可能已绑定的transitionend事件
-    instance.$el.removeEventListener('transitionend', removeDOM)
   })
 }
 

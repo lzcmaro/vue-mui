@@ -1,5 +1,5 @@
 <template>
-  <transition name="toast-pop">
+  <transition name="toast-pop" @after-leave="afterLeave">
     <div class="toast" v-show="visible">
       <div class="toast-body">
         <div class="toast-content"><slot></slot></div>
@@ -36,9 +36,13 @@ export default {
       if (val === true) {
         this.timer = setTimeout(() => {
           this.visible = false
-          this.$emit('hide', false)
         }, this.duration)
       }
+    }
+  },
+  methods: {
+    afterLeave() {
+      this.$emit('hide')
     }
   }
 }

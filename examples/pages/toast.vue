@@ -6,7 +6,6 @@
       <vui-button size="large" @click="visibleToast = true">弹出带Icon的Toast</vui-button>
     </page-content>
 
-    <!-- <vui-toast :show="visibleToast" @hide="onHidden">Toast</vui-toast> -->
     <vui-toast :show="visibleToast" @hide="onHidden">
       <vui-icon type="checkmark"></vui-icon>
       Toast
@@ -23,7 +22,9 @@ export default {
   },
   methods: {
     openToast() {
-      this.$toast('toast')
+      this.$toast('toast', function() {
+        console.log('hidden.')
+      })
       // this.$toast({
       //   message: 'toast',
       //   className: 'my-toast',
