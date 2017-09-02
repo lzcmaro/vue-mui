@@ -59,11 +59,19 @@ function getInstance() {
  *     iconClass,
  *     onHidden
  * @param {Function} onHidden Toast隐藏后的回调
+ * @example
+ * 1. Vue.$toast('toast', function(){})
+ * 2. Vue.$toast({message: 'toast'}, function(){})
  */
 function ToastService(options = {}, onHidden) {
   if (typeof options === 'string') {
-    options = {message: options}
-    typeof onHidden === 'function' && (options.onHidden = onHidden)
+    options = {
+      message: options
+    }
+  }
+
+  if (typeof onHidden === 'function') {
+    options.onHidden = onHidden
   }
 
   let instance = getInstance()

@@ -28,10 +28,9 @@ export default {
       // this.$toast({
       //   message: 'toast',
       //   className: 'my-toast',
-      //   iconClass: 'icon icon-home',
-      //   onHidden: () => {
-      //     console.log('hidden.')
-      //   }
+      //   iconClass: 'icon icon-home'
+      // }, function() {
+      //   console.log('hidden.')
       // })
     },
     onHidden() {
