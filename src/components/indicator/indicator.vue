@@ -1,7 +1,7 @@
 <template>
   <div class="indicator" :class="{[`indicator-${type}`]: true}" >
     <vui-overlay v-show="show" :transparent="true"></vui-overlay>
-    <vui-toast :show="show" @hide="$emit('hide')">
+    <vui-toast ref="toast" :show="show" @hide="$emit('hide')">
       <div class="icon-wrap">
         <vui-spinner v-if="type==='loading'" type="spinner"></vui-spinner>
         <vui-icon v-else :type="type"></vui-icon>
@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import VuiOverlay from './overlay'
-import VuiToast from './toast'
-import VuiIcon from './icon'
-import VuiSpinner from './spinner'
+import VuiOverlay from '@/components/overlay'
+import VuiToast from '@/components/toast'
+import VuiIcon from '@/components/icon'
+import VuiSpinner from '@/components/spinner'
 
 export default {
   name: 'vui-indicator',

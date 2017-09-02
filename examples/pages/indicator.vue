@@ -3,16 +3,14 @@
     <vui-header fixed>Indicator</vui-header>
 
     <page-content>
-      <vui-button size="large" @click="openIndicator('visibleLoading')">Loading</vui-button>
-      <vui-button size="large" @click="openIndicator('visibleSuccess')">Success</vui-button>
-      <vui-button size="large" @click="openIndicator('visibleFailure')">Failure</vui-button>
-      <vui-button size="large" @click="openIndicator('visibleWarning')">Warning</vui-button>
+      <vui-button size="large" @click="openSuccessIndicator">Loading</vui-button>
+      <vui-button size="large" @click="visibleSuccess = true">Success</vui-button>
+      <vui-button size="large" @click="visibleFailure = true">Failure</vui-button>
+      <vui-button size="large" @click="openWarningIndicator">Warning</vui-button>
     </page-content>
 
-    <vui-indicator :show="visibleLoading" type="loading" @hide="onHide('visibleLoading')">加载中...</vui-indicator>
-    <vui-indicator :show="visibleSuccess" type="success" @hide="onHide('visibleSuccess')">操作成功</vui-indicator>
-    <vui-indicator :show="visibleFailure" type="failure" @hide="onHide('visibleFailure')">注册失败</vui-indicator>
-    <vui-indicator :show="visibleWarning" type="warning" @hide="onHide('visibleWarning')">信息错误</vui-indicator>
+    <vui-indicator :show="visibleSuccess" type="success" @hide="visibleSuccess = false">操作成功</vui-indicator>
+    <vui-indicator :show="visibleFailure" type="failure" @hide="visibleFailure = false">注册失败</vui-indicator>
   </div>
 </template>
 
@@ -27,8 +25,23 @@ export default {
     }
   },
   methods: {
-    openIndicator(key) {
-      this[key] = !this[key]
+    openSuccessIndicator() {
+      // this.$indicator('加载中...', this.$indicator.types.LOADING, function() {
+      //   console.log('hidden.')
+      // })
+      this.$indicator({
+        type: this.$indicator.types.LOADING,
+        message: '加载中...',
+        className: 'my-indicator'
+      }, function() {
+        console.log('hidden.')
+      })
+    },
+    openWarningIndicator() {
+      // 不指定type时，默认为$indicator.types.WARNING
+      this.$indicator('信息错误', function() {
+        console.log('hidden.')
+      })
     },
     onHide(key) {
       this[key] = false

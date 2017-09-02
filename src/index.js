@@ -1,5 +1,6 @@
 import $ from './utils/NodeList.js'
 import $toast from './components/toast/service'
+import $indicator from './components/indicator/service'
 
 import ActionSheetButton from './components/action-sheet-button'
 import ActionSheet from './components/action-sheet'
@@ -65,6 +66,7 @@ const install = function(Vue) {
   Vue.use(InfiniteScroll)
 
   Vue.$toast = Vue.prototype.$toast = $toast
+  Vue.$indicator = Vue.prototype.$indicator = $indicator
 }
 
 // auto install
