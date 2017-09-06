@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Toast from './toast' // eslint-disable-line
+import Toast from './toast'
 import createChainedFunction from '@/utils/createChainedFunction'
 
 let pool = []
@@ -7,6 +7,9 @@ let pool = []
 function createInstance() {
   return new Vue({
     el: document.createElement('div'),
+    components: {
+      Toast
+    },
     data: {
       visible: false,
       message: null, // 显示的文本信息
@@ -36,9 +39,9 @@ function createInstance() {
       }
 
       return (
-        <Toast {...toastProps}>
+        <toast {...toastProps}>
           {this.iconClass ? (<i class={this.iconClass}></i>) : null}{this.message}
-        </Toast>
+        </toast>
       )
     }
   })

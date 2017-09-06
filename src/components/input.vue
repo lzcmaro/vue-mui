@@ -1,12 +1,11 @@
 <script>
 import VuiButton from './button'
 import VuiIcon from './icon'
-import $ from '../utils/NodeList'
-import createChainedFunction from '../utils/createChainedFunction'
+import createChainedFunction from '@/utils/createChainedFunction'
+import toggleClass, {removeClass} from '@/utils/toggleClass'
 
 // const CLS_FIELD_HAS_FOCUS = 'field-has-focus'
 const CLS_FIELD_HAS_VALUE = 'field-has-value'
-const regTrim = /^\s+|\s+$/g
 
 export default {
   name: 'vui-input',
@@ -40,24 +39,24 @@ export default {
     nativeAttrs.forEach((value, index) => this.$el.removeAttribute(value))
   },
   methods: {
-    focusInputHandler() {
-      // $(this.$el).addClass(CLS_FIELD_HAS_FOCUS)
-    },
-    blurInputHandler() {
-      // 如果clearButton在has-focus.has-value时才显示的话，这里不设置setTimeout将会导致clearButton.click事件无效
-      // window.setTimeout(() => {
-      //   $(this.$el).removeClass(CLS_FIELD_HAS_FOCUS)
-      // }, 200)
-    },
+    // focusInputHandler() {
+    //   $(this.$el).addClass(CLS_FIELD_HAS_FOCUS)
+    // },
+    // blurInputHandler() {
+    //   // 如果clearButton在has-focus.has-value时才显示的话，这里不设置setTimeout将会导致clearButton.click事件无效
+    //   window.setTimeout(() => {
+    //     $(this.$el).removeClass(CLS_FIELD_HAS_FOCUS)
+    //   }, 200)
+    // },
     keyupInputHandler(evt) {
       const $input = this.$refs.input
-      $(this.$el).toggleClass(CLS_FIELD_HAS_VALUE, $input.value.replace(regTrim, ''))
+      toggleClass(this.$el, CLS_FIELD_HAS_VALUE, !!$input.value.trim())
     },
-    clearInputHandler() {
+    clearButtonHandler() {
       const $input = this.$refs.input
       $input.value = ''
       $input.focus()
-      $(this.$el).removeClass(CLS_FIELD_HAS_VALUE)
+      removeClass(this.$el, CLS_FIELD_HAS_VALUE)
     }
   },
   render(h) {
@@ -82,8 +81,8 @@ export default {
       // 添加focus, blur，keyup事件，便于处理是否显示clearButton
       on: {
         ...listeners,
-        focus: createChainedFunction(this.focusInputHandler, listeners.focus ? listeners.focus.fn : noop),
-        blur: createChainedFunction(this.blurInputHandler, listeners.blur ? listeners.blur.fn : noop),
+        // focus: createChainedFunction(this.focusInputHandler, listeners.focus ? listeners.focus.fn : noop),
+        // blur: createChainedFunction(this.blurInputHandler, listeners.blur ? listeners.blur.fn : noop),
         keyup: createChainedFunction(this.keyupInputHandler, listeners.keyup ? listeners.keyup.fn : noop)
       }
     }
@@ -92,7 +91,7 @@ export default {
         'btn-clear': true
       },
       on: {
-        click: this.clearInputHandler
+        click: this.clearButtonHandler
       }
     }
 

@@ -1,4 +1,3 @@
-import $ from './utils/NodeList.js'
 import $toast from './components/toast/service'
 import $indicator from './components/indicator/service'
 
@@ -75,7 +74,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  $,
   install,
   version: '1.0.0-beta5',
   ActionSheetButton,

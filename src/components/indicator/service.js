@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Indicator from './indicator' // eslint-disable-line
+import Indicator from './indicator'
 import createChainedFunction from '@/utils/createChainedFunction'
 
 const defaultIndicatorType = 'warning'
@@ -8,6 +8,9 @@ let pool = []
 function createInstance() {
   return new Vue({
     el: document.createElement('div'),
+    components: {
+      Indicator
+    },
     data: {
       visible: false,
       type: defaultIndicatorType, // Indicator类型：loading, success, warning, failure
@@ -38,7 +41,7 @@ function createInstance() {
       }
 
       return (
-        <Indicator {...indicatorProps}>{this.message}</Indicator>
+        <indicator {...indicatorProps}>{this.message}</indicator>
       )
     }
   })

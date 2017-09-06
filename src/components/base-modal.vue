@@ -15,9 +15,8 @@
 
 <script>
 import VuiOverlay from './overlay'
-
-import modalMixins from '../mixins/modalMixins'
-import $ from '../utils/NodeList.js'
+import modalMixins from '@/mixins/modalMixins'
+import toggleClass from '@/utils/toggleClass'
 
 let zIndex = 999
 
@@ -49,14 +48,14 @@ export default {
   watch: {
     show(val) {
       this.zIndex = val ? (++zIndex) : (--zIndex)
-      $(document.body).toggleClass('modal-open', val)
+      toggleClass(document.body, 'modal-open', val)
     }
   },
   mounted() {
     if (this.show) {
       this.zIndex = (++zIndex)
     }
-    $(document.body).toggleClass('modal-open', this.show)
+    toggleClass(document.body, 'modal-open', this.show)
   }
 }
 </script>
